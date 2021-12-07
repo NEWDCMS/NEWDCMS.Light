@@ -1,0 +1,62 @@
+<content-card class="content" name="适配">
+    <view style="padding:0 20px;">
+        <l-list title="启用蓝牙" isLink="{{false}}">
+            <view slot="right-section">
+                <switch checked="{{serchChangeChecked}}" bindchange="serchChange" />
+            </view>
+        </l-list>
+        <l-list title="启用间断打印方式" isLink="{{false}}">
+            <view slot="right-section">
+                <switch checked="{{intermittentChangeChecked}}" bindchange="intermittentChange" />
+            </view>
+        </l-list>
+    </view>
+</content-card>
+
+<content-card class="content" name="纸张">
+    <view style="padding:0 20px;">
+        <radio-group bindchange="paperChange">
+            <l-list right-desc="58MM打印样式" isLink="{{false}}">
+                <view slot="left-section">
+                    <radio value="58" />
+                </view>
+            </l-list>
+            <l-list right-desc="76MM打印样式" isLink="{{false}}">
+                <view slot="left-section">
+                    <radio value="76" />
+                </view>
+            </l-list>
+            <l-list right-desc="80MM打印样式" isLink="{{false}}">
+                <view slot="left-section">
+                    <radio value="80" checked="true" />
+                </view>
+            </l-list>
+        </radio-group>
+    </view>
+</content-card>
+
+<content-card class="content" name="设备列表">
+    <l-loading slot="top-right" show="{{showloading}}" size="medium" type="change" />
+    <view style="padding:0 20px;text-align: center;">
+        <van-empty wx:if="{{deviceList.length==0}}" image="default" description="空空如也！" />
+        <l-list title="{{item.name}}" icon="printer" data-key="{{item}}" wx:for="{{deviceList}}" wx:key="{[deviceId]}"
+            isLink="{{false}}">
+            <view slot="right-section">
+                <l-button size="mini" bgColor="{{item.state?'#ff0000':'#3B5998'}}" bind:lintap="connectOrdisconnect"
+                    data-key="{{item}}">{{item.tag}}</l-button>
+            </view>
+        </l-list>
+    </view>
+</content-card>
+
+<!-- 打印 -->
+<view class="float-container">
+    <view class="float-container-toolbar">
+        <view style="margin:20rpx;">
+            <l-button size="long" class="button" bgColor="#53a245" disabledHover="{{disabledPrint}}"
+                disabled="{{disabledPrint}}" icon="printer" icon-color="#ffffff" icon-size="32" bind:lintap="printData"
+                data-type="3">打印
+            </l-button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,280 @@
+page {
+    height: 100%;
+}
+
+.card-dot {
+    width: 18rpx;
+    height: 18rpx;
+    border-radius: 50%;
+    border: 6rpx solid #3B5998;
+    margin-left: 26rpx;
+}
+
+.card-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 750rpx;
+    height: 100rpx;
+}
+
+.content-name {
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(69, 82, 107, 1);
+    line-height: 20px;
+    margin-left: 8px;
+}
+
+.card {
+    margin: 10rpx auto !important;
+}
+
+.right-card {
+    height: 180rpx !important;
+    width: 220rpx !important;
+    border-radius: 12rpx !important;
+}
+
+
+
+.avter-content {
+    margin-top: 10rpx;
+    color: #333;
+    font-size: 26rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+.avter-share-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.like-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40rpx;
+    align-items: center
+}
+
+.number {
+    color: #666;
+    font-size: 24rpx;
+    margin-left: 12rpx;
+}
+
+/* 任务 */
+
+.shou {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    background-color: #ef8934;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.describe-container {
+    width: 630rpx;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+    color: #666;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    font-size: 28rpx;
+    border-radius: 0rpx;
+    /* box-shadow:0px 3px 8px 0px rgba(154,172,193,0.5); */
+    text-align: right;
+    vertical-align: middle;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20rpx;
+}
+
+.button {
+    background: rgba(223, 237, 255, 1) !important;
+    box-shadow: 6rpx 6rpx 16rpx 0px rgba(229, 233, 239, 0.5) !important;
+    color: rgba(45, 97, 179, 1) !important;
+    margin-right: 30rpx;
+}
+
+
+/* 照片 */
+
+.item {
+    border-radius: 10px;
+}
+
+.add {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-icon {
+    height: 70rpx;
+    width: 70rpx;
+    margin-top: 10rpx;
+}
+
+.add-text {
+    margin-top: 6rpx;
+    font-size: 24rpx;
+    font-weight: bold;
+    color: #bfbfbf;
+}
+
+.top {
+    margin-top: 20rpx;
+}
+
+.terminalbox {
+    width: 100%;
+    height: 400rpx;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terminalbox-content {
+    width: 100%;
+    height: 100%;
+    background: rgba(53, 52, 52, 0.7);
+}
+
+.terminalbox-header {
+    width: 100%;
+    height: 220rpx;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(53, 52, 52, 0.4);
+}
+
+.terminalbox-header-left {
+    width: 80%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terminalbox-header-left .content-name {
+    width: 100%;
+    color: #fff;
+    font-size: 35rpx;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.terminalbox-header-left .terminalbox-rate {
+    width: 100%;
+    margin-top: 10rpx;
+    margin-left: 50px;
+}
+
+.terminalbox-header-right {
+    width: 20%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terminalbox-content-detail {
+    padding: 20rpx;
+    background-color: #fff;
+}
+
+.share-box {
+    width: 80rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 30rpx;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 1px 8px 0px rgba(241, 240, 240, 0.219);
+}
+
+.des-distance {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20rpx;
+    color: white;
+
+}
+
+.des-distance-address {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20rpx 40rpx 20rpx 20rpx;
+    color: white;
+    border-bottom: 1px rgba(248, 244, 244, 0.2) solid;
+}
+
+.des-distance-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10rpx 20rpx;
+    color: white;
+   
+}
+
+
+.des-distance-text {
+    width: 85%;
+    display: flex;
+    font-size: 30rpx;
+    align-items: center;
+    line-break: auto;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.des-distance-icon {
+    width: 50rpx;
+}
+
+.myQrcodebox {
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20rpx;
+}
+
+.myQrcode {
+    width: 200px;
+    height: 200px;
+    margin: 20rpx;
+}

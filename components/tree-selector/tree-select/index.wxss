@@ -1,0 +1,53 @@
+.tree {
+    text-align: left;
+    font-size: 30rpx;
+    padding-left: 0rpx;
+}
+
+.tree-item {
+    min-height: 45px;
+    display: flex;
+    margin-bottom: 0rpx;
+    align-items: center;
+    padding-left: 20rpx;
+}
+
+.bgg-m {
+    font-weight: bold;
+}
+
+.bg-m {
+    background: #eee;
+}
+
+.bg-mm {
+    padding-left: 80rpx;
+    /* background: #000; */
+}
+
+.tree-icon {
+    transition: 0.5s;
+    margin-right: 20rpx;
+}
+
+.tree-arrow {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.tree-arrow-closed {
+    transform: rotate(-90deg);
+}
+
+.tree-arrow-open {
+    transform: rotate(0deg);
+
+}
+
+.weui-cell__bd {
+    width: 100%;
+    margin-left: 10rpx;
+}

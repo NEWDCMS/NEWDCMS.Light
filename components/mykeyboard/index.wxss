@@ -1,0 +1,103 @@
+ .keyboard_cotainer {
+     position: absolute;
+     bottom: 0px;
+     height: 300px;
+     width: 100%;
+     background: rgba(158, 157, 157, 0.466);
+     align-items: center;
+     justify-content: center;
+ }
+
+ .numval {
+     border-radius: 5px;
+     margin-bottom: .5px;
+     text-align: center;
+     line-height: 50px;
+     font-weight: 700;
+     height: 50px;
+     width: 100%;
+     background: #fff;
+     font-size: 16px;
+     color: #3B5998;
+ }
+
+ .keyboard_num {
+     line-height: 50px;
+     margin: .5px;
+     float: left;
+     color: black;
+     font-size: 16px;
+     font-weight: 700;
+     width: 33%;
+     height: 50px;
+     background: #fff;
+     border-radius: 5px;
+     text-align: center;
+ }
+
+ /* 点击选中样式 */
+ .keyboard_click {
+     line-height: 50px;
+     margin: .5px;
+     float: left;
+     color: black;
+     font-size: 16px;
+     font-weight: 300;
+     width: 33%;
+     height: 50px;
+     background: #dddddd;
+     border-radius: 5px;
+     text-align: center;
+ }
+
+ .deletebt {
+     border-radius: 5px;
+     margin: .5px;
+     color: #fff;
+     font-size: 12px;
+     text-align: center;
+     line-height: 40px;
+     float: left;
+     width: 33%;
+     height: 40px;
+     background: #aaa8a8;
+ }
+
+ .canclebt {
+     border-radius: 5px;
+     margin: .5px;
+     color: #fff;
+     font-size: 12px;
+     text-align: center;
+     line-height: 40px;
+     float: left;
+     width: 33%;
+     height: 40px;
+     background: #53a245;
+ }
+
+ .submitbt {
+     border-radius: 5px;
+     margin: .5px;
+     color: #fff;
+     font-size: 12px;
+     text-align: center;
+     line-height: 40px;
+     float: left;
+     width: 33%;
+     height: 40px;
+     background: #3B5998;
+ }
+
+ .bt_select {
+     border-radius: 5px;
+     color: #fff;
+     margin: .5px;
+     font-size: 12px;
+     text-align: center;
+     line-height: 40px;
+     float: left;
+     width: 33%;
+     height: 40px;
+     background: rgb(51, 165, 241);
+ }

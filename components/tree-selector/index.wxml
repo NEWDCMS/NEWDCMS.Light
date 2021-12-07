@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="tree-warpper">
+    <view class="tree-selector">
+      <view class="search-tree">
+        <input class="search-input" value="{{keyword}}" bindinput="search" placeholder="点击输入关键字" confirm-type="搜索" />
+        <view class="search_btn" bindtap="search">
+          <icon class="icon-small" type="search" size="20"></icon>
+        </view>
+      </view>
+      <scroll-view scroll-y="true" style="height:80%">
+        <tree-select class="tree-select" datas="{{dataList}}" bind:select="handleSelect" bind:open="handleSelect">
+        </tree-select>
+      </scroll-view>
+    </view>
+    <!-- <l-button bindtap="onComfim">确认</l-button> -->
+  </view>
+
+  <!-- 底部工具栏 -->
+  <view class="float-container">
+    <view class="float-container-toolbar">
+      <view class="left-block">
+        <l-button special="true" bindtap="onReset">
+          <view class="share-box">
+            重置
+          </view>
+        </l-button>
+      </view>
+      <view class="right-block">
+        <l-button special="true" bindtap="onComfim">
+          <view class="share-box">
+            确定
+          </view>
+        </l-button>
+      </view>
+    </view>
+  </view>
+</view>

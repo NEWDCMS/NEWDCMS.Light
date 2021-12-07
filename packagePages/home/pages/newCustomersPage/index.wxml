@@ -1,0 +1,70 @@
+<view class="container">
+    <view class="section-content" style="padding: 15rpx;">
+        {{data.ChartDatas.length}}
+        <van-empty image="default" wx:if="{{data.ChartDatas==null}}" description="" />
+        <canvas wx:if="{{data.ChartDatas!=null}}" style="width:100%;height:250px;" type="2d" id="newCustomersPageChart"
+            bindtouchstart="touchBarHandler"></canvas>
+    </view>
+    <view class="table">
+        <view class="thr bg-w">
+            <view class="th thleft">日期</view>
+            <view class="th thright">新增数</view>
+        </view>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pleft">今日</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.Today.Count}}家</text>
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr">
+                <view class="td pleft">昨日</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.Yesterday.Count}}家</text>
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pleft">前天</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.BeforeYesterday.Count}}家</text>
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr">
+                <view class="td pleft">上周</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.LastWeek.Count}}家</text>
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pleft">本周</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.ThisWeek.Count}}家</text>
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr">
+                <view class="td pleft">上月</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.LastMonth.Count}}家</text>
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pleft">本月</view>
+                <view class="td pright">
+                    <text style="color: #53a245;">{{data.ThisMonth.Count}}家</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

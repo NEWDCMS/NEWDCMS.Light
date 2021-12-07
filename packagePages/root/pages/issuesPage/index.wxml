@@ -1,0 +1,38 @@
+<view class='container'>
+
+    <form bindreset="formReset">
+
+        <content-card name="本品问题描述">
+            <view class="card-content">
+                <l-textarea l-class="textarea-class" placeholder="请至少10个字描述问题，并上传最多5张图片..." tipType="text" name="detail" rules="{{userRules}}" maxlength="500" />
+            </view>
+        </content-card>
+
+        <content-card name="竞品问题描述">
+            <view class="card-content">
+                <l-textarea l-class="textarea-class" placeholder="请至少10个字描述问题，并上传最多5张图片..." tipType="text" name="detail" rules="{{userRules}}" maxlength="500" />
+            </view>
+        </content-card>
+
+        <content-card name="上传照片">
+            <view class='image-content'>
+                <l-image-picker custom="{{true}}" count="5">
+                    <view class='add'>
+                        <image class='add-img' src='/images/static/camera_add.png'></image>
+                    </view>
+                </l-image-picker>
+            </view>
+        </content-card>
+
+        <view class="float-container">
+            <view class="float-container-toolbar">
+                <view slot="submit" style="padding:20rpx">
+                    <l-button size="long" class="button" icon="checked" icon-color="#ffffff" icon-size="32">提交
+                    </l-button>
+                </view>
+            </view>
+        </view>
+
+    </form>
+
+</view>

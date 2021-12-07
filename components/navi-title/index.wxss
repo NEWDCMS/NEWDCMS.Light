@@ -1,0 +1,40 @@
+.navi-title {
+  display: flex;
+  justify-content: space-between;
+  width: 750rpx;
+  height: 100rpx;
+  align-items: center;
+  border-radius: 12rpx 12rpx 0 0 ;
+  background-color: #eee;
+}
+
+.line {
+  width: 10rpx;
+  height: 28rpx;
+  background-color: #3B5998;
+  border-radius: 0px 6rpx 6rpx 0px;
+  margin-right: 22rpx;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+}
+
+.title-left .title-left-text {
+  font-size: 30rpx;
+  color: #3B5998;
+  font-weight:bold ;
+}
+
+.count {
+  width: 44rpx;
+  height: 44rpx;
+  background: #ddd;
+  font-size: 28rpx;
+  color: #3B5998;
+  text-align: center;
+  margin-right: 32rpx;
+  line-height: 44rpx;
+  border-radius: 50%;
+}

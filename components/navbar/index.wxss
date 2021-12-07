@@ -1,0 +1,27 @@
+/* components/navbar/index.wxss */
+
+/* 此处用于引入font.wxss */
+/* @import '../../css/font.wxss'; */
+.tabbar_box{
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  height: 96rpx;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #a9abac;
+  box-sizing: border-box;
+  padding-top: 12rpx;
+}
+.tabbar_box text{
+  font-size: 20rpx;
+}
+.tabbar_box .icon{
+  font-size: 45rpx;
+}
+.tabbar_box .tabbar_nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

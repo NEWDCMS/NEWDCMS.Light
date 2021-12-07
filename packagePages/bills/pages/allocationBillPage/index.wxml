@@ -1,0 +1,129 @@
+<view class="container">
+
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner">
+                    <text class="label">{{bill.BillNumber}}</text>
+                </view>
+                <view class="maincon-container-item-inner">
+                    <text class="label">{{bill.CreatedOnUtcStr}}</text>
+                </view>
+            </view>
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner" bindtap="showActionSheetOut">
+                    <text class="label">{{bill.ShipmentWareHouseName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{bill.ShipmentWareHouseId}}" />
+                    </view>
+                    <l-button special="true">
+                        <l-icon size="40" name="arrow-down" color="#999" />
+                    </l-button>
+                </view>
+                <view class="maincon-container-item-inner" bindtap="showActionSheetIn">
+                    <text class="label">{{bill.IncomeWareHouseName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{bill.IncomeWareHouseId}}" />
+                    </view>
+                    <l-button special="true">
+                        <l-icon size="40" name="arrow-down" color="#999" />
+                    </l-button>
+                </view>
+            </view>
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner">
+                    <input label="备注" bindinput="onChangeRemark" value="{{bill.Remark}}" placeholder="请输入备注" />
+                </view>
+            </view>
+        </view>
+        <view class="main-container-table">
+            <l-sticky scrollTop="{{scrollTop}}" mode="css">
+                <l-sticky-item l-header-sticky-class="l-header-sticky-class">
+                    <view slot="header">
+                        <view class="table">
+                            <view class="thr bg-w">
+                                <view class="th"><text
+                                        style="text-align: center; justify-content:flex-start;margin-left: 30rpx;">商品名称</text>
+                                </view>
+                                <view class="th"><text style="text-align:end;margin-right: 30rpx;width: 100%;">数量</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view slot="body" class="view-container">
+                        <!-- 这里模拟空视图 -->
+                        <van-empty image="default" wx:if="{{bill.items.length<=0}}" description="空空如也！" />
+                        <!-- 这里如果saleBillItems 为空，则mockNull，显示空视图 -->
+                        <view class="table">
+                            <block wx:for="{{bill.items}}" wx:key="{[productId]}">
+                                <view class="tr" wx:if="{{index % 2 == 0}}" bindtap="onEdit"
+                                    data-id="{{item.productId}}" data-item="{{item}}">
+                                    <view class="td pname"><text class="pnameText">{{item.productName}}</text></view>
+                                    <view class="td">{{item.quantity}}/{{item.unitName}}</view>
+                                </view>
+                                <view class="tr bg-g" wx:else bindtap="onEdit" data-id="{{item.productId}}"
+                                    data-item="{{item}}">
+                                    <view class="td pname"><text class="pnameText">{{item.productName}}</text></view>
+                                    <view class="td">{{item.quantity}}/{{item.unitName}}</view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </l-sticky-item>
+            </l-sticky>
+        </view>
+    </view>
+
+    <!-- 水印 -->
+    <water type="1" show="{{bill.AuditedStatus}}" wx:if="{{!bill.ReversedStatus}}" />
+    <water type="3" show="{{bill.ReversedStatus}}" wx:if="{{bill.ReversedStatus}}" />
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <input class="serch" type="text" placeholder="首拼/商品名称/关键字" />
+            <l-button class="button" size="long" bindtap="onAdd">添加</l-button>
+            <l-button class="button" size="long" bindtap="onScan">扫码</l-button>
+            <l-button class="button" bgColor="#53a245" size="long" bindtap="onSubmitTap">提交</l-button>
+            <!-- 弹出菜单 -->
+            <l-button class="button" size="long" bind:lintap="onShowPopupMenus">
+                <l-icon size="40" name="weapp-nav" color="#fff" />
+            </l-button>
+            <!-- <l-button special="true" class="scan" bindtap="onScan">
+            <l-icon size="65" name="scan" color="#3B5998" />
+        </l-button> -->
+        </view>
+    </view>
+
+    <!-- dialog -->
+    <!-- <l-dialog /> -->
+    <!-- 自定义确认框 根据mtype 定义表单样式 -->
+    <l-dialog show="{{dialogConf.show}}" type="{{dialogConf.type}}" show-close="{{dialogConf.showClose}}"
+        title="{{dialogConf.title}}" show-title="{{dialogConf.showTitle}}" content="{{dialogConf.content}}"
+        locked="{{dialogConf.locked}}" cancel-text="{{dialogConf.cancelText}}" cancel-color="{{dialogConf.cancelColor}}"
+        confirm-text="{{dialogConf.confirmText}}" confirm-color="{{dialogConf.confirmColor}}" bind:lintap="onDialogTap"
+        bind:lincancel="onCancelTap" bind:linconfirm="onConfirmTap">
+        <!-- 默认售价选择 -->
+        <view class='dialogMenus' wx:if="{{mtype===1}}">
+            <l-radio-group l-class="l-radio-group" bind:linchange="onChangeHandle">
+                <l-radio l-class="l-radio l-title-class-border" wx:for="{{defalutPlanPrices}}" wx:key="id"
+                    key="{{item.id}}" placement="left" cell="{{item}}">
+                    {{item.name}}
+                </l-radio>
+            </l-radio-group>
+        </view>
+        <!-- 备注 -->
+        <view class='buttun-wrapper' wx:elif="{{mtype===5}}">
+            <l-input hide-label width="450" type="text" clear="{{true}}" placeholder="请输入文本..." />
+        </view>
+    </l-dialog>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 自定义溢出菜单 -->
+    <l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}"
+        contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+        <view class='leftMenus'>
+            <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}"
+                wx:key="{[id]}" bind:lintap="clickMenuItem" data-item="{{item}}" />
+        </view>
+    </l-popup>
+</view>

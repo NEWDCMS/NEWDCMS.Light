@@ -1,0 +1,69 @@
+<!--pages/common/pages/addProductPage/index.wxml-->
+<view class='container'>
+
+    <content-card class="content" name="{{item.Name}}" wx:for="{{productDatas}}" wx:key="{{item.Id}}">
+        <view slot="top-right">
+            <!-- 拷贝 -->
+            <l-button shape="semicircle" size="mini" bindtap="onCopy" data-item="{{item}}">
+                <l-icon name="plus" size="30" />
+            </l-button>
+            <!-- 删除 -->
+            <l-button shape="semicircle" size="mini" style="margin-left:15rpx" bindtap="onDel" data-item="{{item}}">
+                <l-icon name="delete" size="30" />
+            </l-button>
+        </view>
+
+        <view class="table">
+            <block>
+                <!-- 大单位 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <text>大单位：</text>
+                        <l-input placeholder="请输入调拨数量" type='number'
+                            value="{{item.BigPriceUnit.Quantity==0?'':item.BigPriceUnit.Quantity}}"
+                            data-tag="BigPriceUnit.Quantity" data-item="{{item}}" bind:lininput="onInput">
+                            <text slot="right">{{item.bigOption.Name}}</text>
+                        </l-input>
+                    </view>
+                </view>
+                <!-- 小单位 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <text>小单位：</text>
+                        <l-input placeholder="请输入调拨数量" type='number'
+                            value="{{item.SmallPriceUnit.Quantity==0?'':item.SmallPriceUnit.Quantity}}"
+                            data-tag="SmallPriceUnit.Quantity" data-item="{{item}}" bind:lininput="onInput">
+                            <text slot="right">{{item.smallOption.Name}}</text>
+                        </l-input>
+                    </view>
+                </view>
+                <view class="tr trtext">
+                    <view class="td footer" style="width: 100%;">
+                        <text>（出）{{item.outWareName}}-可用库存：{{item.outWareQuantity}}</text>
+                    </view>
+                </view>
+                <view class="tr trtext">
+                    <view class="td footer" style="width: 100%;">
+                        <text>（入）{{item.inWareName}}-可用库存：{{item.inWareQuantity}}</text>
+                    </view>
+                </view>
+                <view class="tr trtext">
+                    <view class="td footer" style="width: 100%;">
+                        <text>（换算）单位：{{item.UnitConversion}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </content-card>
+
+    <l-action-sheet l-class-title="action-title" />
+    <view style="height: 120rpx;"></view>
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <l-button class="button" shape="semicircle" bgColor="#53a245" size="long" icon="checked" bindtap="onSubmit">
+                确定</l-button>
+        </view>
+    </view>
+
+</view>

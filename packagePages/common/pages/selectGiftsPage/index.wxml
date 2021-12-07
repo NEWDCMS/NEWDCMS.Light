@@ -1,0 +1,50 @@
+<view class='container'>
+    <l-search-bar class="bar-search" bg-color="#eee" placeholder="简拼/编码/名称/关键字" show-cancel="false"
+        bind:linchange="searchBarInput" />
+    <scroll-view>
+        <view class="productDatas" wx:for="{{campaignProducts}}" wx:key="index">
+            <view class="des">
+                <view class="des-title">
+                    <text class='des-title-text'>促销：{{item.CampaignName}}</text>
+                    <view class="check-box">
+                        <l-checkbox-group bindlinchange="productChange" data-id="{{item.CampaignId}}"
+                            data-product="{{item}}">
+                            <l-checkbox wx:key="{{item.CampaignId}}" key="{{item.CampaignId}}"
+                                checked="{{item.checked}}">
+                            </l-checkbox>
+                        </l-checkbox-group>
+                    </view>
+                </view>
+                <view class="des-item" wx:for="{{item.CampaignBuyProducts}}" wx:for-item="p">
+                    <view class='des-left'>
+                        <text class='des-box-text'>{{p.ProductName}}</text>
+                    </view>
+                    <view class='des-mid'>
+                        <text class='des-box-text'>{{p.Quantity}}{{p.UnitName}}</text>
+                    </view>
+                    <view class='des-right'>
+                        <l-price unit="￥" value="{{p.Price}}/{{p.UnitName}}"></l-price>
+                    </view>
+                </view>
+
+                <view class="des-item" wx:for="{{item.CampaignGiveProducts}}" wx:for-item="p">
+                    <view class='des-left'>
+                        <text class='des-box-text'>{{p.ProductName}}</text>
+                    </view>
+                    <view class='des-mid'>
+                        <text class='des-box-text'>{{p.Quantity}}{{p.UnitName}}</text>
+                    </view>
+                    <view class='des-right'>
+                        <l-tag l-class="tag" shape='circle' bg-color="#53a245" font-color="#fff">赠品</l-tag>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view style="padding: 25rpx;">
+            <l-button shape="semicircle" bindtap="onAdd" size="long">确定</l-button>
+        </view>
+    </view>
+</view>

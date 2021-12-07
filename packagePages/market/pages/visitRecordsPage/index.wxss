@@ -1,0 +1,68 @@
+
+page {
+    background: #fff;
+  }
+  
+.terminalbox-content-detail
+{
+    padding: 20rpx 0 20rpx 0;
+    width: 600rpx;
+    color: #666;
+    font-size: 28rpx;
+
+}
+
+.terminalbox-rate
+{
+    position: absolute;
+    margin: 0rpx;
+    padding: 40px;
+    top: 0rpx;
+    right: 0rpx;
+    z-index: 9666;
+}
+.des-distance {
+    margin: 20rpx 40rpx 20rpx 40rpx;
+    display: flex;
+    align-items: center;
+    color: white
+}
+.des-distance-text {
+    font-size: 30rpx;
+}
+.des-distance-icon {
+    margin-right: 15rpx;
+}
+
+.terminalName
+{
+    font-weight: bold;
+    font-size: 30rpx;
+}
+.content-item-nick-column
+{
+    padding: 20rpx;
+}
+.album-title
+{
+    font-weight: bold;
+   padding: 30rpx 0 30rpx 0;
+}
+.describe-container
+{
+    border:1rpx  #ddd solid;
+    margin: 30rpx 0 0rpx 0;
+}
+.describe-container .text
+{
+    font-size: 28rpx;
+    margin-bottom: 15rpx;
+}
+.describe-container .amount
+{
+    color: #53a245
+}
+.l-content-class
+{
+    font-weight: bold;
+}

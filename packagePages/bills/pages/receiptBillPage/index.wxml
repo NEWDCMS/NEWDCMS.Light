@@ -1,0 +1,254 @@
+<view class="container">
+
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <view class="maincon-container-item">
+                <text>{{bill.BillNumber}}</text>
+                <dateformat value="{{bill.CreatedOnUtc}}" format="yyyy/MM/d"></dateformat>
+                <l-button special="true" bind:lintap="onShowRemark">
+                    <l-icon color="#3B5998" size="40" name="edit" />
+                    <text style="margin-left: 10rpx;">备注</text>
+                </l-button>
+            </view>
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner" bindtap="onSelectTerminal">
+                    <text class="label">{{parames.TerminalName==''?'选择客户...':parames.TerminalName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{bill.TerminalId}}" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectTerminal">
+                        <l-icon size="40" name="search" color="#999" />
+                    </l-button>
+                </view>
+                <view class="maincon-container-item-inner" bindtap="onSelectUser">
+                    <text class="label">{{parames.BusinessUserName==''?'选择用户...':parames.BusinessUserName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{bill.BusinessUserId}}" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectUser">
+                        <l-icon size="40" name="arrow-down" color="#999" />
+                    </l-button>
+                </view>
+            </view>
+            <view class="maincon-container-item" wx:if="{{!bill.AuditedStatus}}">
+                <view class="maincon-container-item-inner" bindtap="onSelectDate">
+                    <text class="label">{{parames.Start==''?'开始...':parames.Start}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{parames.Start}}" bindfocus="onSelectDate" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectDate">
+                        <l-icon size="40" name="clock-o" color="#999" />
+                    </l-button>
+                </view>
+                <view class="maincon-container-item-inner" bindtap="onSelectDate">
+                    <text class="label">{{parames.End==''?'结束...':parames.End}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{parames.End}}" bindfocus="onSelectDate" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectDate">
+                        <l-icon size="40" name="clock-o" color="#999" />
+                    </l-button>
+                </view>
+            </view>
+        </view>
+        <view class="main-container-table">
+            <view style="padding:0rpx;">
+                <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+                <!-- 单据 -->
+                <view class="table" wx:for="{{bills}}" wx:key="{[Id]}">
+                    <view class="thr bg-w">
+                        <view class="th thtitle">
+                            {{item.BillNumber}}
+                        </view>
+                        <view class="th date">
+                            <dateformat value="{{item.MakeBillDate}}" format="yyyy/MM/dd" />
+                        </view>
+                    </view>
+                    <block>
+                        <view class="tr">
+                            <view class="td pname">单据金额:</view>
+                            <view class="td">
+                                <l-price l-class="price" unit="￥" value="{{item.Amount}}" reserveDigit="2"
+                                    autofix="true" value-color="#bbb" unit-color="#bbb" value-size="30" />
+                            </view>
+                            <view class="td pname">应收金额:</view>
+                            <view class="td">
+                                <l-price l-class="price" unit="￥" value="{{item.AmountReceivable}}" reserveDigit="2"
+                                    autofix="true" value-color="#bbb" unit-color="#bbb" value-size="30" />
+                            </view>
+                        </view>
+                    </block>
+                    <block>
+                        <view class="tr bg-g">
+                            <view class="td pname">已收金额:</view>
+                            <view class="td">
+                                <l-price l-class="price" unit="￥" value="{{item.PaymentedAmount}}" reserveDigit="2"
+                                    autofix="true" value-color="#bbb" unit-color="#bbb" value-size="30" />
+                            </view>
+                            <view class="td pname">已优惠:</view>
+                            <view class="td">
+                                <l-price l-class="price" unit="￥" value="{{item.DiscountAmount}}" reserveDigit="2"
+                                    autofix="true" value-color="#bbb" unit-color="#bbb" value-size="30" />
+                            </view>
+                        </view>
+                    </block>
+                    <block>
+                        <view class="tr bg-g" wx:if="{{!bill.AuditedStatus}}">
+                            <view class="td ppname">本次收款:</view>
+                            <view class="td">
+                                <input type="text" placeholder="输入" value="{{item.ReceivableAmountOnce}}"
+                                    data-tag="ReceivableAmountOnce" data-item="{{item}}" bindblur="onTextChanged" />
+                            </view>
+                            <view class="td ppname">本次优惠:</view>
+                            <view class="td">
+                                <input type="text" placeholder="输入" value="{{item.DiscountAmountOnce}}"
+                                    data-tag="DiscountAmountOnce" data-item="{{item}}" bindblur="onTextChanged" />
+                            </view>
+                        </view>
+                        <view class="tr bg-g" wx:else>
+                            <view class="td ppname">本次收款:</view>
+                            <view class="td">
+                                <input type="digit" placeholder="输入" value="{{item.ReceivableAmountOnce}}"
+                                    data-tag="ReceivableAmountOnce" data-item="{{item}}" disabled="true" />
+                            </view>
+                            <view class="td ppname">本次优惠:</view>
+                            <view class="td">
+                                <input type="digit" placeholder="输入" value="{{item.DiscountAmountOnce}}"
+                                    data-tag="DiscountAmountOnce" data-item="{{item}}" disabled="true" />
+                            </view>
+                        </view>
+                    </block>
+                    <block>
+                        <view class="tr bg-g">
+                            <view class="td pname">尚欠金额:</view>
+                            <view class="td">
+                                <l-price l-class="price" unit="￥" value="{{item.AmountOwedAfterReceipt}}"
+                                    reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245"
+                                    value-size="30" />
+                            </view>
+                            <view class="td pname"></view>
+                            <view class="td"></view>
+                        </view>
+                    </block>
+                    <block>
+                        <view class="tr bg-g">
+                            <view class="td remark-left">项目备注:</view>
+                            <view class="td remark-right">{{item.Remark}}</view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 水印 -->
+    <water type="1" show="{{bill.AuditedStatus}}" />
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-header">
+            <view class="topselection">
+                <text class="label">本次应收：</text>
+                <l-price l-class="price" unit="￥" value="{{bill.TotalArrearsAmountOnce}}" reserveDigit="2"
+                    autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+            <view class="topselection">
+                <text class="label">本次尚欠：</text>
+                <l-price l-class="price" unit="￥" value="{{bill.TotalAmountOwedAfterReceipt}}" reserveDigit="2"
+                    autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+            <view class="topselection">
+                <text class="label">本次收款：</text>
+                <l-price l-class="price" unit="￥" value="{{bill.TotalReceivableAmountOnce}}" reserveDigit="2"
+                    autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+            <l-button disabled="{{bill.AuditedStatus}}" class="paymentType" bind:lintap="onPayment">支付方式</l-button>
+        </view>
+        <view class="float-container-toolbar">
+
+            <view class="leftselection">
+                <text class="label">优惠：</text>
+                <l-price l-class="price" unit="￥" value="{{bill.TotalDiscountAmountOnce}}" reserveDigit="2"
+                    autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+
+
+            <view class="leftselection" wx:for="{{bill.Accountings}}" wx:key="index">
+                <text class="label">{{item.Name}}：</text>
+                <l-price l-class="price" unit="￥" value="{{item.CollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+
+            <view class="leftselection">
+                <text class="label"></text>
+                <text class="price"></text>
+            </view>
+            <l-button disabled="{{bill.AuditedStatus}}" class="button" bgColor="#53a245" bind:lintap="onSubmit">提交
+            </l-button>
+        </view>
+    </view>
+
+    <!-- dialog -->
+
+    <!-- 自定义确认框 根据mtype 定义表单样式 -->
+    <l-dialog show="{{dialogConf.show}}" type="{{dialogConf.type}}" show-close="{{dialogConf.showClose}}"
+        title="{{dialogConf.title}}" show-title="{{dialogConf.showTitle}}" content="{{dialogConf.content}}"
+        locked="{{dialogConf.locked}}" cancel-text="{{dialogConf.cancelText}}" cancel-color="{{dialogConf.cancelColor}}"
+        confirm-text="{{dialogConf.confirmText}}" confirm-color="{{dialogConf.confirmColor}}" bind:lintap="onDialogTap"
+        bind:lincancel="onCancelTap" bind:linconfirm="onConfirmTap">
+        <!-- 备注 -->
+        <view class='buttun-wrapper'>
+            <l-input value="{{bill.Remark}}" hide-label width="450" type="text" clear="{{true}}" placeholder="请输入文本..."
+                bind:lininput="onRemarkChanged" />
+        </view>
+    </l-dialog>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 自定义溢出菜单 -->
+    <l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}"
+        contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+        <view class='leftMenus'>
+            <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}"
+                wx:key="{[id]}" bind:lintap="clickMenuItem" data-item="{{item}}" />
+        </view>
+    </l-popup>
+
+    <!-- calendar -->
+    <l-calendar bind:linconfirm="selectCalender" title="{{ title }}" show="{{ calenderShow }}"
+        minSelect="{{ minSelect }}" maxSelect="{{ maxSelect }}" defaultDate="{{ defaultDate }}" type="{{ type }}"
+        color="{{ color }}" confirmText="{{ confirmText }}" formatter="{{ formatter }}">
+    </l-calendar>
+
+    <!-- popup -->
+    <l-arc-popup show="{{arccfg.show}}" transition="{{arccfg.transition}}" direction="{{arccfg.direction}}"
+        locked="{{arccfg.locked}}" maxHeight="{{arccfg.maxHeight}}" minHeight="{{arccfg.minHeight}}"
+        arcRadius="{{arccfg.arcRadius}}" opacity="{{arccfg.opacity}}" l-panel-class="l-panel-class">
+        <view class="popup-payment">
+            <view class="popup-payment-cloumn">
+                <l-input colon="true" width="700" value='{{bill.TotalArrearsAmountOnce}}' disabled="true"
+                    label="本次应收" />
+                <l-input focus="{{true}}" type="digit" colon="true" width="700" value="{{bill.TotalDiscountAmountOnce}}"
+                    label="优惠" data-tag="bill.TotalDiscountAmountOnce" bind:lininput="onBillChanged" />
+                <l-input focus="{{true}}" type="digit" colon="true" width="700" disabled="{{true}}"
+                    value="{{bill.TotalReceivableAmountOnce}}" label="收款" showRow="{{false}}"
+                    data-tag="bill.TotalReceivableAmountOnce" bind:lininput="onBillChanged" />
+            </view>
+            <content-card class="popup-payment-content" name="支付方式">
+                <l-button slot="top-right" shape="semicircle" size="mini" bindtap="onMorePayment">更多支付</l-button>
+                <l-input focus="{{true}}" type="digit" wx:for="{{bill.Accountings}}" wx:key="index"
+                    class="l-input-class" colon="true" width="700" value='{{item.CollectionAmount}}'
+                    label="{{item.Name}}" data-tag="CollectionAmount" data-item="{{item}}"
+                    bind:lininput="onPaymentChanged" />
+            </content-card>
+            <view class="popup-payment-bottom">
+                <l-button size="large" shape="semicircle" catch:lintap="doPaymentConfrim">确认</l-button>
+            </view>
+        </view>
+    </l-arc-popup>
+
+    <!-- mykeyboard-->
+    <view class="mykeyboard-mask" wx:if="{{showkeyborad}}">
+        <mykeyboard is-show="{{showkeyborad}}" bindcancle="boardcancle" bindsubmit="boardsubmit"
+            bindinputchange="boardchange" />
+    </view>
+
+</view>

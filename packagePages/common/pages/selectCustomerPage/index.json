@@ -1,0 +1,20 @@
+{
+  "navigationBarBackgroundColor": "#3B5998",
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "l-loadmore": "/dist/loadmore/index",
+    "l-search-bar": "/dist/search-bar/index",
+    "l-collapse": "/dist/collapse/index",
+    "l-collapse-item": "/dist/collapse-item/index",
+    "l-icon": "/dist/icon/index",
+    "l-tag": "/dist/tag/index",
+    "l-avatar": "/dist/avatar/index",
+    "l-arc-popup": "/dist/arc-popup/index",
+    "l-button": "/dist/button/index",
+    "l-list": "/dist/list/index",
+    "l-rate": "/dist/rate/index",
+    "l-price": "/dist/price/index",
+    "l-counter": "/dist/counter/index"
+  }
+}

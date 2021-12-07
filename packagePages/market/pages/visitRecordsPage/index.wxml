@@ -1,0 +1,132 @@
+<view>
+    <view>
+        <van-dropdown-menu class="toolsdropdown" catchtouchmove='filterViewMove'>
+            <van-dropdown-item value="{{ searchData.districtId }}" bind:itemoptiontap="districtIdOptionTap"
+                options="{{ districts }}" />
+            <van-dropdown-item value="{{ searchData.businessUserId }}" bind:itemoptiontap="businessUserIdOptionTap"
+                options="{{ businessUsers }}" />
+            <van-dropdown-item value="{{ searchData.datetimeScope }}" bind:itemoptiontap="datetimeScopeOptionTap"
+                options="{{ datetimeScopes }}" />
+            <van-dropdown-item id="item" title="高级">
+                <l-search-bar bind:linfocus='terminalChanged' bind:linclear='terminalClear' class="terminal-search"
+                    bg-color="#eee" show-cancel="false" placeholder='{{searchData.terminalName}}' />
+
+                <l-input label="开始时间" l-class="l-input-container-class" id="studentAddress" value="{{searchData.start}}"
+                    placeholder="开始时间" placeholder="选择..." bind:linfocus="onSelectDate" />
+
+                <l-input label="结束时间" l-class="l-input-container-class" id="studentAddress" value="{{searchData.end}}"
+                    show-row="{{false}}" placeholder="选择..." bind:linfocus="onSelectDate" />
+
+                <view style="padding: 10px;">
+                    <l-button size="long" bind:lintap="searchDataTap">
+                        确认
+                    </l-button>
+                </view>
+            </van-dropdown-item>
+        </van-dropdown-menu>
+    </view>
+    <view class="content-item-nick-column" wx:if="{{recordDatas.length>0}}">
+        <l-avatar text="{{searchData.businessUserName}}" size="80" placement="right"
+            src="{{searchData.businessUserUrl==''? '/images/static/PhotoIcon.png':searchData.businessUserUrl}}" />
+    </view>
+    <!-- 这里模拟空视图 -->
+    <van-empty image="default" wx:if="{{recordDatas.length<=0}}" description="空空如也！" />
+    <l-steps direction="column">
+        <l-step title="{{item.SigninDateTimeString}}" wx:for="{{recordDatas}}" wx:key="index">
+            <view class="terminalbox-content-detail" slot="describe">
+                <text class="terminalName">{{item.TerminalName}}</text>
+                <l-list title="位置:" right-desc="{{item.Latitude+' , '+item.Longitude}}" isLink="{{false}}" />
+
+                <l-list title="在店时间" isLink="{{false}}">
+                    <view wx:if="{{item.SignTypeId==2}}" slot="right-section">
+                        <text>{{item.OnStoreStopSecondsString}}</text>
+                    </view>
+                    <view wx:else slot="right-section">
+                        <l-tag shape='circle' size="large" bg-color="#eee" font-color="#666" bind:lintap="goSignOutTap">
+                            未签退</l-tag>
+                    </view>
+                </l-list>
+
+
+                <l-list title="离店时间" isLink="{{false}}">
+                    <view wx:if="{{item.SignTypeId==2}}" slot="right-section">
+                        <text>{{item.SignOutDateTimeString}}</text>
+                    </view>
+                    <view wx:else slot="right-section">
+                        <l-tag shape='circle' size="large" bg-color="#b95551" font-color="#fff"
+                            bind:lintap="goSignOutTap" data-id="{{item.Id}}">去签退</l-tag>
+                    </view>
+                </l-list>
+
+                <l-list title="备注:" right-desc="{{item.Remark}}" isLink="{{false}}" />
+                <view class="album-box">
+                    <view class="album-title"> 门头</view>
+                    <l-album urls='{{item.DoorheadPhotos}}' key='StoragePath' gap-row='{{25}}' gap-column='{{25}}'
+                        single-size='100' multiple-size='100' every-row-number="{{3}}" singleMode="aspectFill"
+                        multipleMode="aspectFill"></l-album>
+                </view>
+                <view class="album-box">
+                    <view class="album-title"> 陈列</view>
+                    <l-album urls='{{item.DisplayPhotos}}' key='DisplayPath' gap-row='{{25}}' gap-column='{{25}}'
+                        single-size='100' multiple-size='100' every-row-number="{{3}}" singleMode="aspectFill"
+                        multipleMode="aspectFill"></l-album>
+                </view>
+                <view class="describe-container">
+                    <l-grid show-border="{{true}}" row-num="4" l-class="grid-container">
+                        <l-grid-item wx:key="index" key="1" slot="1" l-grid-item="grid-item"
+                            bind:linitemtap="clickGrid">
+                            <view class="text">销售</view>
+                            <text class="amount">￥{{item.SaleAmountFixed}}</text>
+                        </l-grid-item>
+                        <l-grid-item wx:key="index" key="2" slot="2" l-grid-item="grid-item"
+                            bind:linitemtap="clickGrid">
+                            <view class="text">退货</view>
+                            <text class="amount">￥{{item.ReturnAmountFixed}}</text>
+                        </l-grid-item>
+                        <l-grid-item wx:key="index" key="3" slot="3" l-grid-item="grid-item"
+                            bind:linitemtap="clickGrid">
+
+                            <view class="text">销订</view>
+                            <text class="amount">￥{{item.SaleOrderAmountFixed}}</text>
+                        </l-grid-item>
+                        <l-grid-item wx:key="index" key="4" slot="4" l-grid-item="grid-item"
+                            bind:linitemtap="clickGrid">
+                            <view class="text">退订</view>
+                            <text class="amount">￥{{item.ReturnOrderAmountFixed}}</text>
+
+                        </l-grid-item>
+                    </l-grid>
+                </view>
+
+            </view>
+        </l-step>
+    </l-steps>
+</view>
+<l-loading type="change" l-container-class="l-container" show="{{isBusy}}" full-screen="{{true}}" />
+
+<wxs module="util">
+    var getImageURL = function (path) {
+        var _url = '/images/view/default-image.png'
+        //console.log('path', path)
+        if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+            var ss = ''
+            if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+                _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+            }
+            else {
+                _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+            }
+        }
+        return _url
+    }
+    module.exports = {
+        getImageURL: getImageURL
+    }
+</wxs>
+
+
+<!-- calendar -->
+<l-calendar bind:linconfirm="selectCalender" title="{{ title }}" show="{{ calenderShow }}" minSelect="{{ minSelect }}"
+    maxSelect="{{ maxSelect }}" defaultDate="{{ defaultDate }}" type="{{ type }}" color="{{ color }}"
+    confirmText="{{ confirmText }}" formatter="{{ formatter }}">
+</l-calendar>

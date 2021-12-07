@@ -1,0 +1,56 @@
+<view class="container">
+    <l-tabs l-class-header-line="header-line" scrollable>
+        <l-tabpanel badge-count="{{onlineUsers.length}}" tab="在线" key="1" slot="1">
+
+            <van-empty image="default" wx:if="{{onlineUsers.length<=0}}" description="空空如也！" />
+            <view class="content" wx:for="{{onlineUsers}}" wx:key="index" bindtap="onMessage" data-value="{{item}}" wx:if="{{onlineUsers.length>0}}">
+                <l-avatar shape="circle" class="img" src="{{util.getImageURL(item.Avatar)}}" />
+                <view class="des">
+                    <text class='des-title light'>{{item.Name}}</text>
+                    <view class='des-box light'>
+                        <l-icon name="phone" color="#bbb" size="30" />
+                        <text>{{item.MobileNumber}}</text>
+                    </view>
+                </view>
+                <l-icon name="arrow" color="#bbb" class="navi-button" />
+            </view>
+        </l-tabpanel>
+        <l-tabpanel badge-count="{{outlineUsers.length}}" tab="离线" key="2" slot="2">
+
+            <van-empty image="default" wx:if="{{outlineUsers.length<=0}}" description="空空如也！" />
+            <view class="content" wx:for="{{outlineUsers}}" wx:key="index" data-value="{{item}}" wx:if="{{outlineUsers.length>0}}">
+                <l-avatar shape="circle" class="img" src="{{util.getImageURL(item.Avatar)}}" />
+                <view class="des">
+                    <text class='des-title gry'>{{item.Name}}</text>
+                    <view class='des-box gry'>
+                        <l-icon name="phone" color="#bbb" size="30" />
+                        <text>{{item.MobileNumber}}</text>
+                    </view>
+                </view>
+                <l-icon name="arrow" color="#bbb" class="navi-button" />
+            </view>
+        </l-tabpanel>
+
+    </l-tabs>
+</view>
+
+
+<wxs module="util">
+    var getImageURL = function (path) {
+        var _url = '/images/view/default-image.png'
+        //console.log('path', path)
+        if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+            var ss = ''
+            if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+                _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+            }
+            else {
+                _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+            }
+        }
+        return _url
+    }
+    module.exports = {
+        getImageURL: getImageURL
+    }
+</wxs>

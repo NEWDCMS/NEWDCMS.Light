@@ -1,0 +1,201 @@
+page {
+    background: #fff;
+}
+
+.maincon-container-header {
+
+    padding: 30rpx 0;
+
+}
+
+
+.float-container {
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    z-index: 2;
+    width: 100%;
+    height: 120rpx;
+    box-shadow: 9px 4px 0px 0px rgba(155, 193, 185, 0.5);
+    background-color: #eee;
+}
+
+.float-container-toolbar {
+    display: flex;
+    width: 100%;
+    height: 120rpx;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.float-container-toolbar .left-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-block .label {
+    margin-left: 20rpx;
+}
+
+.left-block .price {
+    font-weight: bold;
+    font-size: 35rpx;
+}
+
+.float-container-toolbar .right-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-block .button {
+    margin-right: 10rpx;
+}
+
+.view-container {
+    min-height: 900rpx;
+}
+
+.price {
+    color: #53a245;
+    font-size: 30rpx;
+}
+
+/* table */
+
+.table {
+    width: 100%;
+    border: 0px solid darkgray;
+}
+
+.tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 4rem;
+    align-items: center;
+}
+
+.thr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+
+}
+
+.td {
+    width: 40%;
+    justify-content: center;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.tool {
+    text-align: right;
+    padding: 30rpx;
+}
+
+.pname {
+    text-align: left;
+    padding: 20rpx;
+}
+
+.bg-w {
+    background: snow;
+}
+
+.bg-g {
+    background: #eff2f3;
+}
+
+.th {
+    width: 40%;
+    justify-content: center;
+    background: #eee;
+    display: flex;
+    height: 3rem;
+    font-size: 30rpx;
+    align-items: center;
+    box-shadow: 0px 2px 0px 0px #9d9e9b4d;
+}
+
+.tstart {
+    justify-content: flex-start;
+    padding-left: 20rpx;
+}
+
+.tend {
+    justify-content: flex-end;
+    padding-right: 20rpx;
+}
+
+
+.leftMenus {
+    background: #fff;
+    width: 200rpx;
+    height: 100%;
+    background: #fff;
+    font-size: 30rpx;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 20rpx;
+}
+
+.dialogMenus {
+    width: 450rpx;
+}
+
+.l-radio {
+    box-sizing: border-box;
+    color: rgba(140, 152, 174, 1) !important;
+}
+
+.l-title-class-border {
+    border-bottom: 1rpx solid #f1f1f1;
+    padding: 20rpx 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .container-title {
+    padding: 0 !important;
+}
+
+.l-title-class {
+    padding: 0rpx !important;
+}
+
+.l-body-class {
+    padding: 0 !important;
+}
+
+.view-container .title {
+    width: 100%;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80rpx;
+    padding: 10rpx 0;
+    border-bottom: 1px #ddd solid;
+}
+
+.title .detail-container {
+    padding-left: 20rpx;
+    font-weight: bold;
+}
+
+.title .detail-tool {
+    margin-right: 30rpx;
+}

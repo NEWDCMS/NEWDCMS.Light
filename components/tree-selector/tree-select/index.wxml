@@ -1,0 +1,20 @@
+<checkbox-group>
+  <view wx:for="{{tree}}" wx:key="id" class="tree" data-id="aaa">
+    <label
+      class="weui-cell weui-check__label tree-item {{item.children && (item.children.length > 0)? (item.id==-1?'bgg-m':'bg-m'):'bg-mm'}}"
+      wx:if="{{!item.isHide}}" bindtap="select" data-item="{{item}}">
+      <!-- <view class="tree-arrow" wx:if="{{item.children && (item.children.length > 0)}}" catchtap="isOpen"
+        data-item="{{item}}">
+        <l-icon class="tree-icon" name="{{item.open ? 'arrow' : 'arrow-down'}}" color="#3B5998" />
+      </view>
+      <view class="tree-arrow" wx:else>
+      </view> -->
+      <view class="weui-cell__hd">
+        <checkbox value="{{item.id}}" checked="{{item.checked}}" />
+      </view>
+      <view class="weui-cell__bd">{{item.name}}</view>
+    </label>
+    <c-tree wx:if="{{item.children && (item.children.length > 0) && item.open }}" datas='{{ item.children }}'>
+    </c-tree>
+  </view>
+</checkbox-group>

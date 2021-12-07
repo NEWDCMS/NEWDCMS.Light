@@ -1,0 +1,238 @@
+/* pages/common/pages/selectProductPage/index.wxss */
+page {
+    height: 100%;
+}
+
+.container {
+    /* display: flex;
+    flex-direction: column; */
+    background-color: #fff;
+}
+
+.product-content {
+    padding: 0rpx;
+    /* border-left: 1px #eee solid;  */
+    background: #eee;
+}
+
+.commom {
+    max-height: 90rpx !important;
+}
+
+
+
+.line {
+    background-color: #53a245 !important;
+    width: 10rpx !important;
+    border-radius: 0 !important;
+}
+
+.active {
+    color: #ad0e11 !important;
+    background-color: #eee !important;
+}
+
+.inactive {
+    background-color: #fff !important;
+    color: #7a7a7a !important;
+}
+
+
+/* ==== */
+.productDatas {
+    display: flex;
+    width: 490rpx;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border-bottom: 1px #eee solid; */
+    background: #fff;
+    border-radius: 10rpx;
+    padding: 30rpx;
+    margin: 20rpx;
+    box-shadow: 0px 2px 6px 0px rgba(155, 193, 185, 0.5);
+}
+
+.des {
+    width: 400rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-box {
+    width: 80rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button-box .like {
+    text-align: left;
+    margin-top: 50rpx;
+    margin-right: 20rpx;
+}
+
+.container-title,
+.l-title-class {
+    color: #bbb;
+}
+
+
+/* .line {
+    height: 1rpx;
+    width: 100%;
+    background-color: #ddd;
+    margin: 20rpx 0 0rpx 0;
+} */
+
+.des-title {
+    font-size: 30rpx;
+    color: #333;
+    flex-wrap: wrap;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.des-mobile {
+    color: #bbb;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.des-box-time {
+    font-size: 30rpx;
+    color: #bbb;
+}
+
+
+.btn-cls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-size: 28rpx;
+    position: relative;
+    color: #fff;
+    padding: 12rpx;
+    background-color: #3B5998
+}
+
+.des-box {
+    display: flex;
+    align-items: center;
+    color: #bbb;
+    margin: 10rpx 0 10rpx 0;
+}
+
+.des-box-text {
+    font-size: 30rpx;
+}
+
+.des-box-icon {
+    margin-right: 9rpx;
+}
+
+.terminal-filter-type {
+    padding: 30rpx;
+    border-bottom: 1rpx #ddd solid;
+}
+
+
+.search-bar-view {
+    padding: 25rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.search-bar-view .terminal-search {
+    padding: 0rpx;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.terminal-button {
+    margin-left: 20rpx;
+}
+
+.terminal-filter-type-title {
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    font-size: 30rpx;
+    color: rgba(69, 82, 107, 1);
+    padding: 15rpx 0;
+}
+
+.terminal-filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.terminal-filter-tag {
+    margin-right: 15rpx;
+    margin-bottom: 15rpx;
+}
+
+
+/* ========================= */
+
+.content-con {
+    display: flex;
+    margin-top: 20rpx;
+    height: 80rpx;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.box {
+    width: 140rpx;
+    height: 80rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================= */
+
+.float-container {
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    z-index: 2;
+    width: 100%;
+    height: 100rpx;
+    box-shadow: 9px 4px 0px 0px rgba(155, 193, 185, 0.5);
+    background-color: #eee;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.float-container-toolbar {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100rpx;
+    justify-content: space-around;
+}
+
+.float-container-toolbar .button {
+    width: 80rpx;
+    margin-right: 100rpx;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}

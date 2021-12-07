@@ -1,0 +1,22 @@
+{
+  "navigationBarBackgroundColor": "#3B5998",
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "l-spin": "/dist/spin/index",
+    "l-badge": "/dist/badge/index",
+    "l-button": "/dist/button/index",
+    "l-avatar": "/dist/avatar/index",
+    "l-dialog": "/dist/dialog/index",
+    "l-icon": "/dist/icon/index",
+    "l-image-picker": "/dist/image-picker/index",
+    "l-toast": "/dist/toast/index",
+    "l-card": "/dist/card/index",
+    "l-tag": "/dist/tag/index",
+    "l-counter": "/dist/counter/index",
+    "l-radio-group": "/dist/radio-group/index",
+    "l-checkbox-group": "/dist/checkbox-group/index",
+    "l-checkbox": "/dist/checkbox/index",
+    "l-input": "/dist/input/index"
+  }
+}

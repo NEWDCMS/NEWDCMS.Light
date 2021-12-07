@@ -1,0 +1,170 @@
+<!--pages/bills/pages/saleBillPage/index.wxml onLongPressLeftButton-->
+
+<view class="container">
+
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <view class="maincon-container-item">
+                <text>{{bill.BillNumber}}</text>
+                <text style="color: #53a245;">欠款：{{terminalBalance.TotalOweCashShow}}</text>
+            </view>
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner" bindtap="onSelectTerminal">
+                    <text class="label">{{bill.TerminalName==''?'选择客户...':bill.TerminalName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{bill.TerminalId}}" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectTerminal">
+                        <l-icon size="40" name="search" color="#999" />
+                    </l-button>
+                </view>
+                <view class="maincon-container-item-inner" bindtap="showActionSheet">
+                    <text class="label">{{bill.WareHouseName==''?'选择仓库...':bill.WareHouseName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{bill.WareHouseId}}" />
+                    </view>
+                    <l-button special="true" bindtap="showActionSheet">
+                        <l-icon size="40" name="arrow-down" color="#999" />
+                    </l-button>
+                </view>
+            </view>
+        </view>
+        <view class="main-container-table">
+            <l-sticky scrollTop="{{scrollTop}}" mode="css">
+                <l-sticky-item l-header-sticky-class="l-header-sticky-class">
+                    <view slot="header">
+                        <view class="table">
+                            <view class="thr bg-w">
+                                <view class="th start">商品名称</view>
+                                <view class="th">单价</view>
+                                <view class="th">数量</view>
+                                <view class="th end">小计</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view slot="body" class="view-container">
+
+                        <!-- 这里模拟空视图 -->
+                        <van-empty image="default" wx:if="{{bill.items.length<=0}}" description="空空如也！" />
+                        <!-- 这里如果bill.items 为空，则mockNull，显示空视图 -->
+
+                        <view class="table" wx:if="{{bill.items.length>0}}">
+                            <block wx:for="{{bill.items}}" wx:key="index">
+                                <view class="tr" wx:if="{{index % 2 == 0}}" bindtap="onEdit" data-id="{{item.productId}}" data-item="{{item}}">
+                                    <view class="td pname"><text class="pnameText">{{item.productName}}</text></view>
+                                    <view class="td {{item.isGift?'gift':''}}">{{item.isGift?'赠品':item.price}}</view>
+                                    <view class="td">{{item.quantity}}{{item.unitName}}</view>
+                                    <view class="td">￥{{item.subtotal}}</view>
+                                </view>
+                                <view class="tr  bg-g" wx:else bindtap="onEdit" data-id="{{item.productId}}" data-item="{{item}}">
+                                    <view class="td pname"><text class="pnameText">{{item.productName}}</text></view>
+                                    <view class="td">{{item.isGift?'赠品':item.price}}</view>
+                                    <view class="td">{{item.quantity}}{{item.unitName}}</view>
+                                    <view class="td">￥{{item.subtotal}}</view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </l-sticky-item>
+            </l-sticky>
+        </view>
+    </view>
+    <!-- 水印 -->
+    <water type="1" show="{{bill.AuditedStatus}}" wx:if="{{!bill.ReversedStatus&&parames.pageType!=4}}" />
+    <water type="3" show="{{bill.ReversedStatus}}" wx:if="{{bill.ReversedStatus}}" />
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-header">
+            <text>合计：</text>
+            <l-price l-class="price" unit="￥" value="{{bill.paymentMethods.SumAmount}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+
+            <text>惠：</text>
+            <l-price l-class="price" unit="￥" value="{{bill.paymentMethods.PreferentialAmount}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            <text>欠：</text>
+            <l-price l-class="price" unit="￥" value="{{bill.paymentMethods.OweCash}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+        </view>
+        <view class="float-container-header">
+            <view wx:for="{{bill.paymentMethods.selects}}">
+                <!-- 这里循环Accountings -->
+                <text>{{item.name}}：</text>
+                <l-price l-class="price" unit="￥" value="{{item.collectionAmount}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+
+        </view>
+        <view class="float-container-toolbar">
+            <input wx:if="{{!bill.AuditedStatus}}" class="serch" type="text" placeholder="首拼/商品名称/关键字" />
+            <l-button wx:if="{{!bill.AuditedStatus}}" class="button" size="long" bindtap="onAdd">添加</l-button>
+            <l-button wx:if="{{!bill.AuditedStatus}}" class="button" size="long" bindtap="onScan">扫码</l-button>
+            <l-button wx:if="{{!bill.AuditedStatus}}" class="button" bgColor="#53a245" size="long" bindtap="onSubmitTap">提交</l-button>
+            <l-button wx:if="{{bill.AuditedStatus&&!bill.ReversedStatus}}" class="button" size="long" bindtap="">拒签</l-button>
+            <l-button wx:if="{{bill.AuditedStatus&&!bill.ReversedStatus}}" class="button" bgColor="#53a245" size="long" bindtap="onSignature">签收</l-button>
+            <!-- 弹出菜单 -->
+            <l-button class="button" size="long" bind:lintap="onShowPopupMenus">
+                <l-icon size="40" name="weapp-nav" color="#fff" />
+            </l-button>
+            <!-- <l-button special="true" class="scan" bindtap="onScan">
+            <l-icon size="65" name="scan" color="#3B5998" />
+        </l-button> -->
+        </view>
+    </view>
+
+    <!-- dialog -->
+    <!-- <l-dialog /> -->
+    <!-- 自定义确认框 根据mtype 定义表单样式 -->
+    <l-dialog show="{{dialogConf.show}}" type="{{dialogConf.type}}" show-close="{{dialogConf.showClose}}" title="{{dialogConf.title}}" show-title="{{dialogConf.showTitle}}" content="{{dialogConf.content}}" locked="{{dialogConf.locked}}" cancel-text="{{dialogConf.cancelText}}" cancel-color="{{dialogConf.cancelColor}}" confirm-text="{{dialogConf.confirmText}}" confirm-color="{{dialogConf.confirmColor}}" bind:lintap="onDialogTap" bind:lincancel="onCancelTap" bind:linconfirm="onConfirmTap">
+        <!-- 默认售价选择 -->
+        <view class='dialogMenus' wx:if="{{mtype===1}}">
+            <l-radio-group l-class="l-radio-group" bind:linchange="onChangeHandle">
+                <l-radio l-class="l-radio l-title-class-border" wx:for="{{saleDefaultAmounts}}" wx:key="Value" key="{{item.Value}}" placement="left" cell="{{item}}">
+                    {{item.Text}}
+                </l-radio>
+            </l-radio-group>
+        </view>
+        <!-- 备注 -->
+        <view class='buttun-wrapper' wx:elif="{{mtype===5}}">
+            <l-input hide-label width="450" type="text" value='{{bill.Remark}}' clear="{{true}}" bind:lininput="onChangeRemark" placeholder="请输入备注..." />
+        </view>
+        <!-- 优惠 -->
+        <view class='buttun-wrapper' wx:elif="{{mtype===4}}">
+            <l-input hide-label width="450" type="digit" value='{{bill.paymentMethods.PreferentialAmount}}' type="digit" clear="{{true}}" bind:lininput="onChangePreferentialAmount" placeholder="请输入优惠..." />
+        </view>
+        <!-- 欠款 -->
+        <view class='buttun-wrapper' wx:elif="{{mtype===3}}">
+            <l-input hide-label width="450" type="digit" value='{{bill.paymentMethods.OweCash}}' clear="{{true}}" type="digit" bind:lininput="onChangeOweCashAmount" placeholder="请输入欠款..." />
+        </view>
+
+        <!-- 冲正备注 -->
+        <view class='buttun-wrapper' wx:elif="{{mtype===7}}">
+            <l-input hide-label width="450" value='{{rushRemark}}' clear="{{true}}" bind:lininput="onChangeRushRemark" placeholder="请输入冲正备注" />
+        </view>
+    </l-dialog>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 自定义溢出菜单 -->
+    <l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}" contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+        <view class='leftMenus'>
+            <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}" wx:key="index" bind:lintap="clickMenuItem" data-item="{{item}}" />
+        </view>
+    </l-popup>
+
+
+    <!-- 支付方式 -->
+    <l-arc-popup show="{{arccfg.show}}" transition="{{arccfg.transition}}" direction="{{arccfg.direction}}" locked="{{arccfg.locked}}" maxHeight="{{arccfg.maxHeight}}" minHeight="{{arccfg.minHeight}}" arcRadius="{{arccfg.arcRadius}}" opacity="{{arccfg.opacity}}" l-panel-class="l-panel-class">
+        <view class="popup-payment">
+            <view class="popup-payment-cloumn">
+                <l-input colon="true" width="700" value='{{bill.paymentMethods.SumAmount}}' disabled="true" label="合计" />
+                <l-input focus="{{true}}" colon="true" width="700" value="{{bill.paymentMethods.OweCash}}" label="欠款" disabled="true" showRow="{{false}}" data-tag="bill.TotalReceivableAmountOnce" bind:lininput="onBillChanged" />
+                <l-input focus="{{true}}" colon="true" width="700" type="digit" value="{{bill.paymentMethods.PreferentialAmount==0?'':bill.paymentMethods.PreferentialAmount}}" label="优惠" data-tag="bill.TotalDiscountAmountOnce" bind:lininput="onPreferentialAmounthanged" />
+            </view>
+            <content-card class="popup-payment-content" name="支付方式">
+                <l-button slot="top-right" shape="semicircle" size="mini" style="margin-right: 30rpx;" bindtap="onMorePayment">更多支付</l-button>
+                <l-input focus="{{true}}" wx:for="{{bill.paymentMethods.selects}}" wx:key="index" class="l-input-class" type="digit" colon="true" width="700" value="{{item.collectionAmount==0?'':item.collectionAmount}}" label="{{item.name}}" data-tag="CollectionAmount" data-item="{{item}}" bind:lininput="onPaymentChanged" />
+            </content-card>
+            <view class="popup-payment-bottom">
+                <l-button size="large" shape="semicircle" catch:lintap="doPaymentConfrim">确认</l-button>
+            </view>
+        </view>
+    </l-arc-popup>
+      
+</view>

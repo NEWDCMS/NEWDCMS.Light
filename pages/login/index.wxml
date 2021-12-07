@@ -1,0 +1,60 @@
+<view class='container' style="background-image: url('https://resources.jsdcms.com:8999/vant/sonw_bg.png');">
+  <view class="loginForm">
+    <!-- logo -->
+    <view class="content-nicks">
+      <view class="content-item-nick">
+        <image class="logo" src="/images/static/logo.png" mode="widthFix" />
+      </view>
+      <view class="version">
+        <text>经销商管家 {{version}}</text>
+      </view>
+    </view>
+    <!-- 表单 -->
+    <l-form name="loginForm" is-submit-validate="true" bind:linsubmit="signIn">
+      <view class='buttun-wrapper'>
+        <l-form-item name="loginFormLoginId" rules="{{loginForm.loginIdRules}}">
+          <l-input placeholder="用户名/手机号" width="750" show-row="{{ false }}" width="600"
+            l-class='l-input-container-class input-phone' label-width="120" clear="{{true}}"
+            placeholderStyle="color:#efefef" id="loginFormLoginId" value="{{loginForm.loginFormLoginId}}" bind:lininput="loginIdInput">
+            <l-icon class='input-icon' slot="left" name="manager" />
+          </l-input>
+        </l-form-item>
+      </view>
+      <view class='buttun-wrapper'>
+        <l-form-item name="loginFormPassword" rules="{{loginForm.passwordRules}}">
+          <l-input type="password" placeholder="输入你的密码" width="750" show-row="{{ false }}" width="600"
+            l-class='l-input-container-class input-phone' label-width="120" clear="{{true}}"
+            placeholderStyle="color:#efefef" showEye="false" id="loginFormPassword" value="{{loginForm.loginFormPassword}}" bind:lininput="passwordInput">
+            <l-icon class='input-icon' slot="left" name="lock" />
+          </l-input>
+        </l-form-item>
+      </view>
+      <view class='buttun-wrapper'>
+        <view class='remember'>
+          <l-checkbox-group class="checkbox-group">
+            <l-checkbox wx:key="id" checked="true" placement="left" selectColor="#53a245">
+              <text class="placement">同意管理协议</text>
+            </l-checkbox>
+          </l-checkbox-group>
+          <text class="forget">忘记密码？</text>
+        </view>
+      </view>
+      <view slot="submit">
+        <view class='buttun-wrapper'>
+          <l-button size="large" shape="semicircle" class="signinSubmit" width="600" bgColor="#53a245">登录</l-button>
+        </view>
+      </view>
+    </l-form>
+  </view>
+  <!-- popup -->
+  <l-popup show="{{currentConf.show}}" showMask="{{currentConf.showMask}}" animation="{{currentConf.animation}}"
+    contentAlign="{{currentConf.contentAlign}}" locked="true">
+    <view class='center'>
+      <l-loading show="true" color="#fff" size="medium" type="circle">
+      </l-loading>
+      <text class='center-loading'>登录中...</text>
+    </view>
+  </l-popup>
+  <l-toast></l-toast>
+  <l-message></l-message>
+</view>

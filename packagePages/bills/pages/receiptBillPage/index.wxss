@@ -1,0 +1,298 @@
+/* pages/bills/pages/saleBillPage/index.wxss */
+.container {
+    background-color: #fff;
+    padding-bottom: 180rpx;
+    font-size: 30rpx;
+}
+
+
+page {
+    background: #fff;
+}
+
+.maincon-container-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    background-color: #fff;
+    justify-content: space-between;
+    padding-right: 30rpx;
+    padding-left: 30rpx;
+    border-bottom: 1rpx #ddd solid;
+}
+
+.maincon-container-item-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    background-color: #fff;
+    justify-content: space-between;
+    border-bottom: 1rpx #ddd solid;
+}
+
+.maincon-container-item-inner .label {
+    color: #999;
+    width: 250rpx;
+}
+
+.float-container {
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    z-index: 2;
+    width: 100%;
+    height: 200rpx;
+    box-shadow: 9px 4px 0px 0px rgba(155, 193, 185, 0.5);
+    background-color: #fff;
+}
+
+.float-img {
+    color: #ffffff;
+}
+
+.float-container-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100rpx;
+    background-color: #eee;
+    justify-content: space-between;
+}
+
+
+.button,
+.paymentType {
+    margin-right: 20rpx;
+}
+
+.float-container-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100rpx;
+    justify-content: space-between;
+}
+
+.leftselection {
+    padding-left: 30rpx;
+}
+
+.topselection {
+    padding-left: 30rpx;
+}
+
+.topselection,
+.leftselection {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.rightselection {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 25%;
+}
+
+.topselection .label,
+.leftselection .label {
+    font-size: 28rpx;
+    font-weight: normal;
+}
+
+.topselection .price,
+.leftselection .price {
+    color: #74c765;
+}
+
+
+.leftselection .menu {
+    margin-right: 40rpx;
+}
+
+
+.view-container {
+    min-height: 900rpx;
+}
+
+/* table */
+
+.table {
+    width: 100%;
+    border-bottom: 1rpx #f3f3f3 solid;
+}
+
+.tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 2rem;
+    align-items: center;
+    padding: 15rpx 0;
+    border-bottom: 1rpx #f3f3f3 solid;
+}
+
+.thr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+}
+
+.bg-w {
+    background: #eee;
+}
+
+.td {
+    width: 25%;
+    justify-content: center;
+    text-align: right;
+    font-size: 30rpx;
+    color: #989998;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+
+}
+
+.count {
+    color: #74c765;
+}
+
+
+
+.pname {
+    text-align: left;
+    color: #333;
+}
+
+.ppname {
+    text-align: left;
+    color: #74c765;
+}
+
+.th {
+    width: 50%;
+    justify-content: center;
+    display: flex;
+    height: 3rem;
+    font-size: 30rpx;
+    align-items: center;
+    box-shadow: 0px 1px 0px 0px #9d9e9b4d;
+}
+
+.thtitle {
+    justify-content: flex-start;
+    margin-left: 30rpx;
+}
+
+.line {
+    width: 10rpx;
+    height: 28rpx;
+    background-color: #3B5998;
+    border-radius: 6px;
+    margin-left: 20rpx;
+    margin-right: 22rpx;
+}
+
+.remark-left {
+    width: 20%;
+    text-align: left;
+    color: #333;
+}
+
+.remark-right {
+    width: 80%;
+    text-align: left;
+}
+
+.date {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    color: #53a245;
+    font-size: 30rpx;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 20rpx;
+}
+
+/* 指定吸顶位置 */
+.l-header-sticky-class {
+    right: 0 !important;
+    box-sizing: border-box !important;
+    padding: 0 0rpx !important;
+    background-color: white !important;
+    z-index: 1 !important;
+}
+
+.leftMenus {
+    background: #fff;
+    width: 200rpx;
+    height: 100%;
+    background: #fff;
+    font-size: 30rpx;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 20rpx;
+}
+
+.dialogMenus {
+    width: 450rpx;
+
+}
+
+
+.l-radio {
+    box-sizing: border-box;
+    color: rgba(140, 152, 174, 1) !important;
+}
+
+
+.l-title-class-border {
+    border-bottom: 1rpx solid #f1f1f1;
+    padding: 20rpx 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-payment,
+.popup-payment-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.popup-payment-content
+{
+    margin-bottom: 30rpx;
+}
+.popup-payment-content .l-input-class
+{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.mykeyboard-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    z-index: 89666;
+    background: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }

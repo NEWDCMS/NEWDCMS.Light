@@ -1,0 +1,73 @@
+<!--pages/common/pages/addProductPage/index.wxml-->
+<view class='container'>
+
+    <content-card class="content" name="{{editProduct.productName}}">
+        <view slot="top-right">
+            <!-- 删除 -->
+            <l-button shape="semicircle" size="mini" style="margin-left:15rpx" bindtap="onDel">
+                <l-icon name="delete" size="30" /> 删除
+            </l-button>
+        </view>
+        <view class="table">
+            <block>
+                <!-- 单位 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <label>单位：</label>
+                        <input placeholder="单位" value="{{editProduct.unitName}}" disabled="true" />
+                        <l-button disabled="{{editDisabled}}" special="true" bindlintap="showActionSheet">
+                            <l-icon size="40" name="arrow-down" color="#999" />
+                        </l-button>
+
+                    </view>
+                </view>
+
+                <!-- 数量 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <label>数量：</label>
+                        <input disabled="{{editDisabled}}" placeholder="0" bindinput="onQuantityInput"
+                            value="{{editProduct.quantity}}" />
+                    </view>
+                </view>
+
+                <!-- 备注 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <label>备注：</label>
+                        <!-- <input placeholder="请选择备注..." bindinput="_onInput" /> -->
+                        <picker bindchange="onRemarkChange" disabled="{{editDisabled}}" data-item="{{item}}"
+                            value="{{editProduct.remarkId}}" range="{{remarks}}" range-key='Name'>
+                            <view class="remarkDown" style="color:#808080">
+                                {{editProduct.remark}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+
+                <view class="tr">
+                    <view class="td footer">
+                        <text>单位换算：{{baseProduct.UnitConversion}}</text>
+                    </view>
+                </view>
+
+                <!-- 注意：这里的仓库需要根据当前单据选择来源动态显示 -->
+                <view class="tr">
+                    <view class="td footer">
+                        <text>可用库存：{{baseProduct.UsableQuantityConversion}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </content-card>
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <l-button class="button" shape="semicircle" bgColor="#53a245" size="long" icon="checked" bindtap="onSubmit">
+                确定</l-button>
+        </view>
+    </view>
+
+    <l-action-sheet l-class-title="action-title" />
+</view>

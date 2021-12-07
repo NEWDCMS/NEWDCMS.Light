@@ -1,0 +1,310 @@
+<template name="12">
+    <view class="weapp" wx:for="{{bills}}" wx:key="index">
+        <view class="weapp-fist">
+            <l-checkbox-group bind:linchange="changeBill" data-item="{{item}}">
+                <l-checkbox l-class="l-checkbox-color" key="{{item.BillId}}" checked="{{item.checked}}" />
+            </l-checkbox-group>
+        </view>
+        <view class="table">
+            <view class="thr">
+                <view class="th thtitle">
+                    <view class="line"></view>{{item.TerminalName}}
+                </view>
+                <view class="th"></view>
+                <view class="th price">
+                    <l-price l-class="price" unit="￥" value="{{item.SaleAmountSum}}" reserveDigit="2" autofix="true"
+                        value-color="#000" unit-color="#000" value-size="30" />
+                </view>
+            </view>
+            <block>
+                <view class="tr">
+                    <view class="td pname">
+                        {{item.BillNumber}}
+                    </view>
+                    <view class="td">
+                    </view>
+                    <view class="td"></view>
+                    <view class="td">
+                        <dateformat value="{{item.CreatedOnUtc}}" format="h:mm:ss" />
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr">
+                    <view class="td pname">= 销售金额</view>
+                    <view class="td sprice">
+                        <l-price l-class="price" unit="" value="{{item.SaleAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="28" />
+                    </view>
+                    <view class="td">- 预收款</view>
+                    <view class="td pprice">
+                        <l-price l-class="price" unit="" value="{{item.SaleAdvanceReceiptAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="28" />
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr bg-g">
+                    <view class="td pname">- 欠款</view>
+                    <view class="td sprice">
+
+                        <l-price l-class="price" unit="" value="{{item.SaleOweCashAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="28" />
+                    </view>
+                    <view class="td"></view>
+                    <view class="td"></view>
+                </view>
+            </block>
+        </view>
+        <view class="weapp-end">
+            <l-button special="true" bindtap="onRedict" data-item="{{item}}" data-key="销售收款">
+                <l-icon name="arrow" size="50" color="#bbb" />
+            </l-button>
+        </view>
+    </view>
+</template>
+
+<template name="14">
+    <view class="weapp" wx:for="{{bills}}" wx:key="index">
+        <view class="weapp-fist">
+            <l-checkbox-group bind:linchange="changeBill" data-item="{{item}}">
+                <l-checkbox l-class="l-checkbox-color" key="{{item.BillId}}" checked="{{item.checked}}" />
+            </l-checkbox-group>
+        </view>
+        <view class="table">
+            <view class="thr">
+                <view class="th thtitle">
+                    <view class="line"></view>{{item.TerminalName}}
+                </view>
+                <view class="th"></view>
+                <view class="th price">
+                    <l-price l-class="price" unit="￥" value="{{item.ReturnAmountSum}}" reserveDigit="2" autofix="true"
+                        value-color="#000" unit-color="#000" value-size="30" />
+                </view>
+            </view>
+            <block>
+                <view class="tr">
+                    <view class="td pname">
+                        {{item.BillNumber}}
+                    </view>
+                    <view class="td">
+                    </view>
+                    <view class="td"></view>
+                    <view class="td">
+                        <dateformat value="{{item.CreatedOnUtc}}" format="h:mm:ss" />
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr">
+                    <view class="td pname">= 退货金额</view>
+                    <view class="td sprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.ReturnAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                    <view class="td">- 预收款</view>
+                    <view class="td pprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.TotalReturnAdvanceReceiptAmount}}"
+                            reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245"
+                            value-size="30" />
+
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr bg-g">
+                    <view class="td pname">- 欠款</view>
+                    <view class="td sprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.ReturnOweCashAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+
+                    </view>
+                    <view class="td"></view>
+                    <view class="td"></view>
+                </view>
+            </block>
+        </view>
+        <view class="weapp-end">
+            <l-button special="true" bindtap="onRedict" data-item="{{item}}" data-key="退货款">
+                <l-icon name="arrow" size="50" color="#bbb" />
+            </l-button>
+        </view>
+    </view>
+</template>
+
+<template name="41">
+    <view class="weapp" wx:for="{{bills}}" wx:key="index">
+        <view class="weapp-fist">
+            <l-checkbox-group bind:linchange="changeBill" data-item="{{item}}">
+                <l-checkbox l-class="l-checkbox-color" key="{{item.BillId}}" checked="{{item.checked}}" />
+            </l-checkbox-group>
+        </view>
+        <view class="table">
+            <view class="thr">
+                <view class="th thtitle">
+                    <view class="line"></view>{{item.TerminalName}}
+                </view>
+                <view class="th"></view>
+                <view class="th price">
+                    <l-price l-class="price" unit="￥" value="{{item.ReceiptCashOweCashAmountSum}}" reserveDigit="2" autofix="true"
+                        value-color="#000" unit-color="#000" value-size="30" />
+                </view>
+            </view>
+            <block>
+                <view class="tr">
+                    <view class="td pname">
+                        {{item.BillNumber}}
+                    </view>
+                    <view class="td">
+                    </view>
+                    <view class="td"></view>
+                    <view class="td">
+                        <dateformat value="{{item.CreatedOnUtc}}" format="h:mm:ss" />
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr">
+                    <view class="td pname">= 应收金额</view>
+                    <view class="td sprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.ReceiptCashReceivableAmount}}"
+                            reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245"
+                            value-size="30" />
+
+                    </view>
+                    <view class="td">- 预收款</view>
+                    <view class="td pprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.ReceiptCashAdvanceReceiptAmount}}"
+                            reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245"
+                            value-size="30" />
+
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="weapp-end">
+            <l-button special="true" bindtap="onRedict" data-item="{{item}}" data-key="收欠款">
+                <l-icon name="arrow" size="50" color="#bbb" />
+            </l-button>
+        </view>
+    </view>
+</template>
+
+<template name="43">
+    <view class="weapp" wx:for="{{bills}}" wx:key="index">
+        <view class="weapp-fist">
+            <l-checkbox-group bind:linchange="changeBill" data-item="{{item}}">
+                <l-checkbox l-class="l-checkbox-color" key="{{item.BillId}}" checked="{{item.checked}}" />
+            </l-checkbox-group>
+        </view>
+        <view class="table">
+            <view class="thr">
+                <view class="th thtitle">
+                    <view class="line"></view>{{item.TerminalName}}
+                </view>
+                <view class="th"></view>
+                <view class="th price">
+                    <l-price l-class="price" unit="￥" value="{{item.AdvanceReceiptSum}}" reserveDigit="2" autofix="true"
+                        value-color="#000" unit-color="#000" value-size="30" />
+                </view>
+            </view>
+            <block>
+                <view class="tr">
+                    <view class="td pname">
+                        {{item.BillNumber}}
+                    </view>
+                    <view class="td">
+                    </view>
+                    <view class="td"></view>
+                    <view class="td">
+                        <dateformat value="{{item.CreatedOnUtc}}" format="h:mm:ss" />
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr">
+                    <view class="td pname">=预收金额</view>
+                    <view class="td sprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.AdvanceReceiptAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+
+                    </view>
+                    <view class="td">- 欠款</view>
+                    <view class="td pprice">
+
+                        <l-price l-class="price" unit="￥" value="{{item.AdvanceReceiptOweCashAmount}}"
+                            reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245"
+                            value-size="30" />
+
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="weapp-end">
+            <l-button special="true" bindtap="onRedict" data-item="{{item}}" data-key="预收款">
+                <l-icon name="arrow" size="50" color="#bbb" />
+            </l-button>
+        </view>
+    </view>
+</template>
+
+<template name="45">
+    <view class="weapp" wx:for="{{bills}}" wx:key="index">
+        <view class="weapp-fist">
+            <l-checkbox-group bind:linchange="changeBill" data-item="{{item}}">
+                <l-checkbox l-class="l-checkbox-color" key="{{item.BillId}}" checked="{{item.checked}}" />
+            </l-checkbox-group>
+        </view>
+        <view class="table">
+            <view class="thr">
+                <view class="th thtitle">
+                    <view class="line"></view>{{item.TerminalName}}
+                </view>
+                <view class="th"></view>
+                <view class="th price">
+                    <l-price l-class="price" unit="￥" value="{{item.CostExpenditureSum}}" reserveDigit="2" autofix="true"
+                        value-color="#000" unit-color="#000" value-size="30" />
+                </view>
+            </view>
+            <block>
+                <view class="tr">
+                    <view class="td pname">
+                        {{item.BillNumber}}
+                    </view>
+                    <view class="td">
+                    </view>
+                    <view class="td"></view>
+                    <view class="td">
+                        <dateformat value="{{item.CreatedOnUtc}}" format="h:mm:ss" />
+                    </view>
+                </view>
+            </block>
+            <block>
+                <view class="tr">
+                    <view class="td pname">= 支出金额</view>
+                    <view class="td sprice">
+                        <l-price l-class="price" unit="" value="{{item.CostExpenditureAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="28" />
+                    </view>
+                    <view class="td">- 欠款</view>
+                    <view class="td pprice">
+                        <l-price l-class="price" unit="" value="{{item.CostExpenditureOweCashAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="28" />
+                    </view>
+                </view>
+            </block>
+
+        </view>
+        <view class="weapp-end">
+            <l-button special="true" bindtap="onRedict" data-item="{{item}}" data-key="费用支出">
+                <l-icon name="arrow" size="50" color="#bbb" />
+            </l-button>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,45 @@
+<l-combined-tabs swipeable="{{false}}">
+    <l-tabpanel wx:for="{{dubbleTabs}}" tab="{{item.tab}}" key="{{item.key}}" sub-key="{{item.subKey}}" sub-tab="{{item.subTab}}" slot="{{item.subKey||item.key}}" scrollable="{{false}}" wx:key="key">
+        <view class="tab-content">
+            <view class="step step-column l-class" wx:for-item="sb" wx:for="{{item.recordDatas}}">
+                <view class="step-container l-step-class step-container-column">
+                    <view class="l-step-class step-icon">
+                        <l-icon name="{{sb.Status == true ?'checked':'clear'}}" size="30" color="{{sb.Status == true ?'#3B5998':'#53a245'}}" />
+                    </view>
+                </view>
+                <view class="step-content step-content-column">
+                    <view class="l-title-class step-title">
+                        {{sb.TerminalName}}
+                    </view>
+                    <view class="l-describe-class step-describe">
+                        <text wx:if="{{sb.Status == true}}">到店: </text>
+                        <dateformat wx:if="{{sb.Status == true}}" value="{{sb.SigninTime}}" format="yyyy/MM/d hh:mm:ss"></dateformat>
+                        <text wx:if="{{sb.Status == false}}" style="margin-left: 10rpx;">正在访店...</text>
+                    </view>
+                    <view class="l-describe-class step-describe" wx:if="{{sb.Status == true}}" style="margin-top: 10rpx;">
+                        <text>用时: {{sb.OnStoreSeconds}}</text>
+                    </view>
+                </view>
+                <view class="step-line l-line-class step-line-column step-line-finish" wx:if="{{(item.recordDatas.length!==index+1)}}">
+                </view>
+            </view>
+        </view>
+    </l-tabpanel>
+</l-combined-tabs>
+
+
+<!-- 底部工具栏 -->
+<view class="float-container" bindtap="onShowPopupMenus">
+    <l-icon name='filter-o' size="40" color="#fff"></l-icon>
+</view>
+
+<!-- 自定义溢出菜单 -->
+<l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}" contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+    <view class='leftMenus'>
+        <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}" wx:key="id" bind:lintap="clickMenuItem" data-item="{{item}}" />
+    </view>
+</l-popup>
+
+<!-- calendar -->
+<l-calendar bind:linconfirm="selectCalender" title="{{ title }}" show="{{ calenderShow }}" minSelect="{{ minSelect }}" maxSelect="{{ maxSelect }}" defaultDate="{{ defaultDate }}" type="{{ type }}" maxDate="{{ maxDate }}" color="{{ color }}" confirmText="{{ confirmText }}" formatter="{{ formatter }}">
+</l-calendar>

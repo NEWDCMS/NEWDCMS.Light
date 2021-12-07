@@ -1,0 +1,367 @@
+<view class="container">
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner" bindtap="onSelectUser">
+                    <text class="label">{{filter.BusinessUserName==''?'选择员工...':filter.BusinessUserName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{filter.BusinessUserId}}" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectUser">
+                        <l-icon size="40" name="search" color="#999" />
+                    </l-button>
+                </view>
+                <view class="maincon-container-item-inner">
+                </view>
+            </view>
+        </view>
+        <view class="main-container-table">
+            <view class="view-container">
+                <!-- 单据来源 -->
+                <content-card name="单据来源">
+                    <view style="padding:0 20rpx 0 20rpx;">
+                        <!-- 销售收款 -->
+                        <view class="weapp" bindtap="onRedict" data-item="{{sale}}" data-key="销售收款" data-type="12">
+                            <view class="table">
+                                <view class="thr bg-w">
+                                    <view class="th thtitle">
+                                        <view class="line"></view>销售收款
+                                    </view>
+                                    <view class="th count">
+                                        待交{{sale.SaleBillCount}}张
+                                    </view>
+                                    <view class="th"></view>
+                                    <view class="th price">
+                                        <l-price l-class="price" unit="￥" value="{{sale.TotalSaleAmountSum}}"
+                                            reserveDigit="2" autofix="true" value-color="#000" unit-color="#000"
+                                            value-size="30" />
+                                    </view>
+                                </view>
+                                <block>
+                                    <view class="tr">
+                                        <view class="td pname">= 销售金额</view>
+                                        <view class="td sprice">
+                                            <l-price l-class="price" unit="￥" value="{{sale.TotalSaleAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+                                        </view>
+                                        <view class="td">- 预收款</view>
+                                        <view class="td pprice">
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{sale.TotalSaleAdvanceReceiptAmount}}" reserveDigit="2"
+                                                autofix="true" value-color="#53a245" unit-color="#53a245"
+                                                value-size="30" />
+                                        </view>
+                                    </view>
+                                </block>
+                                <block>
+                                    <view class="tr bg-g">
+                                        <view class="td pname">- 欠款</view>
+                                        <view class="td sprice">
+
+                                            <l-price l-class="price" unit="￥" value="{{sale.TotalSaleOweCashAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+                                        </view>
+                                        <view class="td"></view>
+                                        <view class="td"></view>
+                                    </view>
+                                </block>
+                            </view>
+                            <view>
+                                <l-button special="true" >
+                                    <l-icon name="arrow" size="50" color="#bbb" />
+                                </l-button>
+                            </view>
+                        </view>
+
+                        <!-- 退货款 -->
+                        <view class="weapp" bindtap="onRedict" data-item="{{returnb}}" data-key="退货款"  data-type="14">
+                            <view class="table">
+                                <view class="thr bg-w">
+                                    <view class="th thtitle">
+                                        <view class="line"></view>退货款
+                                    </view>
+                                    <view class="th count">待交{{returnb.ReturnBillCount}}张</view>
+                                    <view class="th"></view>
+                                    <view class="th price">
+
+                                        <l-price l-class="price" unit="￥" value="{{returnb.TotalReturnAmountSum}}"
+                                            reserveDigit="2" autofix="true" value-color="#000" unit-color="#000"
+                                            value-size="30" />
+
+                                    </view>
+                                </view>
+                                <block>
+                                    <view class="tr">
+                                        <view class="td pname">= 退货金额</view>
+                                        <view class="td sprice">
+
+                                            <l-price l-class="price" unit="￥" value="{{returnb.TotalReturnAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+                                        </view>
+                                        <view class="td">- 预收款</view>
+                                        <view class="td pprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{returnb.TotalReturnAdvanceReceiptAmount}}" reserveDigit="2"
+                                                autofix="true" value-color="#53a245" unit-color="#53a245"
+                                                value-size="30" />
+
+                                        </view>
+                                    </view>
+                                </block>
+                                <block>
+                                    <view class="tr bg-g">
+                                        <view class="td pname">- 欠款</view>
+                                        <view class="td sprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{returnb.TotalReturnOweCashAmount}}" reserveDigit="2"
+                                                autofix="true" value-color="#53a245" unit-color="#53a245"
+                                                value-size="30" />
+
+                                        </view>
+                                        <view class="td"></view>
+                                        <view class="td"></view>
+                                    </view>
+                                </block>
+                            </view>
+                            <view>
+                                <l-button special="true" >
+                                    <l-icon name="arrow" size="50" color="#bbb" />
+                                </l-button>
+                            </view>
+                        </view>
+
+                        <!-- 收欠款 -->
+                        <view class="weapp" bindtap="onRedict" data-item="{{cashReceipt}}" data-key="收欠款"  data-type="41">
+                            <view class="table">
+                                <view class="thr bg-w">
+                                    <view class="th thtitle">
+                                        <view class="line"></view>收欠款
+                                    </view>
+                                    <view class="th count">待交{{cashReceipt.ReceiptCashOweCashBillCount}}张</view>
+                                    <view class="th"></view>
+                                    <view class="th price">
+
+                                        <l-price l-class="price" unit="￥"
+                                            value="{{cashReceipt.TotalReceiptCashOweCashAmountSum}}" reserveDigit="2"
+                                            autofix="true" value-color="#000" unit-color="#000" value-size="30" />
+
+                                    </view>
+                                </view>
+                                <block>
+                                    <view class="tr">
+                                        <view class="td pname">= 应收金额</view>
+                                        <view class="td sprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{cashReceipt.TotalReceiptCashReceivableAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+
+                                        </view>
+                                        <view class="td">- 预收款</view>
+                                        <view class="td pprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{cashReceipt.TotalReceiptCashAdvanceReceiptAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                            <view>
+                                <l-button special="true" >
+                                    <l-icon name="arrow" size="50" color="#bbb" />
+                                </l-button>
+                            </view>
+                        </view>
+
+                        <!-- 收预收款 -->
+                        <view class="weapp" bindtap="onRedict" data-item="{{advanceReceipt}}" data-key="收预收款" data-type="43">
+                            <view class="table">
+                                <view class="thr bg-w">
+                                    <view class="th thtitle">
+                                        <view class="line"></view>收预收款
+                                    </view>
+                                    <view class="th count">待交{{advanceReceipt.AdvanceReceiptBillCount}}张</view>
+                                    <view class="th"></view>
+                                    <view class="th price">
+
+                                        <l-price l-class="price" unit="￥"
+                                            value="{{advanceReceipt.TotalAdvanceReceiptSum}}" reserveDigit="2"
+                                            autofix="true" value-color="#000" unit-color="#000" value-size="30" />
+
+                                    </view>
+                                </view>
+                                <block>
+                                    <view class="tr">
+                                        <view class="td pname">=预收金额</view>
+                                        <view class="td sprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{advanceReceipt.TotalAdvanceReceiptAmount}}" reserveDigit="2"
+                                                autofix="true" value-color="#53a245" unit-color="#53a245"
+                                                value-size="30" />
+
+                                        </view>
+                                        <view class="td">- 欠款</view>
+                                        <view class="td pprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{advanceReceipt.TotalAdvanceReceiptOweCashAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                            <view>
+                                <l-button special="true" >
+                                    <l-icon name="arrow" size="50" color="#bbb" />
+                                </l-button>
+                            </view>
+                        </view>
+
+                        <!-- 费用支出 -->
+                        <view class="weapp" bindtap="onRedict" data-item="{{costExpenditure}}" data-key="费用支出" data-type="45">
+                            <view class="table">
+                                <view class="thr bg-w">
+                                    <view class="th thtitle">
+                                        <view class="line"></view>费用支出
+                                    </view>
+                                    <view class="th count">待交{{costExpenditure.CostExpenditureBillCount}}张</view>
+                                    <view class="th"></view>
+                                    <view class="th price">
+
+                                        <l-price l-class="price" unit="￥" value="{{costExpenditure.costExpenditure}}"
+                                            reserveDigit="2" autofix="true" value-color="#000" unit-color="#000"
+                                            value-size="30" />
+
+                                    </view>
+                                </view>
+                                <block>
+                                    <view class="tr">
+                                        <view class="td pname">= 支出金额</view>
+                                        <view class="td sprice">
+
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{costExpenditure.TotalCostExpenditureAmount}}" reserveDigit="2"
+                                                autofix="true" value-color="#53a245" unit-color="#53a245"
+                                                value-size="30" />
+
+                                        </view>
+
+                                        <view class="td">- 欠款</view>
+                                        <view class="td pprice">
+                                            <l-price l-class="price" unit="￥"
+                                                value="{{costExpenditure.TotalCostExpenditureOweCashAmount}}"
+                                                reserveDigit="2" autofix="true" value-color="#53a245"
+                                                unit-color="#53a245" value-size="30" />
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                            <view>
+                                <l-button special="true" >
+                                    <l-icon name="arrow" size="50" color="#bbb" />
+                                </l-button>
+                            </view>
+                        </view>
+                    </view>
+                </content-card>
+
+                <!-- 收款方式 -->
+                <content-card name="收款方式">
+                    <view style="padding:0 20rpx;">
+                        <l-list title="{{item.Name}}" wx:for="{{accountings}}" wx:key="AccountingOptionId"
+                            isLink="{{false}}">
+                            <view slot="right-section" class="price">
+
+                                <l-price l-class="price" unit="￥" value="{{item.CollectionAmount}}" reserveDigit="2"
+                                    autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                            </view>
+                        </l-list>
+                    </view>
+                </content-card>
+
+                <!-- 商品汇总 -->
+                <content-card name="商品汇总">
+                    <view style="padding:0 20rpx;">
+                        <l-list title="{{item.name}}" wx:for="{{summeryCounts}}" wx:key="name"
+                            bind:lintap="clickListItem" data-key="{{item}}">
+                            <view slot="right-section" class="price">
+                                {{item.count}} 种
+                            </view>
+                        </l-list>
+                    </view>
+                </content-card>
+
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <view class="left-block">
+                <text class="label">待交金额：</text>
+                <l-price l-class="price" unit="￥" value="{{totalCollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="35" />
+            </view>
+            <view class="right-block">
+                <l-button disabled="{{disabledSubmit}}" class="button" width="200" size="long" bind:lintap="onSubmit">
+                    上交全部 ({{totalBillCount}})
+                </l-button>
+                <l-button class="button" width="80" size="long" bind:lintap="onShowPopupMenus">
+                    <l-icon size="40" name="weapp-nav" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+
+    <!-- dialog -->
+    <!-- <l-dialog /> -->
+    <!-- 自定义确认框 根据mtype 定义表单样式 -->
+    <l-dialog show="{{dialogConf.show}}" type="{{dialogConf.type}}" show-close="{{dialogConf.showClose}}"
+        title="{{dialogConf.title}}" show-title="{{dialogConf.showTitle}}" content="{{dialogConf.content}}"
+        locked="{{dialogConf.locked}}" cancel-text="{{dialogConf.cancelText}}" cancel-color="{{dialogConf.cancelColor}}"
+        confirm-text="{{dialogConf.confirmText}}" confirm-color="{{dialogConf.confirmColor}}" bind:lintap="onDialogTap"
+        bind:lincancel="onCancelTap" bind:linconfirm="onConfirmTap">
+        <!-- 默认售价选择 -->
+        <view class='dialogMenus' wx:if="{{mtype===1}}">
+            <l-radio-group l-class="l-radio-group" bind:linchange="onChangeHandle">
+                <l-radio l-class="l-radio l-title-class-border" wx:for="{{defalutPlanPrices}}" wx:key="id" key="id"
+                    placement="left" cell="{{item}}">
+                    {{item.name}}
+                </l-radio>
+            </l-radio-group>
+        </view>
+        <!-- 备注 -->
+        <view class='buttun-wrapper' wx:elif="{{mtype===5}}">
+            <l-input hide-label width="450" type="text" clear="{{true}}" placeholder="请输入文本..." />
+        </view>
+    </l-dialog>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 自定义溢出菜单 -->
+    <l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}"
+        contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+        <view class='leftMenus'>
+            <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}"
+                wx:key="id" bind:lintap="clickMenuItem" data-item="{{item}}" />
+        </view>
+    </l-popup>
+
+    <!-- calendar -->
+    <l-calendar bind:linconfirm="selectCalender" title="{{ title }}" show="{{ calenderShow }}"
+        minSelect="{{ minSelect }}" maxSelect="{{ maxSelect }}" defaultDate="{{ defaultDate }}" type="{{ type }}"
+        color="{{ color }}" confirmText="{{ confirmText }}" formatter="{{ formatter }}">
+    </l-calendar>
+</view>

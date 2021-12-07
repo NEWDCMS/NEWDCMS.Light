@@ -1,0 +1,32 @@
+{
+  "name": "dcms.light",
+  "version": "1.0.0",
+  "description": "dcms.light",
+  "main": "app.js",
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "buffer": "^6.0.3",
+    "extend": "^3.0.2",
+    "ieee754": "^1.2.1",
+    "string-format": "^2.0.0",
+    "text-encoding": "^0.7.0",
+    "to-array-buffer": "^3.2.0",
+    "weapp-qrcode": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-uglify-es": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mschen_:racing.1@bitbucket.org/hrqj_team/dcms.light.git"
+  },
+  "author": "dorisoy",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/hrqj_team/dcms.light#readme"
+}

@@ -1,0 +1,4 @@
+<!-- 预收款单 -->
+<template name="43">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+</template>

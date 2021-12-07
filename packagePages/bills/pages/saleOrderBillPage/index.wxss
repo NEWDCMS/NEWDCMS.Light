@@ -1,0 +1,221 @@
+.container {
+    background-color: #fff;
+    padding-bottom: 180rpx;
+    font-size: 30rpx;
+}
+
+page {
+    background: #fff;
+}
+
+.maincon-container-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    background-color: #fff;
+    justify-content: space-between;
+    padding-right: 30rpx;
+    padding-left: 30rpx;
+    border-bottom: 1rpx #ddd solid;
+}
+
+.maincon-container-item-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    background-color: #fff;
+    justify-content: space-between;
+    border-bottom: 1rpx #ddd solid;
+}
+
+.maincon-container-item-inner .label {
+    color: #999;
+    width: 250rpx;
+}
+
+.float-container {
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    z-index: 2;
+    width: 100%;
+    height: 220rpx;
+    box-shadow: 9px 4px 0px 0px rgba(155, 193, 185, 0.5);
+    background-color: #fff;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.float-img {
+    color: #ffffff;
+}
+
+.float-container-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60rpx;
+    background-color: #eee;
+    justify-content: flex-start;
+    padding-left: 20rpx;
+}
+
+.float-container-header .price {
+    margin-right: 30rpx;
+}
+
+.float-container-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100rpx;
+    /* background-color: #b3d4db; */
+    justify-content: flex-end;
+    text-align: right;
+    float: right;
+}
+
+.float-container-toolbar .button {
+    width: 100rpx;
+    margin-right: 10rpx;
+    float: right;
+    text-align: right;
+}
+
+.serch {
+    margin-left: 20rpx;
+    width: 400rpx;
+    text-align: left;
+}
+
+.scan {
+    margin-right: 20rpx;
+    background: #fff;
+}
+
+.view-container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;   */
+    min-height: 900rpx;
+}
+
+/* table */
+
+.table {
+    width: 100%;
+    border: 0px solid darkgray;
+}
+
+.tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /* height: 4rem; */
+    min-height: 4rem;
+    align-items: center;
+}
+
+.thr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+
+}
+
+.td {
+    width: 40%;
+    justify-content: center;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+
+.gift {
+    color: #53a245;
+}
+
+.pname {
+    text-align: left;
+    padding: 20rpx;
+}
+
+.bg-w {
+    background: snow;
+}
+
+.bg-g {
+    background: #eff2f3;
+}
+
+.th {
+    width: 40%;
+    justify-content: center;
+    background: #eee;
+    /* color: #fff; */
+    display: flex;
+    height: 3rem;
+    font-size: 30rpx;
+    align-items: center;
+    /* border-bottom: 2rpx rgba(155, 193, 185, 0.5) solid; */
+    box-shadow: 0px 2px 0px 0px #9d9e9b4d;
+}
+
+/* 指定吸顶位置 */
+.l-header-sticky-class {
+    right: 0 !important;
+    box-sizing: border-box !important;
+    padding: 0 0rpx !important;
+    background-color: white !important;
+    z-index: 1 !important;
+}
+
+.leftMenus {
+    background: #fff;
+    width: 200rpx;
+    height: 100%;
+    background: #fff;
+    font-size: 30rpx;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 20rpx;
+}
+
+.dialogMenus {
+    width: 450rpx;
+
+}
+
+
+.l-radio {
+    box-sizing: border-box;
+    color: rgba(140, 152, 174, 1) !important;
+}
+
+
+.l-title-class-border {
+    border-bottom: 1rpx solid #f1f1f1;
+    padding: 20rpx 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pnameText {
+    font-weight: 700;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

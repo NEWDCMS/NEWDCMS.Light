@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#3B5998",
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "l-tabs": "/dist/tabs/index",
+    "l-combined-tabs": "/dist/combined-tabs/index",
+    "l-tabpanel": "/dist/tabpanel/index"
+  }
+}

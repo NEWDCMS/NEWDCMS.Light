@@ -1,0 +1,11 @@
+<view class='container'>
+    <view class="section">
+        <navi-title title="待办任务" count="0" />
+        <view class="section-content">
+            <detail-navi-card wx:for="{{mssageConfigs}}" wx:for-item="mssageConfigs" wx:key="index"
+                icon="{{mssageConfigs.icon}}" title="{{mssageConfigs.title}}"
+                componentsPath="{{mssageConfigs.componentsPath}}" desc="{{mssageConfigs.desc}}" />
+        </view>
+    </view>
+</view>
+<l-loading type="change" l-container-class="l-container" show="{{isBusy}}" full-screen="{{true}}" />

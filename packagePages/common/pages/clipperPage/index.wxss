@@ -1,0 +1,64 @@
+page {
+    background-color: #000;
+    height: 100%;
+}
+
+.view {
+    width: 100%;
+    height: 100%;
+}
+
+.takePhoto {
+    position: fixed;
+    left: 44%;
+    bottom: 100rpx;
+    z-index: 2;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    box-shadow: 0px 4px 9px 0px rgba(155, 193, 185, 0.5);
+    display: flex;
+    justify-content: center;
+    background-color: #53a245;
+    align-items: center;
+}
+
+.camera {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.cover-camera {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 150rpx;
+    background-color: #dedcdc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 60rpx;
+    left: 300rpx;
+}
+
+.cover-close {
+    position: absolute;
+    bottom: 105rpx;
+    left: 135rpx;
+}
+
+.cover-fill {
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 110rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #da2121;
+    font-size: 32rpx;
+}
+

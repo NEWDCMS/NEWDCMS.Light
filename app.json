@@ -1,0 +1,255 @@
+{
+    "pages": [
+        "pages/login/index",
+        "pages/navigator/index/index",
+        "pages/navigator/allfun/index",
+        "pages/navigator/about/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#3B5998",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": false,
+        "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "custom": true,
+        "color": "#bbbbbb",
+        "selectedColor": "#3B5998",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/navigator/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/navigator/allfun/index",
+                "text": "应用"
+            },
+            {
+                "pagePath": "pages/navigator/about/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "subPackages": [
+        {
+            "root": "packagePages/archive",
+            "pages": [
+                "pages/addProductArchivePage/index",
+                "pages/addReportPage/index",
+                "pages/fieldTrackPage/index",
+                "pages/inventoryBillPage/index",
+                "pages/myReportingPage/index",
+                "pages/productArchivesPage/index"
+            ]
+        },
+        {
+            "root": "packagePages/workflow",
+            "pages": [
+                "pages/message/index",
+                "pages/notice/index"
+            ]
+        },
+        {
+            "root": "packagePages/chat",
+            "pages": [
+                "pages/online/index",
+                "pages/message/index",
+                "pages/track/index"
+            ]
+        },
+        {
+            "root": "packagePages/bills",
+            "pages": [
+                "pages/advanceReceiptBillPage/index",
+                "pages/allocationBillPage/index",
+                "pages/backStockBillPage/index",
+                "pages/costContractBillPage/index",
+                "pages/costExpenditureBillPage/index",
+                "pages/exchangeBillPage/index",
+                "pages/inventoryOPBillPage/index",
+                "pages/receiptBillPage/index",
+                "pages/returnBillPage/index",
+                "pages/returnOrderBillPage/index",
+                "pages/saleBillPage/index",
+                "pages/saleOrderBillPage/index",
+                "pages/trackAllocationBillPage/index"
+            ]
+        },
+        {
+            "root": "packagePages/delivery",
+            "pages": [
+                "pages/deliveryReceiptPageindex",
+                "pages/deliveriedPage/index",
+                "pages/unCostExpenditurePage/index",
+                "pages/unOrderPage/index",
+                "pages/unSalePage/index"
+            ]
+        },
+        {
+            "root": "packagePages/home",
+            "pages": [
+                "pages/newCustomersPage/index",
+                "pages/salesRatePage/index",
+                "pages/visitingRatePage/index"
+            ]
+        },
+        {
+            "root": "packagePages/market",
+            "pages": [
+                "pages/addCustomerPage/index",
+                "pages/customerArchivesPage/index",
+                "pages/inventoryReportPage/index",
+                "pages/visitRecordsPage/index",
+                "pages/visitStorePage/index",
+                "pages/invitationPage/index"
+            ]
+        },
+        {
+            "root": "packagePages/order",
+            "pages": [
+                "pages/billSummaryPage/index",
+                "pages/viewBillPage/index"
+            ]
+        },
+        {
+            "root": "packagePages/reconciliation",
+            "pages": [
+                "pages/reconciliationDetailPage/index",
+                "pages/reconciliationHistoryPage/index",
+                "pages/reconciliationORreceivablesPage/index",
+                "pages/reconciliationProductsPage/index"
+            ]
+        },
+        {
+            "root": "packagePages/reporting",
+            "pages": [
+                "pages/receivablesPage/index",
+                "pages/reportViewPage/index",
+                "pages/VisitReportPage/index"
+            ]
+        },
+        {
+            "root": "packagePages/root",
+            "pages": [
+                "pages/aboutPage/index",
+                "pages/printSettingPage/index",
+                "pages/securityPage/index",
+                "pages/systemSettingPage/index",
+                "pages/issuesPage/index",
+                "pages/viewSubscribePage/index",
+                "pages/clipperFacePage/index"
+            ]
+        },
+        {
+            "root": "packagePages/common",
+            "pages": [
+                "pages/addAllocationProductPage/index",
+                "pages/addBackStockBillPage/index",
+                "pages/addCostContractProductPage/index",
+                "pages/addCostPage/index",
+                "pages/addExchangeProductPage/index",
+                "pages/addGiftProductPage/index",
+                "pages/addInventoryProductPage/index",
+                "pages/addProductPage/index",
+                "pages/addReportProductPage/index",
+                "pages/editAllocationProductPage/index",
+                "pages/editProductPage/index",
+                "pages/filterPage/index",
+                "pages/clipperPage/index",
+                "pages/morePaymentPage/index",
+                "pages/paymentMethodPage/index",
+                "pages/selectAllocationProductPage/index",
+                "pages/selectAreaPage/index",
+                "pages/selectContractPage/index",
+                "pages/selectCustomerPage/index",
+                "pages/selectGiftsPage/index",
+                "pages/selectLocationPage/index",
+                "pages/selectProductPage/index",
+                "pages/selectUserPage/index",
+                "pages/writingSignature/index"
+            ]
+        }
+    ],
+    "usingComponents": {
+        "water": "/components/water/index",
+        "l-toast": "/dist/toast/index",
+        "l-message": "/dist/message/index",
+        "l-button": "/dist/button/index",
+        "l-textarea": "/dist/textarea/index",
+        "mykeyboard": "/components/mykeyboard/index",
+        "numberformat": "/components/numberformat/index",
+        "dateformat": "/components/dateformat/index",
+        "content-title": "/components/content-title/index",
+        "content-card": "/components/content-card/index",
+        "l-arc-popup": "/dist/arc-popup/index",
+        "l-calendar": "/dist/calendar/index",
+        "l-action-sheet": "/dist/action-sheet/index",
+        "l-sticky": "/dist/sticky/index",
+        "l-sticky-item": "/dist/sticky-item/index",
+        "l-avatar": "/dist/avatar/index",
+        "l-card": "/dist/card/index",
+        "l-tag": "/dist/tag/index",
+        "l-icon": "/dist/icon/index",
+        "l-popup": "/dist/popup/index",
+        "l-dialog": "/dist/dialog/index",
+        "l-radio-group": "/dist/radio-group/index",
+        "l-radio": "/dist/radio/index",
+        "l-list": "/dist/list/index",
+        "l-checkbox-group": "/dist/checkbox-group/index",
+        "l-checkbox": "/dist/checkbox/index",
+        "l-input": "/dist/input/index",
+        "l-image-picker": "/dist/image-picker/index",
+        "l-loadmore": "/dist/loadmore/index",
+        "l-search-bar": "/dist/search-bar/index",
+        "l-collapse": "/dist/collapse/index",
+        "l-collapse-item": "/dist/collapse-item/index",
+        "l-rate": "/dist/rate/index",
+        "l-price": "/dist/price/index",
+        "l-counter": "/dist/counter/index",
+        "l-tabs": "/dist/tabs/index",
+        "l-combined-tabs": "/dist/combined-tabs/index",
+        "l-tabpanel": "/dist/tabpanel/index",
+        "navi-title": "/components/navi-title/index",
+        "l-grid-item": "/dist/grid-item/index",
+        "l-loading": "/dist/loading/index",
+        "l-grid": "/dist/grid/index",
+        "l-steps": "/dist/steps/index",
+        "l-step": "/dist/step/index",
+        "l-album": "/dist/album/index",
+        "l-image-clipper": "/dist/image-clipper/index",
+        "l-image-clipper-tools": "/dist/image-clipper-tools/index",
+        "date-time-picker": "/dist/date-time-picker/date-time-picker",
+        "l-form": "/dist/form/index",
+        "l-form-item": "/dist/form-item/index",
+        "navi-card": "/components/navi-card/index",
+        "l-tab-bar": "/dist/tab-bar/index",
+        "l-badge": "/dist/badge/index",
+        "detail-navi-card": "/components/detail-navi-card/index",
+        "l-capsule-bar": "/dist/capsule-bar/index",
+        "l-spin": "/dist/spin/index",
+        "l-segment": "/dist/segment/index",
+        "l-segment-item": "/dist/segment-item/index",
+        "tree-selector": "/components/tree-selector/index",
+        "van-empty": "./dist/empty/index",
+        "van-cell": "./dist/cell/index",
+        "van-cell-group": "./dist/cell-group/index",
+        "van-overlay": "./dist/overlay/index",
+        "van-popup": "./dist/van-popup/index",
+        "van-transition": "./dist/van-transition/index",
+        "van-dropdown-menu": "./dist/dropdown-menu/index",
+        "van-dropdown-item": "./dist/dropdown-item/index"
+    },
+    "sitemapLocation": "sitemap.json",
+    "permission": {
+        "scope.userLocation": {
+            "desc": "雪花经销商管家请求获取您的位置信息"
+        }
+    },
+    "requiredBackgroundModes": [
+        "location"
+    ]
+}

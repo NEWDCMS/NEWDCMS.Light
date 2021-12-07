@@ -1,0 +1,5 @@
+<!-- 费用支出单 -->
+<template name="45">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+</template>
+

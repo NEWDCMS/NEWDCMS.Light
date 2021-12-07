@@ -1,0 +1,35 @@
+<!-- 品牌销量汇总 -->
+<template name="55">
+    <view class="table">
+        <view class="thr bg-w">
+            <view class="th thleft">品牌</view>
+            <view class="th ">销售净额</view>
+            <view class="th thright">比例</view>
+        </view>
+        <van-empty wx:if="{{chartDatas.length==0}}" image="default" description="" style="width:100%;height:100%" />
+        <view wx:else>
+            <block wx:for="{{chartDatas}}" wx:key="index">
+                <view class="tr" wx:if="{{index % 2 == 0}}">
+                    <view class="td tdleft">{{item.BrandName}}</view>
+                    <view class="td">
+                        <l-price l-class="price" unit="￥" value="{{item.NetAmount}}" reserveDigit="2" autofix="true"
+                            value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                    <view class="td tdright">
+                        <numberformat style="color: #53a245;" value=" {{item.Percentage}}" format="2" fix="%" />
+                    </view>
+                </view>
+                <view class="tr bg-g" wx:else>
+                    <view class="td tdleft">{{item.BrandName}}</view>
+                    <view class="td">
+                        <l-price l-class="price" unit="￥" value="{{item.NetAmount}}" reserveDigit="2" autofix="true"
+                            value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                    <view class="td tdright">
+                        <numberformat style="color: #53a245;" value=" {{item.Percentage}}" format="2" fix="%" />
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+</template>

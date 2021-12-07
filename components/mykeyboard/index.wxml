@@ -1,0 +1,10 @@
+<view class="keyboard_cotainer" wx:if="{{isShow}}">
+  <view class="numval">{{numbertext}} </view>
+  <view class="keyboard_num" hover-class="keyboard_click" wx:for="{{keynumber}}" bindtap="keyboadrTap" wx:key="index"
+    data-value="{{item}}" style="border-radius:{{bordradius}}; ">
+    {{item}}
+  </view>
+  <view class="deletebt" hover-class="bt_select" bindtap="keyboadrTap" data-value="delete">{{deletebt}}</view>
+  <view class="canclebt" hover-class="bt_select" bindtap="keyboadrTap" data-value="cancle">{{canclebt}}</view>
+  <view class="submitbt" hover-class="bt_select" bindtap="keyboadrTap" data-value="submit">{{submitbt}}</view>
+</view>

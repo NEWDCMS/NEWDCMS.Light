@@ -1,0 +1,87 @@
+<view class='container'>
+  <l-card type="avatar" l-class="card" image="{{util.getImageURL(currentConfig.resultImageUrl)}}"
+    title="{{userInfo.UserRealName}}" describe="{{userInfo.MobileNumber}}">
+    <l-tag shape="circle" bg-color="#f3f3f3" font-color="#3963BC" slot="more" size="large" bind:lintap="upload">修改头像
+    </l-tag>
+  </l-card>
+
+  <view style="height: 20px;"></view>
+  <l-card type="primary" plaintext l-class="card">
+    <l-list right-desc="{{userInfo.UserRealName}}">
+      <view slot="left-section">
+        <text>姓名</text>
+      </view>
+    </l-list>
+    <l-list right-desc="{{userInfo.Email}}">
+      <view slot="left-section">
+        <text>邮箱</text>
+      </view>
+    </l-list>
+    <l-list right-desc="{{userInfo.MobileNumber==''?'******':userInfo.MobileNumber}}">
+      <view slot="left-section">
+        <text>手机号</text>
+      </view>
+    </l-list>
+    <l-list right-desc="{{userInfo.DealerNumber==''?'******':userInfo.DealerNumber}}">
+      <view slot="left-section">
+        <text>经销商编码</text>
+      </view>
+    </l-list>
+    <l-list right-desc="{{userInfo.MarketingCenter==''?'******':userInfo.MarketingCenter}}">
+      <view slot="left-section">
+        <text>营销中心</text>
+      </view>
+    </l-list>
+
+    <l-list right-desc="{{userInfo.SalesArea==''?'******':userInfo.SalesArea}}">
+      <view slot="left-section">
+        <text>大区</text>
+      </view>
+    </l-list>
+    <l-list right-desc="{{userInfo.BusinessDepartment==''?'******':userInfo.BusinessDepartment}}">
+      <view slot="left-section">
+        <text>业务部</text>
+      </view>
+    </l-list>
+  </l-card>
+
+  <l-image-clipper show="{{currentConfig.show}}" image-url="{{currentConfig.imageUrl}}"
+    z-index="{{currentConfig.zIndex}}" type="{{currentConfig.type}}" quality="{{currentConfig.quality}}"
+    width="{{currentConfig.width}}" height="{{currentConfig.height}}" max-height="{{currentConfig.maxHeight}}"
+    max-width="{{currentConfig.maxWidth}}" min-width="{{currentConfig.minWidth}}"
+    min-height="{{currentConfig.minHeight}}" lock-width="{{currentConfig.lockWidth}}"
+    lock-height="{{currentConfig.lockHeight}}" lock-ratio="{{currentConfig.lockRatio}}"
+    scale-ratio="{{currentConfig.scaleRatio}}" min-ratio="{{currentConfig.minRatio}}"
+    max-ratio="{{currentConfig.maxRatio}}" disable-scale="{{currentConfig.disableScale}}"
+    disable-rotate="{{currentConfig.disableRotate}}" limit-move="{{currentConfig.limitMove}}"
+    check-image="{{currentConfig.checkImage}}" check-image-icon="{{currentConfig.checkImageIcon}}"
+    rotate-along="{{currentConfig.rotateAlong}}" rotate-along-icon="{{currentConfig.rotateAlongIcon}}"
+    rotate-inverse="{{currentConfig.rotateInverse}}" rotate-inverse-icon="{{currentConfig.rotateInverseIcon}}"
+    sure="{{currentConfig.sure}}" sure-icon="{{currentConfig.sureIcon}}" close="{{currentConfig.close}}"
+    close-icon="{{currentConfig.closeIcon}}" bindlinclip="linclip">
+    <l-image-clipper-tools z-index="{{toolsConfig.zIndex}}" rotate-angle="{{toolsConfig.rotateAngle}}"
+      lock-width="{{toolsConfig.lockWidth}}" lock-height="{{toolsConfig.lockHeight}}"
+      lock-ratio="{{toolsConfig.lockRatio}}" disable-scale="{{toolsConfig.disableScale}}"
+      disable-rotate="{{toolsConfig.disableRotate}}" limit-move="{{toolsConfig.limitMove}}"></l-image-clipper-tools>
+  </l-image-clipper>
+</view>
+
+<wxs module="util">
+  var getImageURL = function (path) {
+    var _url = '/images/view/default-image.png'
+    //console.log('path', path)
+    if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+      var ss = ''
+      if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+        _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+      }
+      else {
+        _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+      }
+    }
+    return _url
+  }
+  module.exports = {
+    getImageURL: getImageURL
+  }
+</wxs>

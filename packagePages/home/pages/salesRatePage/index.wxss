@@ -1,0 +1,57 @@
+/* table */
+
+.table {
+    border: 0px solid darkgray;
+}
+
+.tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 4rem;
+    align-items: center;
+}
+
+.thr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+
+}
+
+.td {
+    width: 25%;
+    justify-content: center;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.gift {
+    color: #53a245;
+}
+
+.pname {
+    width: 25%;
+    text-align: center;
+}
+
+.bg-w {
+    background: snow;
+}
+
+.bg-g {
+    background: #eee;
+}
+
+.th {
+    width: 40%;
+    justify-content: center;
+    background: #eee;
+    display: flex;
+    height: 3rem;
+    font-size: 30rpx;
+    align-items: center;
+    box-shadow: 0px 2px 0px 0px #9d9e9b4d;
+}

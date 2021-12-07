@@ -1,0 +1,10 @@
+<!--components/navbar/index.wxml-->
+<!-- 此处用到了循环，里面的数据动态获取 -->
+ <view class='tabbar_box' style='background-color:{{tabbar.backgroundColor}}'>
+  <block wx:for="{{tabbar.list}}" wx:key="{{item.pagePath}}">
+    <navigator class="tabbar_nav" url="{{item.pagePath}}" style="color:{{item.selected ? tabbar.selectedColor : tabbar.color}}" open-type="switchTab">
+      <!-- <l-icon name="delete" /> -->
+      <text>ceshi</text>
+    </navigator>
+  </block>
+</view> 

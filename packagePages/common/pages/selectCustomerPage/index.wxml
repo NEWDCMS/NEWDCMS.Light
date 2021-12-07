@@ -1,0 +1,94 @@
+<map wx:if="{{mapMode}}" id='mymap' bindregionchange='bindregionchange' show-location longitude='{{longitude}}'
+    latitude='{{latitude}}' markers='{{markers}}' class="maps" scale='18'>
+</map>
+<view wx:else class='container'>
+    <view class="terminal-search">
+        <l-search-bar bg-color="#eee" value="{{searchData.searchStr}}" placeholder="简拼/电话/联系人/关键字" show-cancel="false"
+            bind:linchange="searchBarInput" bind:linclear="searchBarClear" catchtouchmove='filterViewMove' />
+    </view>
+    <view catchtouchmove='filterViewMove'>
+        <van-dropdown-menu>
+            <van-dropdown-item value="{{ searchData.districtId }}" bind:itemoptiontap="districtIdOptionTap"
+                options="{{ districts }}" />
+            <van-dropdown-item value="{{ searchData.channelId }}" options="{{ channels }}"
+                bind:itemoptiontap="channelIdOptionTap" />
+            <van-dropdown-item value="{{ searchData.lineTierId }}" options="{{ lineTiers }}"
+                bind:itemoptiontap="lineTierIdOptionTap" />
+            <van-dropdown-item value="{{ searchData.rankId }}" options="{{ ranks }}"
+                bind:itemoptiontap="rankIdOptionTap" />
+            <van-dropdown-item value="{{ searchData.locationRange }}" options="{{ locationRanges }}"
+                bind:itemoptiontap="locationRangeOptionTap" />
+        </van-dropdown-menu>
+    </view>
+
+    <l-loadmore show="{{show}}" type="{{type}}" size="36" l-class="loading">
+        <view class="container" slot="content" style="margin:15rpx ;">
+            <view class="content" wx:for="{{terminaldata}}" wx:key="index">
+                <l-avatar shape="circle" class="img" src="{{util.getImageURL(item.DoorwayPhoto)}}" />
+                <view class="des">
+                    <text class='des-title'>{{item.Name}}</text>
+                    <text class="des-address" wx:if="{{util.isAddres(item.Address)}}">{{item.Address}}</text>
+                    <l-tag wx:else shape='circle' size="large" bg-color="#b95551" font-color="#fff">缺失资料</l-tag>
+                    <view class='des-distance'>
+                        <l-icon name="map-marked" class='des-distance-icon' size="30" />
+                        <text class='des-distance-text'>{{item.Distance}}公里</text>
+                    </view>
+                    <view class="btngloups">
+                        <button class="btn-cls btn-mobile" bindtap="onCall" data-phone="{{item.BossCall}}">
+                            <l-icon name="phone" size="30" />
+                            {{item.BossCall}}
+                        </button>
+                        <button class="btn-cls btn-signin btn-select" data-item="{{item}}" bindtap="goSelect"
+                            wx:if="{{parames.type=='select'}}">
+                            选择
+                            <l-icon name="arrow" size="30" />
+                        </button>
+                        <button class="btn-cls btn-signin" data-item="{{item}}" bindtap="goSignIn"
+                            wx:elif="{{parames.type=='visit'}}">
+                            签到
+                            <l-icon name="arrow" size="30" />
+                        </button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </l-loadmore>
+
+</view>
+
+<l-loading type="change" l-container-class="l-container" show="{{isBusy}}" full-screen="{{true}}" />
+
+<!-- 浮动菜单 -->
+<view class="float-container" wx:if="{{parames.type=='visit'}}">
+    <l-icon name='plus' class='float-img' bindtap="onAddTerminal"></l-icon>
+    <view class="float-container-left" bindtap="onMapMarked">
+        <l-icon name='map-marked' class='float-img'></l-icon>
+    </view>
+</view>
+
+<wxs module="util">
+    var getImageURL = function (path) {
+        var _url = '/images/view/default-image.png'
+        //console.log('path', path)
+        if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+            var ss = ''
+            if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+                _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+            }
+            else {
+                _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+            }
+        }
+        return _url
+    }
+    var isAddres = function (val) {
+        if (val != undefined && val.length > 0 && val != null) {
+            return true
+        } else
+            return false
+    }
+    module.exports = {
+        getImageURL: getImageURL,
+        isAddres: isAddres
+    }
+</wxs>

@@ -1,0 +1,59 @@
+<!--pages/archive/pages/productArchivesPage/index.wxml-->
+<view class='container'>
+
+    <view class="terminal-search" catchtouchmove='filterViewMove'>
+        <l-search-bar bg-color="#eee" placeholder="商品简拼/编号/关键字" show-cancel="false" bind:linchange="searchBarInput"
+            bind:linconfirm="searchBarInput" />
+    </view>
+
+    <view catchtouchmove='filterViewMove'>
+        <van-dropdown-menu>
+            <van-dropdown-item value="{{ catagoryId }}" options="{{ catagory }}" bind:itemoptiontap="catagoryIdOptionTap" />
+            <van-dropdown-item value="{{brandId }}" options="{{ brand }}" bind:itemoptiontap="brandOptionTap" />
+        </van-dropdown-menu>
+    </view>
+
+    <!-- 这里模拟空视图 -->
+    <van-empty image="default" wx:if="{{productDatas.length<=0}}" description="空空如也！" />
+
+    <l-loadmore show="{{show}}" type="{{type}}" size="36" l-class="loading">
+        <view class="container" slot="content" style="margin:15rpx ;" wx:if="{{productDatas.length>0}}">
+            <view class="content" wx:for="{{productDatas}}" wx:key="{{item.id}}">
+
+                <view class="des">
+                    <text class='des-title'>{{item.ProductName}}</text>
+                    <view class='des-box'>
+                        <l-icon name="shop" class='des-box-icon' size="30" />
+                        <text class='des-box-text'>编码：{{item.ProductCode}}</text>
+                    </view>
+                    <view class='des-box'>
+                        <l-icon name="hot" class='des-box-icon' size="30" />
+                        <text class='des-box-text'>规格：{{item.Specification}}</text>
+                    </view>
+                    <view class='des-box'>
+                        <l-icon name="label" class='des-box-icon' size="30" />
+                        <text class='des-box-text'>简称：{{item.MnemonicCode}}</text>
+                    </view>
+                    <!-- <view class='des-box'>
+                        <l-icon name="clock" class='des-box-icon' size="30" />
+                        <text class='des-box-text'>更新：{{item.CreatedOnUtc}}</text>
+                    </view> -->
+                </view>
+
+                <!-- <l-avatar shape="circle" class="img" src="/images/view/default-image.png" /> -->
+
+                <l-button special="true" data-id="{{item.Id}}" bindtap="onEditProduct">
+                    <!-- 编辑 -->
+                    <view class="share-box">
+                        <l-icon size="40" name="edit" color="#fff" />
+                    </view>
+                </l-button>
+            </view>
+        </view>
+    </l-loadmore>
+
+    <!-- 浮动菜单 -->
+    <view class="float-container" bindtap="onAddProduct">
+        <l-icon name='plus' class='float-img'></l-icon>
+    </view>
+</view>

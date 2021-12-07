@@ -1,0 +1,16 @@
+page {
+    background-color: #fff;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.myQrcode {
+    width: 200px;
+    height: 200px;
+    margin-top: 300rpx;
+    margin-bottom: 50rpx;
+}

@@ -1,0 +1,52 @@
+<!-- 已签收 -->
+<template name="1">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+    <view wx:for="{{bills}}" wx:key="{{item.Id}}">
+        <navi-title title="{{item.TerminalName}}" showCount="{{false}}" />
+        <view class="table">
+            <view class="items" wx:for="{{item.Bills}}" wx:for-item="bill" bindtap="onRedict" data-billid="{{bill.Id}}">
+                <view class="items-column">
+                    <view class="items-column-left label">
+                        <view style="margin-right: 10rpx;">
+                            <view wx:if="{{bill.BillTypeId==10}}" style="margin-right: 10rpx;">
+                                <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">换</l-tag>
+                            </view>
+                            <view wx:if="{{bill.BillTypeId==11}}" style="margin-right: 10rpx;">
+                                <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">订</l-tag>
+                            </view>
+                            <view wx:if="{{bill.BillTypeId==12}}" style="margin-right: 10rpx;">
+                                <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">销</l-tag>
+                            </view>
+                            <view wx:if="{{bill.BillTypeId==13}}" style="margin-right: 10rpx;">
+                                <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">退</l-tag>
+                            </view>
+                        </view>
+                        {{bill.BillNumber}}
+                    </view>
+
+                    <view class="items-column-right" wx:if="{{bill.ReversedStatus}}">
+                        <l-tag wx:if="{{bill.AuditedStatus}}" size="large" bgColor="#EC0013" font-color="#fff" bind:lintap="selectTap" shape="circle">已冲改</l-tag>
+                    </view>
+                </view>
+                <view class="items-column">
+                    <view class="items-column-left label">
+                        {{bill.TerminalName}}
+                    </view>
+                    <view class="items-column-right">
+                        <l-price l-class="price" unit="￥" value="{{bill.SumAmount}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                </view>
+                <view class="items-column">
+                    <view class="items-column-left label">
+                        业务员：{{bill.BusinessUserName}}
+                    </view>
+                    <view class="items-column-right label">
+                        时间：
+                        <dateformat value="{{bill.SignedDate}}" format="yyyy-MM-dd h:mm:ss" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+</template>

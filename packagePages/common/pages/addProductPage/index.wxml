@@ -1,0 +1,131 @@
+<!--pages/common/pages/addProductPage/index.wxml-->
+<view class='container'>
+
+    <content-card class="content" name="{{item.Name}}" wx:for="{{productDatas}}" wx:key="{{item.Id}}">
+        <view slot="top-right">
+            <!-- 拷贝 -->
+            <l-button shape="semicircle" size="mini" bindtap="onCopy" data-item="{{item}}">
+                <l-icon name="plus" size="30" />
+            </l-button>
+            <!-- 删除 -->
+            <l-button shape="semicircle" size="mini" style="margin-left:15rpx" bindtap="onDel" data-item="{{item}}">
+                <l-icon name="delete" size="30" />
+            </l-button>
+        </view>
+
+        <view class="table">
+            <block>
+                <!-- 大单位 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <input placeholder="数量" type='number'
+                            value="{{item.BigPriceUnit.Quantity==0?'':item.BigPriceUnit.Quantity}}"
+                            data-tag="BigPriceUnit.Quantity" data-item="{{item}}" bindinput="_onInput" />
+                        <text>{{item.bigOption.Name}}</text>
+                    </view>
+                    <view class="td">
+                        <input placeholder="单价" type='digit'
+                            value="{{item.BigPriceUnit.Price==0?'':item.BigPriceUnit.Price}}"
+                            data-tag="BigPriceUnit.Price" data-item="{{item}}" bindblur="_onInput" />
+                        <l-button special="true" bindtap="showActionSheet" data-item="{{item}}"
+                            data-tag="BigPriceUnit.Price">
+                            <l-icon size="40" name="arrow-down" color="#999" />
+                        </l-button>
+                    </view>
+                    <view class="td amount">
+                        <input placeholder="小计" value="{{item.BigPriceUnit.Amount==0?'':item.BigPriceUnit.Amount}}"
+                            data-tag="BigPriceUnit.Amount" data-item="{{item}}" disabled="true" />
+                    </view>
+                    <view class="td remark">
+                        <!-- <input placeholder="备注" data-tag="BigPriceUnit.Remark" data-item="{{item}}"
+                            bindinput="_onInput" /> -->
+                        <picker bindchange="bindRemarkChange" data-item="{{item}}" data-tag="BigPriceUnit.Remark"
+                            data-tagid="BigPriceUnit.RemarkId" value="0" range="{{remarks}}" range-key='Name'>
+                            <view class="remarkDown" style="color:#808080">
+                                <!-- {{remarks["{{item.BigPriceUnit.RemarkId}}"].Name}} -->
+                                {{item.BigPriceUnit.Remark}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                <!-- 小单位 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <input placeholder="数量" type='number'
+                            value="{{item.SmallPriceUnit.Quantity==0?'':item.SmallPriceUnit.Quantity}}"
+                            data-tag="SmallPriceUnit.Quantity" data-item="{{item}}" bindinput="_onInput" />
+                        <text>{{item.smallOption.Name}}</text>
+                    </view>
+                    <view class="td">
+                        <input placeholder="单价" type='digit'
+                            value="{{item.SmallPriceUnit.Price==0?'':item.SmallPriceUnit.Price}}"
+                            data-tag="SmallPriceUnit.Price" data-item="{{item}}" bindblur="_onInput" />
+                        <l-button special="true" data-item="{{item}}" data-tag="SmallPriceUnit.Price"
+                            bindtap="showActionSheet">
+                            <l-icon size="40" name="arrow-down" color="#999" />
+                        </l-button>
+                    </view>
+                    <view class="td amount">
+                        <input placeholder="小计" value="{{item.SmallPriceUnit.Amount==0?'':item.SmallPriceUnit.Amount}}"
+                            data-tag="SmallPriceUnit.Amount" data-item="{{item}}" disabled="true" />
+                    </view>
+                    <view class="td remark">
+                        <!-- <input placeholder="备注" data-tag="SmallPriceUnit.Remark" data-item="{{item}}"
+                            bindinput="_onInput" /> -->
+                        <picker bindchange="bindRemarkChange" data-item="{{item}}" data-tag="SmallPriceUnit.Remark"
+                            data-tagid="SmallPriceUnit.RemarkId" value="0" range="{{remarks}}" range-key='Name'>
+                            <view class="remarkDown" style="color:#808080">
+                                {{item.SmallPriceUnit.Remark}}
+                            </view>
+                        </picker>
+
+                    </view>
+                </view>
+                <!-- 赠送 -->
+                <view class="tr bg-g">
+                    <view class="td">
+                        <input placeholder="赠送" type='number' data-tag="GiveProduct.BigUnitQuantity"
+                            data-item="{{item}}" bindinput="_onInput" />
+                        <text>{{item.bigOption.Name}}</text>
+                    </view>
+                    <view class="td">
+                        <input placeholder="赠送" type='number' data-tag="GiveProduct.SmallUnitQuantity"
+                            data-item="{{item}}" bindinput="_onInput" />
+                        <text>{{item.smallOption.Name}}</text>
+                    </view>
+                    <view class="td amount">
+
+                    </view>
+                    <view class="td remark">
+                        <!-- <input placeholder="备注" data-tag="GiveProduct.Remark" data-item="{{item}}"
+                            bindinput="_onInput" /> -->
+                        <picker bindchange="bindRemarkChange" data-item="{{item}}" data-tag="GiveProduct.Remark"
+                            data-tagid="GiveProduct.RemarkId" value="0" range="{{remarks}}" range-key='Name'>
+                            <view class="picker" style="color:#808080">
+                                {{item.GiveProduct.Remark}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+
+                <view class="tr">
+                    <view class="td footer" style="width: 400rpx;">
+                        <text>总库存：{{item.UsableQuantityConversion}}</text>
+                    </view>
+                    <view class="td footer">
+                        <text>换算：{{item.UnitConversion}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </content-card>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view style="padding: 25rpx;">
+            <l-button class="button" shape="semicircle" bindtap="onSubmit" icon="checked" size="long">确定</l-button>
+        </view>
+    </view>
+
+</view>

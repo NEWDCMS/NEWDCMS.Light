@@ -1,0 +1,59 @@
+<import src='../templates/advanceReceiptViewPage' />
+<import src='../templates/allocationViewPage' />
+<import src='../templates/cashReceiptViewPage' />
+<import src='../templates/costContractViewPage' />
+<import src='../templates/costExpenditureViewPage' />
+<import src='../templates/returnOrderViewPage' />
+<import src='../templates/returnViewPage' />
+<import src='../templates/saleOrderViewPage' />
+<import src='../templates/saleViewPage' />
+
+<view class="container">
+    <view class="maincon-container">
+        <l-tabs l-class-header-line="header-line" equal-width="{{false}}" scrollable animatedForLine="{{true}}"
+            l-class-active="active commom" l-class-inactive="inactive commom" l-class-header="header"
+            l-class-line="line" bind:linchange="linchange" active-key="{{currentBillType}}">
+            <l-tabpanel wx:for="{{billTypes}}" wx:key="index" tab="{{item.name}}" key="{{item.billType}}"
+                slot="{{item.billType}}" badge-count="{{item.count}}">
+                <view class="tab-content">
+                    <template is='{{item.billType}}' data='{{...data}}' />
+                </view>
+            </l-tabpanel>
+        </l-tabs>
+    </view>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+
+            <view class="left-block">
+                <text class="label">合计：</text>
+                <l-price l-class="price" unit="￥" value="{{totalCollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="35" />
+            </view>
+            <view class="right-block">
+                <l-button class="button" width="80" size="long" bind:lintap="onShowPopupMenus">
+                    <l-icon size="40" name="weapp-nav" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 自定义溢出菜单 -->
+    <l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}"
+        contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+        <view class='leftMenus'>
+            <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}"
+                wx:key="index" bind:lintap="clickMenuItem" data-item="{{item}}" />
+        </view>
+    </l-popup>
+
+    <!-- calendar -->
+    <l-calendar bind:linconfirm="selectCalender" title="{{ title }}" show="{{ calenderShow }}"
+        minSelect="{{ minSelect }}" maxSelect="{{ maxSelect }}" defaultDate="{{ defaultDate }}" type="{{ type }}"
+        color="{{ color }}" confirmText="{{ confirmText }}" formatter="{{ formatter }}">
+    </l-calendar>
+
+</view>

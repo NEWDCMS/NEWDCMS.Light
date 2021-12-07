@@ -1,0 +1,37 @@
+<!-- 热定排行榜 -->
+<template name="66">
+    <view class="table">
+        <view class="thr bg-w">
+            <view class="th thleft">名称</view>
+            <view class="th ">净订量</view>
+            <view class="th thright">订单净额</view>
+        </view>
+        <van-empty wx:if="{{chartDatas.length==0}}" image="default" description="" style="width:100%;height:100%" />
+        <view wx:else>
+            <block wx:for="{{chartDatas}}" wx:key="index">
+                <view class="tr" wx:if="{{index % 2 == 0}}">
+                    <view class="td tdleft">{{item.ProductName}}</view>
+                    <view class="td">
+                        <l-price l-class="price" unit="￥" value="{{item.TotalSumNetAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                    <view class="td tdright">
+                        <l-price l-class="price" unit="￥" value="{{item.TotalSumSaleAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                </view>
+                <view class="tr bg-g" wx:else>
+                    <view class="td tdleft">{{item.ProductName}}</view>
+                    <view class="td">
+                        <l-price l-class="price" unit="￥" value="{{item.TotalSumNetAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                    <view class="td tdright">
+                        <l-price l-class="price" unit="￥" value="{{item.TotalSumSaleAmount}}" reserveDigit="2"
+                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+</template>

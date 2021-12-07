@@ -1,0 +1,89 @@
+/* pages/archive/pages/addProductArchivePage/index.wxss */
+.container {
+    padding-bottom: 0rpx;
+    background-color: white;
+  }
+  .maincon-container-item-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+  
+  .buttun-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .l-radio {
+    padding-left: 40rpx;
+    box-sizing: border-box;
+    color: rgba(140, 152, 174, 1) !important;
+  }
+  
+  /* -------- */
+  
+  .avatar-container-box {
+    padding: 50rpx;
+  }
+  
+  .add{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eee;
+    justify-content: center;
+  }
+  
+  .add-icon {
+    height: 70rpx;
+    width: 70rpx;
+    margin-top: 10rpx;
+  }
+  
+  .add-text {
+    margin-top: 6rpx;
+    font-size: 24rpx;
+    font-weight: bold;
+    color: #bfbfbf;
+  }
+  
+  .buttun-popup
+  {
+      padding-left: 20rpx;
+      padding-right: 20rpx;
+  }
+
+  
+  .list-box {
+    padding: 10rpx 0rpx;
+  }
+
+  .list-box .list-box-item {
+    width: 100%;
+    font-size: 28rpx;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    border-bottom: 1px #f3f3f3 solid;
+    padding-left: 15rpx;
+    padding-right: 15rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+  }
+  .list-box-item-left {
+    display: flex;
+    align-items: center;
+    padding-left: 10rpx;
+    justify-content: center;
+  }
+  .list-box-item-left text{
+    font-size: 28rpx;
+    color: #000;
+  }

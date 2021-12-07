@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tree-select": "./tree-select/index"
+  }
+}

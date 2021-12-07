@@ -1,0 +1,5 @@
+<!-- 费用合同单 -->
+<template name="46">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+</template>
+

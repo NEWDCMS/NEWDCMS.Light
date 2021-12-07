@@ -1,0 +1,97 @@
+<view class="container">
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner" >
+                    <text class="label" bindtap="onSelectTerminal">{{filter.TerminalName==''?'选择客户...':filter.TerminalName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{filter.TerminalId}}" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectTerminal">
+                        <l-icon size="40" name="search" color="#999" />
+                    </l-button>
+                    <l-button class="detail-tool" height="50" size="mini" shape="semicircle" plain="{{true}}" bindtap="onSelectAll">重置
+                    </l-button>
+                </view>
+
+            </view>
+        </view>
+        <view class="main-container-table">
+            <l-sticky scrollTop="{{scrollTop}}" mode="css">
+                <l-sticky-item l-header-sticky-class="l-header-sticky-class">
+                    <view slot="header">
+                        <view class="table">
+                            <view class="thr bg-w">
+                                <view class="th tstart">客户编码</view>
+                                <view class="th">客户</view>
+                                <view class="th tend">欠款</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view slot="body" class="view-container">
+
+                        <!-- 这里模拟空视图 -->
+                        <van-empty wx:if="{{detailItems.length<=0}}" image="default" description="空空如也！" />
+
+                        <!-- 这里如果saleBillItems 为空，则mockNull，显示空视图 -->
+                        <view class="table">
+                            <block wx:for="{{detailItems}}" wx:key="{[CustomerPointCode]}">
+                                <view class="tr bg-g" wx:if="{{index % 2 == 0}}" bindtap="onRedirect"
+                                    data-item="{{item}}">
+                                    <view class="td pname">
+                                        {{item.CustomerPointCode}}</view>
+                                    <view class="td">{{item.CustomerName}}</view>
+                                    <view class="td">
+                                        <l-price l-class="price" unit="￥" value="{{item.Amount}}" reserveDigit="2"
+                                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                                    </view>
+                                    <view class="td tool">
+                                        <l-button special="true" bindtap="onEdit" data-item="{{item}}">
+                                            <!-- 编辑 -->
+                                            <view class="share-box">
+                                                <l-icon size="40" name="arrow" color="#ddd" />
+                                            </view>
+                                        </l-button>
+                                    </view>
+                                </view>
+                                <view class="tr" wx:else bindtap="onRedirect" data-item="{{item}}">
+                                    <view class="td pname">{{item.CustomerPointCode}}</view>
+                                    <view class="td">{{item.CustomerName}}</view>
+                                    <view class="td">
+                                        <l-price l-class="price" unit="￥" value="{{item.Amount}}" reserveDigit="2"
+                                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                                    </view>
+                                    <view class="td tool">
+                                        <l-button special="true" bindtap="onRedirect" data-item="{{item}}">
+                                            <!-- 编辑 -->
+                                            <view class="share-box">
+                                                <l-icon size="40" name="arrow" color="#ddd" />
+                                            </view>
+                                        </l-button>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </l-sticky-item>
+            </l-sticky>
+        </view>
+    </view>
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <view class="left-block">
+                <text class="label">合计：</text>
+                <l-price l-class="price" unit="￥" value="{{totalCollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="35" />
+            </view>
+            <view class="right-block">
+                <!-- 筛选 -->
+                <l-button class="button" width="80" size="long" bindtap="onFilter">
+                    <l-icon size="40" name="filter-o" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+</view>

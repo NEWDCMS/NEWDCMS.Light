@@ -1,0 +1,90 @@
+<view class="container">
+    <view class="section-content" style="padding: 15rpx;">
+        <van-empty image="default" wx:if="{{data.ThisYear.VistCount==0}}" description="" />
+        <canvas wx:if="{{data.ThisYear.VistCount > 0}}" style="width:100%;height:250px;" type="2d" id="visitingRateChart" bindtouchstart="touchBarHandler"></canvas>
+    </view>
+    <view class="table">
+        <view class="thr bg-w">
+            <view class="th pleft">日期</view>
+            <view class="th pmid">拜访</view>
+            <view class="th pright">比例</view>
+        </view>
+        <block>
+            <view class="tr bg-g" bindtap="onTapDate" data-dateflag="1">
+                <view class="td pleft">今日</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.Today.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value=" {{data.Today.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr"  bindtap="onTapDate" data-dateflag="3">
+                <view class="td pleft">昨日</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.Yesterday.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value="{{data.Yesterday.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g"  bindtap="onTapDate" data-dateflag="4">
+                <view class="td pleft">前天</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.BeforeYesterday.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value="{{data.BeforeYesterday.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr"  bindtap="onTapDate" data-dateflag="5">
+                <view class="td pleft">上周</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.LastWeek.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value="{{data.LastWeek.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g"  bindtap="onTapDate" data-dateflag="6">
+                <view class="td pleft">本周</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.ThisWeek.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value="{{data.ThisWeek.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr"  bindtap="onTapDate" data-dateflag="7">
+                <view class="td pleft">上月</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.LastMonth.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value="{{data.LastMonth.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g"  bindtap="onTapDate" data-dateflag="9">
+                <view class="td pleft">本年</view>
+                <view class="td pmid">
+                    <text style="color: #53a245;">{{data.ThisYear.VistCount}}</text>
+                </view>
+                <view class="td pright">
+                    <numberformat style="color: #53a245;" value="{{data.ThisYear.Percentage}}" format="2" fix="%" />
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

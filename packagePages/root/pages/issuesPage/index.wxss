@@ -1,0 +1,94 @@
+page {
+    background-color: #fff;
+}
+
+.container {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.group-label {
+    font-size: 28rpx;
+    color: #333;
+    display: flex;
+    box-sizing: border-box;
+    height: 88rpx;
+    align-items: flex-start;
+}
+
+.group-label text,
+.text-desc {
+    font-size: 28rpx;
+    color: #333;
+    width: 170rpx;
+    padding-left: 25rpx;
+    padding-right: 15rpx;
+    box-sizing: border-box;
+}
+
+.text-desc {
+    display: flex;
+    width: auto;
+    line-height: 88rpx;
+}
+
+.group-label .l-radio-group,
+.text-view {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-view {
+    flex-direction: column;
+}
+
+.group-label .l-radio {
+    margin-right: 20rpx;
+}
+
+.card-content {
+    padding: 20rpx;
+}
+
+.error-text {
+    background: red;
+    color: #fff !important;
+    border-radius: 8rpx;
+    padding: 0 10rpx;
+}
+
+.add {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+}
+
+.image-content {
+    padding: 20rpx;
+}
+
+.add-img {
+    height: 70rpx;
+    width: 70rpx;
+}
+
+.float-container {
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    z-index: 2;
+    width: 100%;
+    height: 130rpx;
+    box-shadow: 9px 4px 0px 0px rgba(155, 193, 185, 0.5);
+
+}
+
+.float-container-toolbar {
+    align-items: center;
+    width: 100%;
+    height: 100rpx;
+}

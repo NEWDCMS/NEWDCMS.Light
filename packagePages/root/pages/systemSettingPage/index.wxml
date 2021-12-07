@@ -1,0 +1,115 @@
+<view class='container'>
+    <content-card name="开单默认仓库设置">
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>销售单</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:0rpx;width:250rpx;" placeholder="选择..." value="{{saleBill.WarehouseName}}"
+                        data-type="12" bindfocus="getSelectStock" />
+                </view>
+                <l-button special="true" data-type="12" bindtap="getSelectStock">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="share">
+                    <l-icon name="share" style="margin-left:100rpx;" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>销售订单</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:0rpx;width:250rpx;" placeholder="选择..."
+                        value="{{saleReservationBill.WarehouseName}}" data-type="11" bindfocus="getSelectStock" />
+                </view>
+                <l-button special="true" data-type="11" bindtap="getSelectStock">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="share">
+                    <l-icon name="share" style="margin-left:100rpx;" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>退货单</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:0rpx;width:250rpx;" placeholder="选择..."
+                        value="{{returnBill.WarehouseName}}" data-type="14" bindfocus="getSelectStock" />
+                </view>
+                <l-button special="true" data-type="14" bindtap="getSelectStock">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="share">
+                    <l-icon name="share" style="margin-left:100rpx;" size="40" color="#999" />
+                </view>
+            </view>
+
+
+        </view>
+
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>退货订单</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:0rpx;width:250rpx;" placeholder="选择..."
+                        value="{{returnReservationBill.WarehouseName}}" data-type="13" bindfocus="getSelectStock" />
+                </view>
+                <l-button special="true" data-type="13" bindtap="getSelectStock">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="share">
+                    <l-icon name="share" style="margin-left:100rpx;" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+
+        <!-- <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>换货单</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:0rpx;width:250rpx;" placeholder="选择..." bindfocus="getSelectStock" />
+                </view>
+                <l-button special="true" bindtap="getSelectStock">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="share">
+                    <l-icon name="share" style="margin-left:100rpx;" size="40" color="#999" />
+                </view>
+            </view>
+        </view> -->
+
+    </content-card>
+
+    <content-card name="开单打印设置">
+        <view class="list-box" wx:for="{{printConfigs}}" wx:key="item">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="input" style="width:400rpx;">
+                    <l-counter l-class="count" min="0" max="4" count="{{item.value}}" step="1" bind:lintap="onTapChange"
+                        data-item="{{item}}" />
+                </view>
+                <view class="share">
+                    <l-icon name="share" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+    </content-card>
+
+    <!-- action-sheet -->
+    <l-action-sheet l-class-title="action-title" />
+</view>

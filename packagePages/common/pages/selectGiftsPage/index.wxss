@@ -1,0 +1,95 @@
+page {
+    height: 100%;
+}
+
+.container {
+    background-color: #fff;
+    padding-top: 25rpx;
+    padding-bottom: 160rpx;
+}
+
+.bar-search {
+    margin: 20rpx 0rpx;
+}
+
+
+.productDatas {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10rpx;
+    padding: 30rpx;
+    margin: 30rpx;
+    box-shadow: 0px 2px 6px 0px rgba(155, 193, 185, 0.5);
+}
+
+.des {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.des-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px #eee solid;
+}
+
+.des-title .des-title-text {
+    width: 90%;
+    font-size: 30rpx;
+    color: #333;
+    flex-wrap: wrap;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+
+.des-title .check-box {
+    width: 40rpx;
+}
+
+
+.des-item {
+    width: 100%;
+    display: flex;
+    height: 3em;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px #eee solid;
+}
+.des-item .des-left {
+    width: 50%;
+    justify-content:flex-start;
+    text-align: left;
+}
+.des-item .des-mid {
+    width: 30%;
+    justify-content:center;
+    text-align: center;
+}
+.des-item .des-right {
+    width: 20%;
+    justify-content:flex-end;
+    text-align: right;
+}
+.des-box-text {
+    font-size: 30rpx;
+}
+
+
+
+.float-container {
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    width: 100%;
+    height: 130rpx;
+    box-shadow: 9px 4px 0px 0px rgba(155, 193, 185, 0.5);
+    background-color: #eee;
+    z-index: 2;
+}

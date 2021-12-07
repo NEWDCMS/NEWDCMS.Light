@@ -1,0 +1,69 @@
+<view class="container">
+    <view class="maincon-container">
+        <view class="main-container-table">
+            <l-sticky scrollTop="{{scrollTop}}" mode="css">
+                <l-sticky-item l-header-sticky-class="l-header-sticky-class">
+                    <view slot="header">
+                        <view class="table">
+                            <view class="thr bg-w">
+                                <view class="th">商品名称</view>
+                                <view class="th">数量</view>
+                                <view class="th">金额</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view slot="body" class="view-container">
+                        <!-- 这里模拟空视图 -->
+                        <van-empty wx:if="{{detailItems.length==0}}" image="default" description="空空如也！" />
+                        <!-- 这里如果saleBillItems 为空，则mockNull，显示空视图 -->
+                        <view class="table">
+                            <block wx:for="{{detailItems}}" wx:key="{[ProductId]}">
+                                <view class="tr bg-g" wx:if="{{index % 2 == 0}}" bindtap="onEdit"
+                                    data-id="{{item.ProductId}}">
+                                    <view class="td pname">{{item.Name}}</view>
+                                    <view class="td pdetil">
+                                        <text>{{item.QuantityMFT}}</text>
+                                        <text style="color: #ddd;">转化:{{item.UnitConversion}}</text>
+                                    </view>
+                                    <view class="td">
+                                        <l-price l-class="price" unit="￥" value="{{item.Amount}}" reserveDigit="2"
+                                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                                    </view>
+                                </view>
+                                <view class="tr" wx:else bindtap="onEdit" data-id="{{item.productId}}">
+                                    <view class="td pname">{{item.Name}}</view>
+                                    <view class="td pdetil">
+                                        <text>{{item.QuantityMFT}}</text>
+                                        <text style="color: #ddd;">转化:{{item.UnitConversion}}</text>
+
+                                    </view>
+                                    <view class="td">
+                                        <l-price l-class="price" unit="￥" value="{{item.Amount}}" reserveDigit="2"
+                                            autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </l-sticky-item>
+            </l-sticky>
+        </view>
+    </view>
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <view class="left-block">
+                <text class="label">合计：</text>
+                <l-price l-class="price" unit="￥" value="{{totalCollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="35" />
+            </view>
+            <view class="right-block">
+                <!-- 打印单据 -->
+                <l-button class="button" width="80" size="long" bindtap="onPrint">
+                    <l-icon size="40" name="printer" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+</view>

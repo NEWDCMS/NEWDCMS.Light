@@ -1,0 +1,149 @@
+page {
+  background-color: #f7f7f7;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+.form-item{
+  color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
+
+}
+
+.popup-mask {
+  width: 180rpx;
+  height: 72rpx;
+  border-radius: 4rpx;
+  border: 1px solid rgba(54, 131, 214, 1);
+  color: rgba(54, 131, 214, 1);
+  font-size: 28rpx;
+  margin: 100rpx auto;
+  line-height: 72rpx;
+  text-align: center;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  height: 200rpx;
+  width: 200rpx;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: #555;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+.center-loading
+{ 
+  color: #fff;
+  padding-top: 20rpx;
+}
+
+
+/* pages/view/pages/dialog/index.wxss */
+.content {
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.loginForm
+{
+  padding-top: 200rpx;
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 228rpx;
+  z-index: 1;
+}
+
+.buttun-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  margin-bottom: 20rpx;
+}
+
+.img {
+  width: 100rpx;
+  height: 50rpx;
+}
+
+.input-phone {
+  margin-top: 20rpx;
+  border-radius: 60rpx;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff
+}
+
+.input-icon {
+  margin-left: 15rpx;
+  color: #fff;
+}
+
+.signinSubmit {
+  margin-top: 20rpx;
+  box-shadow: 0px 0px 0px 0px rgba(73, 72, 3, 0.5);
+}
+
+.content-nicks{
+margin-bottom: 200rpx;
+}
+
+.content-item-nick {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.content-item-nick .logo{
+  width: 200rpx;
+  margin-bottom: 50rpx;
+}
+
+.content-nicks .version{
+  display: flex;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: center; 
+  color: #ffffff;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.remember{
+  display: flex;
+  justify-content: left; 
+  color: #ffffff;
+  margin-top: 40rpx;
+}
+
+.remember .placement
+{
+  color: #ffffff;
+  font-size: 30rpx;
+}
+.remember .checkbox-group
+{
+  margin-right: 100rpx;
+}
+
+.remember .forget
+{
+  margin-left: 100rpx;
+  font-size: 30rpx;
+}

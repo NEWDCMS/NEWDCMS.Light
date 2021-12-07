@@ -1,0 +1,131 @@
+<!-- 订单额分析 -->
+<template name="65">
+    <view class="table">
+        <view class="thr bg-w">
+            <view class="th">日期</view>
+            <view class="th">净额</view>
+            <view class="th">销售</view>
+            <view class="th">退货</view>
+        </view>
+        
+        <block>
+            <view class="tr bg-g">
+                <view class="td pname">今日</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.Today.NetAmount}}" reserveDigit="2" autofix="true"
+                        value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.Today.SaleAmount}}" reserveDigit="2" autofix="true"
+                        value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.Today.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr">
+                <view class="td pname">昨日</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.Yesterday.NetAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.Yesterday.SaleAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.Yesterday.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pname">前天</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.BeforeYesterday.NetAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.BeforeYesterday.SaleAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.BeforeYesterday.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr">
+                <view class="td pname">上周</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.LastWeek.NetAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.LastWeek.SaleAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.LastWeek.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pname">本周</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.ThisWeek.NetAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.ThisWeek.SaleAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.ThisWeek.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr">
+                <view class="td pname">上月</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.LastMonth.NetAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.LastMonth.SaleAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.LastMonth.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+        <block>
+            <view class="tr bg-g">
+                <view class="td pname">本月</view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.ThisYear.NetAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.ThisYear.SaleAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+                <view class="td">
+                    <l-price l-class="price" unit="￥" value="{{data.ThisYear.SaleReturnAmount}}" reserveDigit="2"
+                        autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+                </view>
+            </view>
+        </block>
+    </view>
+</template>

@@ -1,0 +1,77 @@
+<view class="container">
+    <view class="maincon-container">
+        <van-empty id="loading" wx:if="{{lines==0}}" image="default" description="未分配线路" style="width:100%;height:250px" />
+        <l-tabs wx:else l-class-header-line="header-line" equal-width="{{false}}" scrollable animatedForLine="{{true}}" l-class-active="active commom" l-class-inactive="inactive commom" l-class-header="header" l-class-line="line" bind:linchange="linchange" active-key="{{currentLine}}">
+            <l-tabpanel wx:for="{{lines}}" wx:key="index" tab="{{item.text}}" key="{{item.value}}" slot="{{item.value}}">
+                <view class="tab-content">
+                    <view style="padding: 15rpx;">
+                        <van-empty id="loading" wx:if="{{item.data.length==0}}" image="default" description="" style="width:100%;height:250px" />
+                        <view wx:else>
+                            <view class="table">
+                                <view class="thr bg-w">
+                                    <view class="th pleft">日期</view>
+                                    <view class="th pright">终端数量</view>
+                                    <view class="th pright">实际拜访</view>
+                                    <view class="th pright">未拜访</view>
+                                    <view class="th pright">完成率</view>
+                                </view>
+                                <view wx:for="{{item.data}}" wx:for-index="dataIndex" wx:for-item="vistCount">
+                                    <block wx:if="{{dataIndex%2==0}}">
+                                        <view class="tr">
+                                            <view class="td pleft">{{vistCount.SigninDateStr}}</view>
+
+                                            <view class="td pright">
+                                                <text style="color: #53a245;">{{vistCount.TerminalCount}}</text>
+                                            </view>
+                                            <view class="td pright">
+                                                <text style="color: #53a245;">{{vistCount.ActualVisitCount}}</text>
+                                            </view>
+                                            <view class="td pright">
+                                                <text style="color: #53a245;">{{vistCount.UnVisitCount}}</text>
+                                            </view>
+                                            <view class="td pright">
+                                                <numberformat style="color: #53a245;" value="{{vistCount.VisitCountRate}}" format="2" fix="%" />
+                                            </view>
+                                            <!-- <view class="td pright">
+                                            <numberformat style="color: #53a245;" value="{{vistCount.UnVisitCount}}" format="2" fix="%" />
+                                        </view> -->
+                                        </view>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="tr bg-g">
+                                            <view class="td pleft">{{vistCount.SigninDateStr}}</view>
+
+                                            <view class="td pright">
+                                                <text style="color: #53a245;">{{vistCount.TerminalCount}}</text>
+                                            </view>
+                                            <view class="td pright">
+                                                <text style="color: #53a245;">{{vistCount.ActualVisitCount}}</text>
+                                            </view>
+                                            <view class="td pright">
+                                                <text style="color: #53a245;">{{vistCount.UnVisitCount}}</text>
+                                            </view>
+                                            <view class="td pright">
+                                                <numberformat style="color: #53a245;" value="{{vistCount.VisitCountRate}}" format="2" fix="%" />
+                                            </view>
+                                        </view>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </l-tabpanel>
+        </l-tabs>
+    </view>
+    <view style="height: 150rpx;"></view>
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <view class="right-block">
+                <l-button class="button" width="80" size="long" bindtap="onFilter">
+                    <l-icon size="40" name="filter-o" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+</view>

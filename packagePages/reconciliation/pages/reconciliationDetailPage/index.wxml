@@ -1,0 +1,60 @@
+<import src='./template' />
+
+<view class="container">
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <view class="maincon-container-item">
+                <view class="maincon-container-item-inner" bindtap="onSelectUser">
+                    <text class="label">{{filter.BusinessUserName==''?'选择员工...':filter.BusinessUserName}}</text>
+                    <view hidden="true">
+                        <input type="text" value="{{filter.BusinessUserId}}" />
+                    </view>
+                    <l-button special="true" bindtap="onSelectUser">
+                        <l-icon size="40" name="search" color="#999" />
+                    </l-button>
+                </view>
+                <view class="maincon-container-item-inner">
+                </view>
+            </view>
+        </view>
+
+        <view class="tablelong">
+            <view class="thr bg-w">
+                <view class="th fth">客户名称</view>
+                <view class="th eth">收款金额</view>
+            </view>
+        </view>
+
+        <van-empty image="default" wx:if="{{data.bills.length<=0}}" description="空空如也！" />
+        <template is='{{billType}}' data='{{...data}}' />
+    </view>
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <view class="left-block">
+                <l-checkbox-group bind:linchange="checkedAll" data-state="{{checkedAll}}">
+                    <l-checkbox l-class="l-checkbox-color" placement="left" style="margin-left: 20rpx;"
+                        checked="{{checkedAll}}">
+                        全选
+                    </l-checkbox>
+                </l-checkbox-group>
+            </view>
+            <view class="left-block">
+                <text class="label">合计：</text>
+                <l-price l-class="price" unit="￥" value="{{totalCollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="35" />
+            </view>
+            <view class="right-block">
+                <l-button disabled="{{disabledSubmit}}" class="button" width="200" size="long" bind:lintap="onSubmit">
+                    确认上交
+                </l-button>
+                <!-- 打印单据 -->
+                <l-button disabled="{{disabledSubmit}}" class="button" width="80" size="long" bind:lintap="onPrint">
+                    <l-icon size="40" name="printer" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+</view>

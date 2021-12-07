@@ -1,0 +1,156 @@
+<!--pages/market/pages/addCustomerPage/index.wxml-->
+<view class='container'>
+    <l-form name="terminalInfo" is-submit-validate="true" l-form-btn-class="l-form-btn-class"
+        bind:linsubmit="submitterminal">
+        <content-card name="门头">
+            <view class="avatar-container-box">
+                <!-- <view class="avatar">
+                <view class="avatar-container">
+                    <l-avatar size="80" src="/images/view/default-image.png" />
+                </view>
+                <l-button l-class height="50" size="mini" shape="semicircle" plain="{{true}}">上传</l-button>
+            </view> -->
+                <l-image-picker count="1" custom="{{true}}" clear="{{clear}}" size="4" bind:linremove="onClearTap"
+                    bind:linchange="doorHeadPhotoChange" urls="{{terminal.DoorwayPhotos}}">
+                    <view class='add'>
+                        <image class='add-icon' src='/images/static/camera_add.png'></image>
+                        <text class='add-text'>上传图片</text>
+                    </view>
+                </l-image-picker>
+            </view>
+        </content-card>
+
+        <content-card name="基本信息">
+            <view>
+                <l-form-item rules="{{terminalRule.nameRule}}" tip-type="message" name="terminalName">
+                    <l-input id="terminalName" label="客户名称" clear="{{true}}" placeholder="必填" value="{{terminal.Name}}"
+                        bind:lininput="onNameEdit" />
+                </l-form-item>
+                <!-- <l-input width="750" label="客户名称" clear="{{true}}" placeholder="必填" label-width="170"
+                    value="{{terminal.Name}}" bind:lininput="onNameEdit" /> -->
+                <l-form-item name="terminalBossName" rules="{{terminalRule.bossNameRule}}">
+                    <l-input id="terminalBossName" label="老板姓名" clear="{{true}}" placeholder="必填"
+                        value="{{terminal.BossName}}" bind:lininput="onBossNameEdit" />
+                </l-form-item>
+                <l-form-item name="terminalBossCall" rules="{{terminalRule.bossCallRule}}">
+                    <l-input id="terminalBossCall" label="联系电话" clear="{{true}}" placeholder="必填"
+                        value="{{terminal.BossCall}}" bind:lininput="onBossCallEdit" />
+                </l-form-item>
+                <view style="display:flex;">
+                    <l-form-item name="terminalAddress" rules="{{terminalRule.addressRule}}" style="width: 90%;">
+                        <l-input id="terminalAddress" label="详细地址" clear="{{true}}" placeholder="必填"
+                            value="{{terminal.Address}}" bind:lininput="onAddressEdit" />
+                    </l-form-item>
+                    <l-button style="margin-top: 20rpx;margin-right: 0rpx;" special="true" bindtap="onNaviTerminal">
+                        <view>
+                            <l-icon size="40" name="location-o" color="#bbb" />
+                        </view>
+                    </l-button>
+                </view>
+                <l-form-item name="terminalCode">
+                    <l-input id="terminalCode" label="终端编码" clear="{{true}}" placeholder="非必填..."
+                        value="{{terminal.Code}}" bind:lininput="onCodeEdit" />
+                </l-form-item>
+
+                <l-form-item name="terminalBusinessNo">
+                    <l-input id="terminalBusinessNo" label="营业编号" clear="{{true}}" placeholder="非必填..."
+                        value="{{terminal.BusinessNo}}" bind:lininput="onBusinessNoEdit" />
+                </l-form-item>
+            </view>
+        </content-card>
+        <content-card name="渠道">
+            <view style="padding: 20rpx 0;">
+                <l-radio-group l-class="l-radio-group" current="{{terminal.ChannelId}}" bind:linchange="onChannelIdEdit"
+                    length="4">
+                    <l-radio l-class="l-radio" wx:for="{{channels}}" wx:key="index" key="{{item.value}}"
+                        placement="{{position}}">
+                        {{item.text}}
+                    </l-radio>
+                </l-radio-group>
+            </view>
+        </content-card>
+        <content-card name="片区">
+            <view style="padding: 20rpx 0;">
+                <l-radio-group l-class="l-radio-group" current="{{terminal.DistrictId}}"
+                    bind:linchange="onDistrictIdEdit" length="4">
+                    <l-radio l-class="l-radio" wx:for="{{districts}}" wx:key="index" key="{{item.value}}"
+                        placement="{{position}}">
+                        {{item.text}}
+                    </l-radio>
+                </l-radio-group>
+            </view>
+        </content-card>
+
+        <content-card name="线路">
+            <view style="padding: 20rpx 0;">
+                <l-radio-group l-class="l-radio-group" current="{{terminal.LineId}}" bind:linchange="onLineIdEdit"
+                    length="4">
+                    <l-radio l-class="l-radio" wx:for="{{lineTiers}}" wx:key="index" key="{{item.value}}"
+                        placement="{{position}}">
+                        {{item.text}}
+                    </l-radio>
+                </l-radio-group>
+            </view>
+        </content-card>
+
+        <content-card name="客户等级">
+            <view style="padding: 20rpx 0;">
+                <l-radio-group l-class="l-radio-group" bind:linchange="onRankIdEdit" current="{{terminal.RankId}}"
+                    length="4">
+                    <l-radio l-class="l-radio" wx:for="{{ranks}}" wx:key="index" key="{{item.value}}"
+                        placement="{{position}}">
+                        {{item.text}}
+                    </l-radio>
+                </l-radio-group>
+            </view>
+        </content-card>
+
+
+        <content-card name="协议/合作">
+            <view style="padding: 0 30rpx;">
+
+                <l-list title="是否协议" isLink="{{false}}">
+                    <view slot="right-section">
+                        <switch checked="{{terminal.IsAgreement}}" bind:change="onIsAgreementEdit" />
+                    </view>
+                </l-list>
+
+                <l-list title="展示是否陈列" isLink="{{false}}">
+                    <view slot="right-section">
+                        <switch checked="{{terminal.IsDisplay}}" bindchange="onIsDisplayEdit" />
+                    </view>
+                </l-list>
+
+                <l-list title="展示是否生动化" isLink="{{false}}">
+                    <view slot="right-section">
+                        <switch checked="{{terminal.IsVivid}}" bindchange="onIsVividEdit" />
+                    </view>
+                </l-list>
+
+                <l-list title="展示是否促销" isLink="{{false}}">
+                    <view slot="right-section">
+                        <switch checked="{{terminal.IsPromotion}}" bindchange="onIsPromotionEdit" />
+                    </view>
+                </l-list>
+
+                <l-list title="展示其它" isLink="{{false}}">
+                    <view slot="right-section">
+                        <input type="text" placeholder="非必填..." value="{{terminal.OtherRamark}}"
+                            bind:input="onOtherRamarkEdit" />
+                    </view>
+                </l-list>
+
+
+            </view>
+        </content-card>
+
+        <view slot="submit">
+            <view style="padding: 20rpx;">
+                <l-button icon="checked" size="large" icon-color="#fff" icon-size="32">保存提交
+                </l-button>
+            </view>
+        </view>
+    </l-form>
+    <l-toast></l-toast>
+    <l-message></l-message>
+</view>

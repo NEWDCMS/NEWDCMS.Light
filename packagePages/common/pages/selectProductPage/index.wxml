@@ -1,0 +1,57 @@
+<view class='container'>
+    <view class="search-bar-view">
+        <l-button wx:if="{{showGift}}" bgColor="#ef8934" class="terminal-button" width="140" bindlintap='onGifts'>
+            <l-icon name="gift" size="30" style="margin-right: 5rpx;" /> 政策
+        </l-button>
+        <l-search-bar class="terminal-search" bg-color="#eee" placeholder="简拼/编码/名称/关键字" show-cancel="false" bind:linchange="searchBarInput" bind:linclear="searchBarClear"/>
+    </view>
+    <view style="margin-top:0rpx;border-top:1rpx #eee solid;height:{{categoryHeight}}px;">
+        <l-tabs active-key="{{catagorieDefaultKey}}" placement="left" equal-width="true" l-class-active="active commom" l-class-inactive="inactive commom" l-class-header="header" l-class-line="line" bind:linchange="onCatagoriesChanged">
+            <l-tabpanel badge-count="{{item.badgeCount}}" tab="{{item.Name}}" key="{{item.Id}}" slot="{{item.Id}}" wx:for="{{catagories}}" wx:key="index">
+                <!-- 插槽内容 -->
+                <scroll-view class="scroll-box" scroll-y style="height:{{categoryHeight}}px" class="product-content">
+                    <view class="productDatas" wx:for="{{item.productDatas}}" wx:key="index" wx:for-item="p">
+                        <view class="des">
+                            <text class='des-title'>{{p.Name}}</text>
+                            <view class='des-box'>
+                                <l-icon name="shop" class='des-box-icon' size="30" />
+                                <text class='des-box-text'>编码：{{p.ProductCode}}</text>
+                            </view>
+                            <view class='des-box'>
+                                <l-icon name="hot" class='des-box-icon' size="30" />
+                                <text class='des-box-text'>规格：{{p.UnitConversion}}</text>
+                            </view>
+
+                            <view class='des-box'>
+                                <l-icon name="label" class='des-box-icon' size="30" />
+                                <text class='des-box-text'>{{p.WareHouseName}}：{{p.UsableQuantityString}}</text>
+                            </view>
+                        </view>
+                        <view class="button-box">
+                            <l-checkbox-group bindlinchange="change" data-id="{{item.Id}}">
+                                <l-checkbox l-class="l-checkbox-color" wx:key="{{p.Id}}" key="{{p.Id}}" checked="{{p.checked}}">
+                                </l-checkbox>
+                            </l-checkbox-group>
+                            <!-- 收藏 -->
+                            <l-button class="like" special="true" bindtap="onLike" data-key="{{p}}" data-like="{{p.like}}">
+                                <l-icon size="45" name="like" color="{{p.like?'#53a245':'#ddd'}}" />
+                            </l-button>
+                        </view>
+                    </view>
+                </scroll-view>
+            </l-tabpanel>
+        </l-tabs>
+    </view>
+    <view style="height: 100rpx;"></view>
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <l-checkbox-group placement="row" bindlinchange="onUsableInventoryChange">
+                <l-checkbox key="zerostock" select-color="#63CD7D" checked="{{searchData.usablequantity}}">忽略库存
+                </l-checkbox>
+                <l-checkbox key="collect" select-color="#63CD7D" checked="{{searchData.isCollect}}">显示收藏</l-checkbox>
+            </l-checkbox-group>
+            <l-button class="button" bindtap="onAdd">添加</l-button>
+        </view>
+    </view>
+</view>

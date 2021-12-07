@@ -1,0 +1,54 @@
+<l-tab-bar text-color="#53a245" list="{{list}}" />
+
+<view class='container'>
+  <!-- 头像 -->
+  <view class="content-avatar">
+    <l-avatar shape="circle" src="{{util.getImageURL(userInfo.FaceImage)}}" bindtap="upload" />
+    <view class="content-name">{{userInfo.UserRealName}}</view>
+    <view class="content-phone">
+      <l-icon name="phone" /> {{userInfo.MobileNumber}}
+    </view>
+  </view>
+  <view class="mycard-container">
+    <view class="mycard-container-box ">
+      <!-- 菜单 -->
+      <view class="detail-navi" wx:for="{{menuDatas}}" wx:key="item" data-id="{{item.id}}" data-nav='{{item.nav}}' bindtap="clickListItem">
+        <view class="detail-left">
+          <l-icon name="{{item.icon}}" class="detail-icon" />
+          <view class="detail-content">
+            <l-badge show="{{item.show}}" value="{{item.badge}}">
+              <text class="detail-navi-name">{{item.title}}</text>
+            </l-badge>
+          </view>
+        </view>
+        <l-icon name="arrow" class="navi-button" />
+      </view>
+      <!-- 注销 -->
+      <view class="mycard-container-signOut">
+        <l-button bgColor="#53a245" icon="clear" size="long" icon-color="#ffffff" icon-size="32" bind:lintap="signOut" data-type="3">注销账户</l-button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<l-loading type="change" l-container-class="l-container" show="{{isBusy}}" full-screen="{{true}}" />
+
+<wxs module="util">
+  var getImageURL = function (path) {
+    var _url = '/images/view/default-image.png'
+    //console.log('path', path)
+    if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+      var ss = ''
+      if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+        _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+      }
+      else {
+        _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+      }
+    }
+    return _url
+  }
+  module.exports = {
+    getImageURL: getImageURL
+  }
+</wxs>

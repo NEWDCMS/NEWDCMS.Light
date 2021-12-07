@@ -1,0 +1,19 @@
+<view>
+    <l-form name="pageForm" is-submit-validate="true" bind:linsubmit="resetPassword">
+        <l-form-item tip-type="text" label="旧密码:" name="oldPassword" rules="{{oldPasswordRules}}">
+            <l-input l-class="l-input-container-class" id="oldPassword" value="{{pageForm.oldPassword}}" hide-label  bind:linblur="oldPasswordInput"/>
+        </l-form-item>
+
+        <l-form-item tip-type="text" label="新密码:" name="password" rules="{{passwordRules}}">
+            <l-input l-class="l-input-container-class" id="password" value="{{pageForm.password}}" hide-label  bind:linblur="newPasswordInput"/>
+        </l-form-item>
+        <l-form-item tip-type="text" label="确认密码:" name="confirm" rules="{{confirmRules}}">
+            <l-input l-class="l-input-container-class" id="confirm" value="{{pageForm.confirm}}" hide-label  bind:linblur="confirmInput"/>
+        </l-form-item>
+
+        <view slot="submit" style="padding: 20rpx;">
+            <l-button size="long">提交</l-button>
+        </view>
+
+    </l-form>
+</view>

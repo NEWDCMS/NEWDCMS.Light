@@ -1,0 +1,5 @@
+<!-- 退货订单 -->
+<template name="13">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+</template>
+

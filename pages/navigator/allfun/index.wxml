@@ -1,0 +1,49 @@
+<l-tab-bar text-color="#53a245" list="{{list}}" />
+
+<view class="container">
+  <content-card class="content" name="单据类">
+    <view class="view-container" wx:if="{{module_show_1}}">
+      <l-grid show-border="{{true}}" l-class="grid-container">
+        <l-grid-item wx:for="{{moduledata1}}" wx:key="index" key="{{index}}" slot="{{index}}" cell="{{item}}" l-grid-item="grid-item" bind:linitemtap="clickGrid" wx:if="{{item.selected}}">
+          <l-icon name="{{item.icon}}" size="50" color="{{item.color}}" />
+          <view class="text" style="color:{{item.color}}">{{item.name}}</view>
+        </l-grid-item>
+      </l-grid>
+    </view>
+  </content-card>
+
+  <content-card class="content" name="报表类">
+    <view class="view-container" wx:if="{{module_show_2}}">
+      <l-grid show-border="{{true}}" l-class="grid-container">
+        <l-grid-item wx:for="{{moduledata2}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}" cell="{{item}}" l-grid-item="grid-item" bind:linitemtap="clickGrid" wx:if="{{item.selected}}">
+          <l-icon name="{{item.icon}}" size="50" color="{{item.color}}" />
+          <view class="text" style="color:{{item.color}}">{{item.name}}</view>
+        </l-grid-item>
+      </l-grid>
+    </view>
+  </content-card>
+
+  <content-card class="content" name="市场类">
+    <view class="view-container" wx:if="{{module_show_3}}">
+      <l-grid show-border="{{true}}">
+        <l-grid-item wx:for="{{moduledata3}}" wx:key="index" key="{{index}}" slot="{{index}}" bind:linitemtap="clickGrid" cell="{{item}}" l-grid-item="grid-item" wx:if="{{item.selected}}">
+          <l-icon name="{{item.icon}}" size="50" color="{{item.color}}" />
+          <view class="text" style="color:{{item.color}}">{{item.name}}</view>
+        </l-grid-item>
+      </l-grid>
+    </view>
+  </content-card>
+
+  <content-card class="content" name="档案类">
+    <view class="view-container" wx:if="{{module_show_4}}">
+      <l-grid show-border="{{true}}">
+        <l-grid-item wx:for="{{moduledata4}}" wx:key="index" key="{{index}}" slot="{{index}}" cell="{{item}}" l-grid-item="grid-item" bind:linitemtap="clickGrid" wx:if="{{item.selected}}">
+          <l-icon name="{{item.icon}}" size="50" color="{{item.color}}" />
+          <view class="text" style="color:{{item.color}}">{{item.name}}</view>
+        </l-grid-item>
+      </l-grid>
+    </view>
+  </content-card>
+</view>
+
+<l-loading type="change" l-container-class="l-container" show="{{isBusy}}" full-screen="{{true}}" />

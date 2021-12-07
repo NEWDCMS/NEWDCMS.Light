@@ -1,0 +1,35 @@
+<view class="view">
+    <camera class="camera" device-position="back" wx:if="{{camera}}" flash="off">
+        <cover-view class="cover-camera" bindtap="camera">
+            <cover-view class="cover-fill">
+            </cover-view>
+        </cover-view>
+        <!-- 关闭 -->
+        <cover-image class="cover-close" src="/images/down.png" style="width:60rpx;height:60rpx;" bindtap="close">
+        </cover-image>
+        <!-- 切换 -->
+        <!-- <cover-image class="cover-take" src="/images/take.png" style="width:80rpx;height:60rpx;" bindtap="devicePosition">
+        </cover-image> -->
+    </camera>
+</view>
+
+<!-- 图片裁切 -->
+<l-image-clipper show="{{clipperConfig.show}}" image-url="{{clipperConfig.imageUrl}}" z-index="{{clipperConfig.zIndex}}"
+    type="{{clipperConfig.type}}" quality="{{clipperConfig.quality}}" width="{{clipperConfig.width}}"
+    height="{{clipperConfig.height}}" max-height="{{clipperConfig.maxHeight}}" max-width="{{clipperConfig.maxWidth}}"
+    min-width="{{clipperConfig.minWidth}}" min-height="{{clipperConfig.minHeight}}"
+    lock-width="{{clipperConfig.lockWidth}}" lock-height="{{clipperConfig.lockHeight}}"
+    lock-ratio="{{clipperConfig.lockRatio}}" scale-ratio="{{clipperConfig.scaleRatio}}"
+    min-ratio="{{clipperConfig.minRatio}}" max-ratio="{{clipperConfig.maxRatio}}"
+    disable-scale="{{clipperConfig.disableScale}}" disable-rotate="{{clipperConfig.disableRotate}}"
+    limit-move="{{clipperConfig.limitMove}}" check-image="{{clipperConfig.checkImage}}"
+    check-image-icon="{{clipperConfig.checkImageIcon}}" rotate-along="{{clipperConfig.rotateAlong}}"
+    rotate-along-icon="{{clipperConfig.rotateAlongIcon}}" rotate-inverse="{{clipperConfig.rotateInverse}}"
+    rotate-inverse-icon="{{clipperConfig.rotateInverseIcon}}" sure="{{clipperConfig.sure}}"
+    sure-icon="{{clipperConfig.sureIcon}}" close="{{clipperConfig.close}}" close-icon="{{clipperConfig.closeIcon}}"
+    bindlinclip="linclip" bindlinclose="linclose">
+    <l-image-clipper-tools z-index="{{toolsConfig.zIndex}}" rotate-angle="{{toolsConfig.rotateAngle}}"
+        lock-width="{{toolsConfig.lockWidth}}" lock-height="{{toolsConfig.lockHeight}}"
+        lock-ratio="{{toolsConfig.lockRatio}}" disable-scale="{{toolsConfig.disableScale}}"
+        disable-rotate="{{toolsConfig.disableRotate}}" limit-move="{{toolsConfig.limitMove}}"></l-image-clipper-tools>
+</l-image-clipper>

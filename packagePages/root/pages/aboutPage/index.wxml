@@ -1,0 +1,14 @@
+<view class="container">
+    <canvas class="myQrcode" canvas-id="myQrcode"></canvas>
+    <text>DCMS ©{{util.year()}} 雪花晋陕</text>
+</view>
+
+<wxs module="util">
+    var year = function () {
+        var d = getDate()
+        return d.getFullYear()
+    }
+    module.exports = {
+        year: year
+    }
+</wxs>

@@ -1,0 +1,26 @@
+
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  padding-bottom: 150rpx;
+}
+
+.num {
+  color: #3B5998;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
+.text {
+  height: 30rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #3B5998;
+  line-height: 35rpx;
+  margin-top: 9rpx;
+}
+
+.grid-item {
+  height: 200rpx;
+} 

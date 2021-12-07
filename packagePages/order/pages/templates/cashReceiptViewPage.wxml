@@ -1,0 +1,40 @@
+<!-- 收款单 -->
+<template name="41">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+
+    <view class="items" wx:for="{{bills}}" bindtap="onRedict" data-billid="{{item.Id}}">
+        <view class="items-column">
+            <view class="items-column-left">
+                {{item.BillNumber}}
+            </view>
+            <view class="items-column-right" wx:if="{{!item.ReversedStatus}}">
+                <l-tag wx:if="{{item.AuditedStatus}}" size="large" bgColor="#53a245" font-color="#fff"
+                    bind:lintap="selectTap" shape="circle">已审核</l-tag>
+                <l-tag wx:else size="large" bgColor="#53a245" font-color="#fff" bind:lintap="selectTap" shape="circle">
+                    未审核</l-tag>
+            </view>
+            <view class="items-column-right" wx:if="{{item.ReversedStatus}}">
+                <l-tag wx:if="{{item.AuditedStatus}}" size="large" bgColor="#EC0013" font-color="#fff"
+                    bind:lintap="selectTap" shape="circle">已冲改</l-tag>
+            </view>
+        </view>
+        <view class="items-column">
+            <view class="items-column-left tname">
+                {{item.CustomerName}}
+            </view>
+            <view class="items-column-right">
+                <l-price l-class="price" unit="￥" value="{{item.OweCash}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+        </view>
+        <view class="items-column">
+            <view class="items-column-left label">
+                业务员：{{item.PayeerName}}
+            </view>
+            <view class="items-column-right label">
+                时间：
+                <dateformat value="{{item.CreatedOnUtc}}" format="yyyy-MM-dd h:mm:ss" />
+            </view>
+        </view>
+    </view>
+</template>

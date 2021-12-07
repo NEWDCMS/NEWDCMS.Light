@@ -1,0 +1,228 @@
+<!--pages/archive/pages/addProductArchivePage/index.wxml-->
+<view class='container'>
+    <content-card name="商品图片">
+        <view class="avatar-container-box">
+            <l-image-picker count="1" custom="{{true}}" clear="{{clear}}" size="4" bind:linremove="onClearTap"
+                bind:linchange="photoChange" urls="{{product.PhotoUrl}}">
+                <view class='add'>
+                    <image class='add-icon' src='/images/static/camera_add.png'></image>
+                    <text class='add-text'>上传图片</text>
+                </view>
+            </l-image-picker>
+        </view>
+    </content-card>
+
+    <content-card name="基本信息">
+        <view class='buttun-wrapper'>
+            <l-input width="750" label="商品名称" data-tag="Name" value="{{product.Name}}" clear="{{true}}" placeholder="必填"
+                label-width="170" bind:lininput="onInput" />
+            <l-input width="750" label="商品简称" value="{{product.MnemonicCode}}" clear="{{true}}" placeholder="必填"
+                label-width="170" data-tag="MnemonicCode" bind:lininput="onInput" />
+            <l-input width="750" label="商品编码" data-tag="ProductCode" value="{{product.ProductCode}}" clear="{{true}}"
+                placeholder="非必填..." label-width="170" bind:lininput="onInput" />
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品类别</text>
+                </view>
+                <view class="maincon-container-item-inner" bindtap="showActionSheetcatagories">
+                    <text style="margin-left:40rpx;width:500rpx;"
+                        class="label">{{product.CategoryName==''?'必选...':product.CategoryName}}</text>
+                </view>
+                <l-button special="true" bindtap="showActionSheetcatagories">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <!-- <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;"  value="{{product.CategoryName}}" placeholder="必选..."
+                        bindfocus="showActionSheetcatagories" />
+                </view> 
+                <l-button special="true" bindtap="showActionSheetcatagories">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button> -->
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品品牌</text>
+                </view>
+                <!-- <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="必选..." bindfocus="showActionSheetbrands"
+                        value="{{product.BrandName}}" />
+                </view> -->
+                <view class="maincon-container-item-inner" bindtap="showActionSheetbrands">
+                    <text style="margin-left:40rpx;width:500rpx;"
+                        class="label">{{product.BrandName==''?'必选...':product.BrandName}}</text>
+                </view>
+                <l-button special="true" bindtap="showActionSheetbrands">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+            </view>
+        </view>
+    </content-card>
+
+    <content-card name="小单位">
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品单位</text>
+                </view>
+                <!-- <view class="input">
+                    <input style="margin-left:40rpx;width:250rpx;" placeholder="必选..."
+                        bindfocus="showActionSheetSmallUnit" value="{{product.SmallUnitName}}" />
+                </view>
+                 -->
+                <view class="maincon-container-item-inner" bindtap="showActionSheetSmallUnit">
+                    <text style="margin-left:40rpx;width:500rpx;"
+                        class="label">{{product.SmallUnitName==''?'必选...':product.SmallUnitName}}</text>
+                </view>
+                <l-button special="true" bindtap="showActionSheetSmallUnit">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品进价</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="非必填..." type='digit'
+                        value="{{product.SmallPurchasePrice==0?'':product.SmallPurchasePrice}}"
+                        data-tag="SmallPurchasePrice" bindinput="onInput" />
+                </view>
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品条码</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="必选..." value="{{product.SmallBarCode}}"
+                        data-tag="SmallBarCode" bindinput="onInput" />
+                </view>
+                <view class="arrow-down">
+                    <l-icon name="scan" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+    </content-card>
+
+    <content-card name="中单位">
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品单位</text>
+                </view>
+                <!-- <view class="input">
+                    <input style="margin-left:40rpx;width:250rpx;" placeholder="非必选..."
+                        bindfocus="showActionSheetStrokeUnit" value="{{product.StrokeUnitName}}" />
+                </view> -->
+                
+                <view class="maincon-container-item-inner" bindtap="showActionSheetStrokeUnit">
+                    <text style="margin-left:40rpx;width:250rpx;"
+                        class="label">{{product.StrokeUnitName==''?'非必选...':product.StrokeUnitName}}</text>
+                </view>
+                <l-button special="true" bindtap="showActionSheetStrokeUnit">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:180rpx;" type='number'
+                        value="{{product.StrokeQuantity==0?'':product.StrokeQuantity}}" data-tag="StrokeQuantity"
+                        bindinput="onInput" placeholder="非必填..." />
+                </view>
+                <txt>{{product.SmallUnitName}}</txt>
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品进价</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="非必填..." type='digit'
+                        value="{{product.StrokePurchasePrice==0?'':product.StrokePurchasePrice}}"
+                        data-tag="StrokePurchasePrice" bindinput="onInput" />
+                </view>
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品条码</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="非必填..."
+                        value="{{product.StrokeBarCode}}" data-tag="StrokeBarCode" bindinput="onInput" />
+                </view>
+                <view class="arrow-down">
+                    <l-icon name="scan" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+    </content-card>
+
+    <content-card name="大单位">
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品单位</text>
+                </view>
+                <!-- <view class="input">
+                    <input style="margin-left:40rpx;width:250rpx;" placeholder="非必选..."
+                        bindfocus="showActionSheetBigUnit" value="{{product.BigUnitName}}" />
+                </view> -->
+                
+                <view class="maincon-container-item-inner" bindtap="showActionSheetBigUnit">
+                    <text style="margin-left:40rpx;width:250rpx;"
+                        class="label">{{product.BigUnitName==''?'非必选...':product.BigUnitName}}</text>
+                </view>
+                <l-button special="true" bindtap="showActionSheetBigUnit">
+                    <l-icon size="40" name="arrow-down" color="#999" />
+                </l-button>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:180rpx;" placeholder="非必填..." type='number'
+                        value="{{product.BigQuantity==0?'':product.BigQuantity}}" data-tag="BigQuantity"
+                        bindinput="onInput" />
+                </view>
+                <txt>{{product.SmallUnitName}}</txt>
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品进价</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="非必填..." type='digit'
+                        value="{{product.BigPurchasePrice==0?'':product.BigPurchasePrice}}" data-tag="BigPurchasePrice"
+                        bindinput="onInput" />
+                </view>
+            </view>
+        </view>
+        <view class="list-box">
+            <view class="list-box-item">
+                <view class="list-box-item-left">
+                    <text>商品条码</text>
+                </view>
+                <view class="input">
+                    <input style="margin-left:40rpx;width:500rpx;" placeholder="非必填..." value="{{product.BigBarCode}}"
+                        data-tag="BigBarCode" bindinput="onInput" />
+                </view>
+                <view class="arrow-down">
+                    <l-icon name="scan" size="40" color="#999" />
+                </view>
+            </view>
+        </view>
+    </content-card>
+    <view>
+        <view style="padding: 20rpx;">
+            <l-button icon="checked" size="large" icon-color="#fff" icon-size="32" bindtap="onSubmit">保存提交</l-button>
+        </view>
+    </view>
+
+    <l-action-sheet l-class-title="action-title" />
+</view>

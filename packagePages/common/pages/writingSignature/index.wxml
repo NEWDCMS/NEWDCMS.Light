@@ -1,0 +1,17 @@
+<view class="wrapper">
+    <view class="handBtn">
+        <button catchtap="onRetDraw" class="delBtn">重写</button>
+        <!-- <button catchtap="saveCanvasAsImg" class="saveBtn">保存</button> -->
+        <button catchtap="onPreviewCanvas" class="previewBtn">预览</button>
+        <!-- <button catchtap="uploadCanvasImg" class="uploadBtn">上传</button> -->
+        <button catchtap="onCancel" class="cancelBtn">取消</button>
+        <button catchtap="onSubmit" class="subBtn">完成</button>
+    </view>
+    <view class="handCenter">
+        <canvas class="handWriting" disable-scroll="true" bindtouchstart="uploadScaleStart" bindtouchmove="uploadScaleMove" bindtouchend="uploadScaleEnd" bindtap="mouseDown" canvas-id="handWriting">
+        </canvas>
+    </view>
+    <view class="handRight">
+        <view class="handTitle">请正楷输入</view>
+    </view>
+</view>

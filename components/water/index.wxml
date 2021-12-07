@@ -1,0 +1,30 @@
+<view class="water-box" wx:if="{{show}}">
+  <!-- 已审核 -->
+  <view wx:if="{{type==1}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/have-black.png' class='water-img'></image>
+  </view>
+  <!-- 已终止 -->
+  <view wx:if="{{type==2}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/have_finish.png' class='water-img'></image>
+  </view>
+  <!-- 已红冲 -->
+  <view wx:if="{{type==3}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/have_gray.png' class='water-img'></image>
+  </view>
+  <!-- 红冲单 -->
+  <view wx:if="{{type==4}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/have_red.png' class='water-img'></image>
+  </view>
+  <!-- 已调度 -->
+  <view wx:if="{{type==5}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/have_schedule.png' class='water-img'></image>
+  </view>
+  <!-- 红冲凭证 -->
+  <view wx:if="{{type==6}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/havered_voucher.png' class='water-img'></image>
+  </view>
+  <!-- 已驳回 -->
+  <view wx:if="{{type==6}}" class="water-container">
+    <image src='https://resources.jsdcms.com:8999/content/Images/reject_red.png' class='water-img'></image>
+  </view>
+</view>

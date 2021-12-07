@@ -1,0 +1,92 @@
+<view>
+    <view class="maincon-container">
+        <view class="maincon-container-header">
+            <l-search-bar class="user-search" bg-color="#eee" placeholder="选择员工" bind:linfocus="onSelectUser" />
+        </view>
+        <view class="main-container-table">
+            <view class="table">
+                <view class="thr bg-w">
+                    <view class="th tstart">业务员</view>
+                    <view class="th">收款金额</view>
+                    <view class="th tend">操作</view>
+                </view>
+            </view>
+            <view class="view-container">
+                <l-collapse>
+                    <l-collapse-item l-body-class="l-body-class" customTitle="{{true}}">
+                        <view class="title" slot="title">
+                            <view class="detail-container">黄泉华
+                                <l-icon name="arrow-down" size="30" color="#999" />
+                            </view>
+                            <l-button class="detail-tool" height="50" size="mini" shape="semicircle" plain="{{true}}">撤销
+                            </l-button>
+                        </view>
+                        <block>
+                            <view class="tr bg-g">
+                                <view class="td pname">2020-10-01</view>
+                                <view class="td">
+                                    <l-price l-class="price" unit="￥" value="3434.8" reserveDigit="2" autofix="true"
+                                        value-color="#53a245" unit-color="#53a245" value-size="30" />
+                                </view>
+                                <view class="td tool">
+                                    <l-button l-class height="50" size="mini" shape="semicircle" plain="{{true}}">撤销
+                                    </l-button>
+                                </view>
+                            </view>
+                        </block>
+                        <block>
+                            <view class="tr">
+                                <view class="td pname">2020-10-01</view>
+                                <view class="td">
+                                    <l-price l-class="price" unit="￥" value="3434.8" reserveDigit="2" autofix="true"
+                                        value-color="#53a245" unit-color="#53a245" value-size="30" />
+                                </view>
+                                <view class="td tool">
+                                    <l-button l-class height="50" size="mini" shape="semicircle" plain="{{true}}">撤销
+                                    </l-button>
+                                </view>
+                            </view>
+                        </block>
+                    </l-collapse-item>
+
+                </l-collapse>
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部工具栏 -->
+    <view class="float-container">
+        <view class="float-container-toolbar">
+            <view class="left-block">
+                <text class="label">合计：</text>
+                <l-price l-class="price" unit="￥" value="{{totalCollectionAmount}}" reserveDigit="2" autofix="true"
+                    value-color="#53a245" unit-color="#53a245" value-size="35" />
+            </view>
+            <view class="right-block">
+                <!-- 筛选 -->
+                <l-button class="button" width="80" size="long" bindtap="onFilter">
+                    <l-icon size="40" name="weapp-nav" color="#fff" />
+                </l-button>
+            </view>
+        </view>
+    </view>
+
+
+
+
+    <l-action-sheet l-class-title="action-title" />
+    <!-- 自定义溢出菜单 -->
+    <l-popup show="{{menusConf.show}}" showMask="{{menusConf.showMask}}" animation="{{menusConf.animation}}"
+        contentAlign="{{menusConf.contentAlign}}" locked="{{menusConf.locked}}" bind:lintap="onPopupTap">
+        <view class='leftMenus'>
+            <l-list l-icon-class="icon" title="{{item.name}}" icon="{{item.icon}}" wx:for="{{menusConf.menus}}"
+                wx:key="id" bind:lintap="clickMenuItem" data-item="{{item}}" />
+        </view>
+    </l-popup>
+
+    <!-- calendar -->
+    <l-calendar bind:linconfirm="selectCalender" title="{{ title }}" show="{{ calenderShow }}"
+        minSelect="{{ minSelect }}" maxSelect="{{ maxSelect }}" defaultDate="{{ defaultDate }}" type="{{ type }}"
+        color="{{ color }}" confirmText="{{ confirmText }}" formatter="{{ formatter }}">
+    </l-calendar>
+</view>

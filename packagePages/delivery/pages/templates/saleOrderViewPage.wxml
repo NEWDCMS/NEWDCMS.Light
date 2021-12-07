@@ -1,0 +1,47 @@
+<!-- 销售订单 -->
+<template name="11">
+    <van-empty image="default" wx:if="{{bills.length<=0}}" description="空空如也！" />
+    <view class="items" wx:for="{{bills}}" bindtap="onRedict" data-bill="{{item}}" data-billid="{{item.BillId}}">
+        <view class="items-column">
+
+            <view class="items-column-left">
+                <view wx:if="{{item.BillTypeId==10}}" style="margin-right: 10rpx;">
+                    <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">换</l-tag>
+                </view>
+                <view wx:if="{{item.BillTypeId==11}}" style="margin-right: 10rpx;">
+                    <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">订</l-tag>
+                </view>
+                <view wx:if="{{item.BillTypeId==13}}" style="margin-right: 10rpx;">
+                    <l-tag size="medium" type="reading" shape="circle" plain="{{true}}">退</l-tag>
+                </view>
+                {{item.BillNumber}}
+            </view>
+            <view class="items-column-right" wx:if="{{!item.ReversedStatus}}">
+                <l-tag size="large" bgColor="#53a245" font-color="#fff" bind:lintap="selectTap" shape="circle">
+                    <view wx:if="{{item.BillTypeId==10}}">换货</view>
+                    <view wx:if="{{item.BillTypeId==11}}">签收</view>
+                    <view wx:if="{{item.BillTypeId==13}}">退货</view>
+                </l-tag>
+            </view>
+        </view>
+        <view class="items-column">
+            <view class="items-column-left tname">
+                {{item.TerminalName}}
+            </view>
+            <view class="items-column-right">
+                <l-price l-class="price" unit="￥" value="{{item.OrderAmount}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="30" />
+            </view>
+        </view>
+        <view class="items-column">
+            <view class="items-column-left label">
+                业务员：{{item.BusinessUserName}}
+            </view>
+            <view class="items-column-right label">
+                时间：
+                <dateformat value="{{item.TransactionDate}}" format="yyyy-MM-dd h:mm:ss" />
+            </view>
+        </view>
+    </view>
+
+
+</template>

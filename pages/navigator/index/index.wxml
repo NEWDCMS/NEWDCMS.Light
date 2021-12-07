@@ -1,0 +1,106 @@
+<l-tab-bar text-color="#" list="{{list}}" />
+<!-- 页头 -->
+<view class="container">
+  <view class="header">
+    <view class="content-item">
+      <view class="home-avatar-top">
+        <view class="home-avatar-left">
+          <l-avatar shape="circle" src="{{util.getImageURL(userInfo.FaceImage)}}" size="100" bindtap="clickDashboard" data-key="/packagePages/root/pages/clipperFacePage/index" />
+          <view class="home-avatar">
+            <view class="home-avatar-titlebox">
+              <text class="home-title">{{userInfo.UserRealName}} </text>
+              <l-tag class="home-tag" bg-color="#53a245" font-color="#ffffff" shape="circle" size="mini">
+                {{userInfo.Roles[0].Name}}</l-tag>
+            </view>
+            <text class="home-describe">{{userInfo.StoreName}}</text>
+            <l-rate class="home-rate" score="5" size="30" activeColor="#fff000" inActiveColor="#eeeeee" />
+          </view>
+          <image class="home-cutbtn" src="/images/menu.png" bindtap="onShowPopupTap" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 统计面板 -->
+  <view class="view-container">
+    <l-grid row-num="3">
+      <l-grid-item key="one" slot="one" class="panel-line" data-key="/packagePages/home/pages/salesRatePage/index" bind:linitemtap="clickDashboard">
+        <view class="num">￥{{dashboardData.TodaySaleAmount}}</view>
+        <view class="text">销售净额</view>
+      </l-grid-item>
+      <l-grid-item key="tow" slot="tow" class="panel-line" data-key="/packagePages/home/pages/visitingRatePage/index" bind:linitemtap="clickDashboard">
+        <view class="num">{{dashboardData.TodayVisitQuantity}}</view>
+        <view class="text">门店拜访</view>
+      </l-grid-item>
+      <l-grid-item key="three" slot="three" data-key="/packagePages/home/pages/newCustomersPage/index" bind:linitemtap="clickDashboard">
+        <view class="num">{{dashboardData.TodayAddTerminalQuantity}}</view>
+        <view class="text">新增终端</view>
+      </l-grid-item>
+    </l-grid>
+  </view>
+
+  <!-- 快捷方式 -->
+  <view class="section">
+    <navi-title title="快捷方式" showCount="{{false}}" />
+    <view class="section-content-quick">
+      <l-grid show-border="{{true}}" row-num="3">
+        <l-grid-item wx:for="{{appDatas}}" wx:key="{{index}}" key="{{index}}" slot="{{index}}" cell="{{item}}" l-grid-item="grid-item" bind:linitemtap="clickGrid">
+          <l-icon name="{{item.image}}" size="50" color="#53a245" />
+          <view class="text">{{item.text}}</view>
+        </l-grid-item>
+      </l-grid>
+    </view>
+  </view>
+
+  <!-- 热销排行 -->
+  <view class="section" wx:if="{{hotSaleRanking}}">
+    <navi-title title="热销排行" showCount="{{false}}" />
+    <view class="section-content" style="padding: 15rpx;">
+      <canvas wx:if="{{hotSaleRanking}}" style="width:100%;height:200px;" type="2d" id="hotBarChart" bindtouchstart="touchBarHandler"></canvas>
+    </view>
+  </view>
+
+  <!-- 业务统计 -->
+  <view class="section" wx:if="{{businessAnalysis}}">
+    <navi-title title="业务统计" showCount="{{false}}" />
+    <view class="section-content" style="padding: 15rpx;">
+      <canvas wx:if="{{businessAnalysis}}" style="width:100%;height:200px;margin:15rpx;" type="2d" id="statLineChart" bindtouchstart="touchLineHandler"></canvas>
+    </view>
+  </view>
+
+  <l-loading type="change" l-container-class="l-container" show="{{isBusy}}" full-screen="{{true}}" />
+
+  <!-- popup -->
+  <l-arc-popup show="{{currentConfig.show}}" transition="{{currentConfig.transition}}" direction="{{currentConfig.direction}}" locked="{{currentConfig.locked}}" maxHeight="{{currentConfig.maxHeight}}" minHeight="{{currentConfig.minHeight}}" arcRadius="{{currentConfig.arcRadius}}" opacity="{{currentConfig.opacity}}" l-panel-class="{{panelClass}}">
+    <view class="popup-tool">
+      <view class="popup-tool-item" wx:for="{{topToolbarList}}" wx:for-item="item" wx:key="index">
+        <view class="popup-tool-icon" bindtap="onToolClick" data-item="{{item}}">
+          <l-icon name="{{item.icon}}" size="40" color="#838383"></l-icon>
+        </view>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </l-arc-popup>
+  <!-- 对话款 -->
+  <l-dialog />
+</view>
+
+<wxs module="util">
+  var getImageURL = function (path) {
+    var _url = '/images/view/default-image.png'
+    //console.log('path', path)
+    if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+      var ss = ''
+      if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+        _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+      }
+      else {
+        _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+      }
+    }
+    return _url
+  }
+  module.exports = {
+    getImageURL: getImageURL
+  }
+</wxs>

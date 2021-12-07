@@ -1,0 +1,130 @@
+<view style="background-image: url('{{util.getImageURL(terminalData.DoorwayPhoto)}}');background-color: black; background-size: 100%;" class="terminalbox">
+    <view class="terminalbox-header">
+        <view class="terminalbox-header-left">
+            <view class="content-name">{{terminalData.Name}}</view>
+            <view class="terminalbox-rate">
+                <l-rate score="5" size="30" activeColor="#fff000" inActiveColor="#eeeeee" />
+            </view>
+        </view>
+        <view class="terminalbox-header-right">
+            <l-button special="true" bindtap="onOpenStore">
+                <view class="share-box">
+                    <l-icon size="50" name="qr" color="#fff" />
+                </view>
+            </l-button>
+        </view>
+    </view>
+    <view class="terminalbox-content">
+        <view class='des-distance-address'>
+            <l-icon name="location" class='des-distance-icon' size="30" />
+            <view class='des-distance-text'>
+                <numberformat style="color: #fff;margin-right: 10rpx;" value="{{terminalData.Location_Lng}}" format="6" />
+                <numberformat style="color: #fff;" value="{{terminalData.Location_Lat}}" format="6" />
+            </view>
+            <l-tag shape='circle' size="mini" bg-color="#eee" font-color="#666" bind:lintap="openVisitRecords">历史记录</l-tag>
+        </view>
+        <view class='des-distance-bottom'>
+            <l-icon name="more" class='des-distance-icon' size="30" />
+            <text class='des-distance-text'>{{terminalData.Address}}</text>
+        </view>
+    </view>
+</view>
+
+
+<view class="terminalbox-content-detail">
+    <l-list title="欠款" tag-color="#ff0000" iconSize="35" icon="gold-coin" tagShape="circle" tag-position="right" isLink="{{true}}" bind:lintap="onRedirect" data-key="/packagePages/reporting/pages/receivablesPage/index?TerminalId={{terminalData.Id}}&TerminalName={{terminalData.Name}}">
+        <view slot="right-section" style="margin-right: 20rpx;">
+            <l-price l-class="price" unit="￥" value="{{terminalBalance.TotalOweCash}}" reserveDigit="2" autofix="true" value-color="#53a245" unit-color="#53a245" value-size="35" />
+        </view>
+    </l-list>
+    <l-list iconSize="35" title="联系电话" right-desc="{{terminalData.BossCall}}" isLink="{{false}}" icon="phone" />
+    <l-list iconSize="35" title="签到时间" right-desc="{{currentSigninDateTimeStr}}" isLink="{{false}}" icon="warning" />
+    <l-list iconSize="35" title="上次拜访" right-desc="{{lastVisitInfo.SigninDateTimeString}}" isLink="{{false}}" icon="clock" />
+    <l-list iconSize="35" title="上次采购" right-desc="{{lastVisitInfo.LastPurchaseDateString}}" isLink="{{false}}" icon="cart" />
+</view>
+
+
+
+<content-card name="业务动作" cardPadding="{{false}}">
+    <l-steps direction="column" active-index="1">
+        <l-step title="签到">
+            <view class="describe-container" slot="describe">
+                <l-button disabled="{{signInFlag}}" bgColor="{{signInFlag?'#C0C0C0':''}}" shape="semicircle" bind:lintap="signIn">{{signInFlag?'已签到':'签到'}}</l-button>
+            </view>
+        </l-step>
+        <l-step title="门头拍照">
+            <view class="describe-container" slot="describe">
+                <l-image-picker l-item-class="item" size-type="compressed" cells="{{doorheadPhotos}}" chooseType="1" terminalMark="{{terminalData.Name}}" userMark="{{userName}}" addrMark="{{terminalData.Address}}" locMark="{{terminalData.Location_Lng+','+terminalData.Location_Lng}}" count="{{signInFlag?9:0}}" size="4" bind:linchange="doorHeadPhotoChange" bind:linremove="doorHeadPhotoRemove" />
+            </view>
+        </l-step>
+        <l-step title="陈列拍照">
+            <view class="describe-container" slot="describe">
+                <l-image-picker size-type="compressed" l-item-class="item" cells="{{displayPhotos}}" chooseType="1" terminalMark="{{terminalData.Name}}" userMark="{{userName}}" addrMark="{{terminalData.Address}}" locMark="{{terminalData.Location_Lng+','+terminalData.Location_Lng}}" count="{{signInFlag?9:0}}" size="4" bind:linchange="displayHeadPhotoChange" bind:linremove="displayHeadPhotoRemove" />
+            </view>
+        </l-step>
+        <l-step title="开单">
+            <view class="describe-container" slot="describe">
+                <l-grid show-border="{{false}}" row-num="4" l-class="grid-container">
+                    <l-grid-item wx:key="index" key="1" slot="1" l-grid-item="grid-item">
+                        <!-- <l-tag bind:lintap="openSaleBill" shape='circle' size="medium" bg-color="#53a245" font-color="#fff">销售</l-tag> -->
+
+                        <l-button bind:lintap="openSaleBill" data-billtype="12" width="120" height="50" bg-color="#53a245" shape="semicircle" font-color="#fff">销售</l-button>
+                    </l-grid-item>
+                    <l-grid-item wx:key="index" key="2" slot="2" l-grid-item="grid-item">
+                        <!-- <l-tag bind:lintap="openSaleBill" shape='circle' size="medium" bg-color="#53a245" font-color="#fff">退货</l-tag> -->
+
+                        <l-button bind:lintap="openSaleBill" data-billtype="14" width="120" height="50" bg-color="#53a245" shape="semicircle" font-color="#fff">退货</l-button>
+                    </l-grid-item>
+                    <l-grid-item wx:key="index" key="3" slot="3" l-grid-item="grid-item">
+                        <!-- <l-tag bind:lintap="openSaleBill" disabled="{{true}}"  shape='circle' size="medium" bg-color="#53a245" font-color="#fff">销订</l-tag> -->
+                        <l-button bind:lintap="openSaleBill" width="120" data-billtype="11" height="50" bg-color="#53a245" shape="semicircle" disabled="{{true}}" font-color="#fff">销订</l-button>
+
+                    </l-grid-item>
+                    <l-grid-item wx:key="index" key="4" slot="4" l-grid-item="grid-item">
+                        <!-- <l-tag bind:lintap="openSaleBill" disabled="{{true}}" shape='circle' size="medium" bg-color="#53a245" font-color="#fff">退订</l-tag> -->
+                        <l-button bind:lintap="openSaleBill" width="120" data-billtype="13" height="50" bg-color="#53a245" shape="semicircle" disabled="{{true}}" font-color="#fff">退订</l-button>
+                    </l-grid-item>
+                </l-grid>
+            </view>
+        </l-step>
+        <l-step title="备注">
+            <view class="describe-container" style="text-align: left" slot="describe">
+                <l-input hideLabel="true" showRow="false" placeholder="请输入备注" maxlength="140" bind:lininput="onRemarkInput" />
+            </view>
+        </l-step>
+        <l-step title="离店">
+            <view class="describe-container" slot="describe">
+                <l-button disabled="{{!signInFlag}}" bgColor="{{!signInFlag?'#C0C0C0':''}}" shape="semicircle" type="error" bind:lintap="signOut">签退</l-button>
+            </view>
+        </l-step>
+    </l-steps>
+</content-card>
+
+<l-dialog />
+<l-popup show="{{currentConf.show}}" showMask="{{currentConf.showMask}}" animation="{{currentConf.animation}}">
+    <view class='myQrcodebox center'>
+        <canvas class="myQrcode" canvas-id="myQrcode"></canvas>
+        <text>客户扫描二维码关注"店铺管家"</text>
+    </view>
+</l-popup>
+
+
+<wxs module="util">
+    var getImageURL = function (path) {
+        var _url = '/images/view/default-image.png'
+        //console.log('path', path)
+        if (path != undefined && path != '' && (typeof (path) != 'undefined')) {
+            var ss = ''
+            if (path.indexOf('http') >= 0 || path.indexOf('https') >= 0) {
+                _url = path.replace('http://resources.jsdcms.com:9100/HRXHJS/document/image/', 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/')
+            }
+            else {
+                _url = 'https://www.jsdcms.com/visitstore/showimage?url=http://resources.jsdcms.com:9100/HRXHJS/document/image/' + path
+            }
+        }
+        return _url
+    }
+    module.exports = {
+        getImageURL: getImageURL
+    }
+</wxs>
