@@ -5,7 +5,7 @@ Wesley.Light 是Wesley微信小程序客户端，Wesley是一套新零售快消E
 ## 客户端
 
 |项目|库|描述|
-|-------|-----|----|-----------|
+|-------------|-----|-----------|
 |Wesley|[GitHub](https://github.com/dorisoy/Wesley) | 基于Xamarin.Forms5.0+ 支持Android 5.0+/IOS|
 |Wesley.Light|[GitHub](https://github.com/dorisoy/Wesley.Light) | 微信小程序客户端|
 
