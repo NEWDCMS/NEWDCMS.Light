@@ -3,14 +3,14 @@ Wesley.Light 是Wesley微信小程序客户端，Wesley是一套新零售快消E
 
 ## 视图
 
-<img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(1).jpg" width="260" vspace="20"/>
-<img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(2).jpg" width="260" vspace="20"/>
+<img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(5).jpg" width="260" vspace="20"/>
+<img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(6).jpg" width="260" vspace="20"/>
 <img src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(3).jpg" width="260" vspace="20"/>
 
 
 
 <img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(4).jpg" width="260" vspace="20"/>
-<img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(5).jpg" width="260" vspace="20"/>
-<img src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(6).jpg" width="260" vspace="20"/>
+<img align="left"  src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(1).jpg" width="260" vspace="20"/>
+<img src="https://github.com/dorisoy/Wesley.Light/blob/master/w%20(2).jpg" width="260" vspace="20"/>
 
 ##
