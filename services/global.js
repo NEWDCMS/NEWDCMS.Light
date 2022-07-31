@@ -86,7 +86,7 @@ export default class Global {
     this.cashReceiptBill = {};
 
     //wss/https服务器地址 
-    this.ipw = 'https://api.jsdcms.com/chatHub';
+    this.ipw = 'https://api.xxx.com/chatHub';
     this.limit = 0;
     //超时时间
     this.timeout = 5000;
