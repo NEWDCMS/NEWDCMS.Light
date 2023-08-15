@@ -59,9 +59,10 @@ NEWDCMS 基于Saas的经销商快消解决方案，皆在满足区域营销管�
 
 |项目|库|描述|
 |-------------|-----|-----------|
-|DCMS|[GitHub](https://github.com/dorisoy/DCMS) | 经销商管家门户|
-|DCMS.Client|[GitHub](https://github.com/dorisoy/DCMS.Client) | 基于Xamarin.Forms5.0+ 支持Android 5.0+/IOS|
-|DCMS.Light|[GitHub](https://github.com/dorisoy/DCMS.Light) | 微信小程序客户端|
+|NEWDCMS|[GitHub](https://github.com/dorisoy/NEWDCMS) | 经销商管家门户|
+|NEWDCMS.Client|[GitHub](https://github.com/dorisoy/NEWDCMS.Client) | 基于Xamarin.Forms5.0+ 支持Android 5.0+/IOS|
+|NEWDCMS.Light|[GitHub](https://github.com/dorisoy/NEWDCMS.Light) | 微信小程序客户端|
+|NEWDCMS.Blazor|[GitHub](https://github.com/dorisoy/NEWDCMS.Blazor) | 基于Blazor实现的前后端分离版本|
 
 
 
